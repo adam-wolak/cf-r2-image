@@ -7,25 +7,28 @@ export async function handleRequest(request: Request, r2Bucket: R2Bucket): Promi
   console.log('Handling request:', request.url);
   
   const url = new URL(request.url);
-  const targetUrl = url.searchParams.get('url');
-
-  if (!targetUrl) {
-    console.log('Missing URL parameter');
-    return new Response('Missing URL parameter', { status: 400 });
-  }
-
-  const normalizedUrl = normalizeImageUrl(targetUrl);
-  console.log('Normalized URL:', normalizedUrl);
-
-  if (isImageUrl(normalizedUrl)) {
-    return handleImageRequest(request, r2Bucket, normalizedUrl);
+  const path = url.pathname.slice(1); // Remove leading slash
+  
+  if (path) {
+    // This is a request for an image
+    const imageUrl = decodeURIComponent(path);
+    return handleImageRequest(request, r2Bucket, imageUrl);
   } else {
-    return handleHtmlRequest(request, normalizedUrl);
+    // This is a request for HTML modification
+    const targetUrl = url.searchParams.get('url');
+    if (!targetUrl) {
+      console.log('Missing URL parameter');
+      return new Response('Missing URL parameter', { status: 400 });
+    }
+    return handleHtmlRequest(request, targetUrl);
   }
 }
 
 async function handleImageRequest(request: Request, r2Bucket: R2Bucket, imageUrl: string): Promise<Response> {
+  console.log('Handling image request:', imageUrl);
+
   const url = new URL(request.url);
+
   const options = {
     format: url.searchParams.get('format') || 'auto',
     width: parseInt(url.searchParams.get('width') || url.searchParams.get('v')?.split('x')[0] || '0', 10) || undefined,
@@ -34,6 +37,8 @@ async function handleImageRequest(request: Request, r2Bucket: R2Bucket, imageUrl
     gravity: url.searchParams.get('gravity') || config.TRANSFORM_PARAMS.gravity,
     quality: parseInt(url.searchParams.get('quality') || config.TRANSFORM_PARAMS.quality, 10)
   };
+
+  console.log('Transformation options:', options);
 
   const parsedUrl = new URL(imageUrl);
   const originalKey = parsedUrl.pathname.slice(1); // Usuń początkowy '/'
@@ -82,14 +87,40 @@ async function handleImageRequest(request: Request, r2Bucket: R2Bucket, imageUrl
       console.log('Optimized image found in R2');
     }
 
-    const response = createImageResponse(optimizedBuffer, options.format, imageUrl);
-    response.headers.set('Access-Control-Allow-Origin', '*');
+    const contentType = getContentTypeFromFormat(options.format);
+    console.log('Content-Type:', contentType);
+
+    const response = new Response(optimizedBuffer, {
+      headers: {
+        'Content-Type': contentType,
+        'Cache-Control': 'public, max-age=31536000',
+        'Access-Control-Allow-Origin': '*',
+      },
+    });
+
     return response;
   } catch (error) {
     console.error('Error in handleImageRequest:', error);
     return new Response('Error processing image', { status: 500 });
   }
 }
+
+function getContentTypeFromFormat(format: string): string {
+  switch (format) {
+    case 'webp':
+      return 'image/webp';
+    case 'avif':
+      return 'image/avif';
+    case 'png':
+      return 'image/png';
+    case 'jpeg':
+    case 'jpg':
+      return 'image/jpeg';
+    default:
+      return 'image/jpeg';
+  }
+}
+
 
 async function handleHtmlRequest(request: Request, targetUrl: string): Promise<Response> {
   console.log('Handling HTML request:', targetUrl);
@@ -117,12 +148,13 @@ async function handleHtmlRequest(request: Request, targetUrl: string): Promise<R
 }
 
 function modifyHtmlContent(html: string, baseUrl: string): string {
-  const workerUrl = 'https://r2-image.bielskoclinic.workers.dev/?url=';
+  const workerUrl = 'https://r2-image.bielskoclinic.workers.dev';
 
   // Modyfikacja src dla obrazów
   html = html.replace(/<img[^>]+src=["']([^"']+)["']/gi, (match, src) => {
     const fullSrc = new URL(src, baseUrl).href;
-    return match.replace(src, `${workerUrl}${encodeURIComponent(fullSrc)}`);
+    const optimizedSrc = `${workerUrl}/${encodeURIComponent(fullSrc)}`;
+    return match.replace(src, optimizedSrc);
   });
 
   // Modyfikacja srcset dla obrazów
@@ -130,7 +162,8 @@ function modifyHtmlContent(html: string, baseUrl: string): string {
     const newSrcset = srcset.split(',').map(src => {
       const [url, size] = src.trim().split(' ');
       const fullUrl = new URL(url, baseUrl).href;
-      return `${workerUrl}${encodeURIComponent(fullUrl)} ${size || ''}`;
+      const optimizedUrl = `${workerUrl}/${encodeURIComponent(fullUrl)}`;
+      return `${optimizedUrl} ${size || ''}`;
     }).join(', ');
     return `srcset="${newSrcset}"`;
   });
