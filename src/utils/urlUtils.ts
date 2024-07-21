@@ -6,23 +6,18 @@ export function shouldSkipOptimization(pathname: string): boolean {
          pathname.includes('/promocje');
 }
 
-export function optimizeImageUrl(url: string, options: ImageOptions): string {
-  const parsedUrl = new URL(url);
-  const transformParams = new URLSearchParams();
-
-  if (options.format) transformParams.set('format', options.format);
-  if (options.width) transformParams.set('width', options.width.toString());
-  if (options.height) transformParams.set('height', options.height.toString());
-  if (options.fit) transformParams.set('fit', options.fit);
-  if (options.gravity) transformParams.set('gravity', options.gravity);
-  if (options.quality) transformParams.set('quality', options.quality.toString());
-
-  const transformString = transformParams.toString();
-  const optimizedUrl = `${parsedUrl.origin}/cdn-cgi/image/${transformString}${parsedUrl.pathname}`;
+export function optimizeImageUrl(imageUrl: string, options: TransformOptions): string {
+  const url = new URL('https://r2-image.bielskoclinic.workers.dev');
+  url.pathname = `/${encodeURIComponent(imageUrl)}`;
   
-  console.log('Transformation URL:', optimizedUrl);
-  
-  return optimizedUrl;
+  if (options.format) url.searchParams.set('format', options.format);
+  if (options.width) url.searchParams.set('width', options.width.toString());
+  if (options.height) url.searchParams.set('height', options.height.toString());
+  if (options.fit) url.searchParams.set('fit', options.fit);
+  if (options.gravity) url.searchParams.set('gravity', options.gravity);
+  if (options.quality) url.searchParams.set('quality', options.quality.toString());
+
+  return url.toString();
 }
 
 
