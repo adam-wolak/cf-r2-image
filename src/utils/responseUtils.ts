@@ -1,7 +1,5 @@
 export function createImageResponse(imageBuffer: ArrayBuffer, format: string, originalUrl: string): Response {
-  const contentType = format === 'avif' ? 'image/avif' : 
-                      format === 'webp' ? 'image/webp' : 
-                      'image/jpeg';
+  const contentType = getContentTypeFromFormat(format);
 
   return new Response(imageBuffer, {
     headers: {
@@ -14,10 +12,27 @@ export function createImageResponse(imageBuffer: ArrayBuffer, format: string, or
   });
 }
 
+
 export function corsHeaders(origin: string) {
   return {
     'Access-Control-Allow-Origin': origin,
     'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
   };
+}
+
+export function getContentTypeFromFormat(format: string): string {
+  switch (format.toLowerCase()) {
+    case 'jpeg':
+    case 'jpg':
+      return 'image/jpeg';
+    case 'png':
+      return 'image/png';
+    case 'webp':
+      return 'image/webp';
+    case 'avif':
+      return 'image/avif';
+    default:
+      return 'application/octet-stream';
+  }
 }

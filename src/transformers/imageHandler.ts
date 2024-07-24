@@ -1,68 +1,80 @@
-import { getDimensionsFromDeviceType } from '../utils/deviceUtils';
 import { config } from '../config';
-import { optimizeImageUrl } from '../utils/urlUtils';
+import { optimizeImage } from '../utils/imageUtils';
 
-export class ImageHandler {
-  constructor(
-    private deviceType: string,
-    private bestFormat: string,
-    private request: Request
-  ) {}
-
-  element(element: Element) {
-    const src = element.getAttribute('src');
-    if (src) {
-      const newSrc = this.getOptimizedImageUrl(src, element);
-      element.setAttribute('src', newSrc);
+export function modifyHtmlContent(html: string, baseUrl: string): string {
+  // Modyfikacja src dla obrazów
+  html = html.replace(/<img[^>]+src=["']([^"']+)["']/gi, (match, src) => {
+    const fullSrc = new URL(src, baseUrl).href;
+    if (!fullSrc.toLowerCase().endsWith('.jpg') && !fullSrc.toLowerCase().endsWith('.jpeg')) {
+      return match; // Nie modyfikuj, jeśli to nie jest JPG
     }
-
-    const srcset = element.getAttribute('srcset');
-    if (srcset) {
-      const newSrcset = this.getOptimizedSrcset(srcset, element);
-      element.setAttribute('srcset', newSrcset);
-    }
-  }
-
-getOptimizedImageUrl(src: string, element: Element): string {
-  const { width, height } = this.getDimensions(element);
-  
-  return optimizeImageUrl(src, {
-    format: this.bestFormat,
-    width,
-    height,
-    fit: config.TRANSFORM_PARAMS.fit,
-    gravity: config.TRANSFORM_PARAMS.gravity,
-    quality: config.TRANSFORM_PARAMS.quality
+    const optimizedSrc = getOptimizedImageUrl(fullSrc);
+    return match.replace(src, optimizedSrc);
   });
- }
 
-  getOptimizedSrcset(srcset: string, element: Element): string {
-    return srcset.split(',').map(src => {
-      const [url, descriptor] = src.trim().split(' ');
-      const optimizedUrl = this.getOptimizedImageUrl(url, element);
-      return `${optimizedUrl} ${descriptor}`;
+  // Modyfikacja srcset dla obrazów
+  html = html.replace(/srcset=["']([^"']+)["']/gi, (match, srcset) => {
+    const newSrcset = srcset.split(',').map(src => {
+      const [url, size] = src.trim().split(' ');
+      const fullUrl = new URL(url, baseUrl).href;
+      if (!fullUrl.toLowerCase().endsWith('.jpg') && !fullUrl.toLowerCase().endsWith('.jpeg')) {
+        return `${url} ${size || ''}`; // Nie modyfikuj, jeśli to nie jest JPG
+      }
+      const optimizedUrl = getOptimizedImageUrl(fullUrl, size);
+      return `${optimizedUrl} ${size || ''}`;
     }).join(', ');
+    return `srcset="${newSrcset}"`;
+  });
+
+  return html;
+}
+
+async function getOptimizedImageUrl(url: string, r2Bucket: R2Bucket, bestFormat: string, size?: string): Promise<string> {
+  const parsedUrl = new URL(url);
+  const pathParts = parsedUrl.pathname.split('/').filter(Boolean);
+  const fileName = pathParts[pathParts.length - 1];
+  const fileNameWithoutExtension = fileName.replace(/\.\w+$/, '');
+  
+  let width, height;
+  if (size) {
+    [width, height] = size.split('x').map(Number);
+  } else {
+    const match = fileName.match(/-(\d+)x(\d+)\./);
+    if (match) {
+      [, width, height] = match.map(Number);
+    }
   }
 
-  getDimensions(element: Element): { width: number, height: number } {
-    let width = parseInt(element.getAttribute('width') || '0');
-    let height = parseInt(element.getAttribute('height') || '0');
-    if (width && height) return { width, height };
+  const optimizedFileName = width && height 
+    ? `${fileNameWithoutExtension}-${width}x${height}.${bestFormat}`
+    : `${fileNameWithoutExtension}.${bestFormat}`;
+  const optimizedKey = `${pathParts.slice(0, -1).join('/')}/${optimizedFileName}`;
 
-    const srcset = element.getAttribute('srcset');
-    if (srcset) {
-      const sizes = srcset.split(',').map(src => {
-        const [, descriptor] = src.trim().split(' ');
-        return parseInt(descriptor) || 0;
-      });
-      width = Math.max(...sizes);
-      height = Math.round(width * 3 / 4);
+  // Sprawdź, czy zoptymalizowany obraz istnieje w R2
+  let optimizedBuffer = await getImageFromR2(optimizedKey, r2Bucket);
+  
+  if (!optimizedBuffer) {
+    console.log('Optimized image not found in R2, optimizing...');
+
+    // Pobierz oryginalny obraz
+    const originalResponse = await fetch(url);
+    if (!originalResponse.ok) {
+      throw new Error(`Failed to fetch original image: ${originalResponse.statusText}`);
     }
+    const originalBuffer = await originalResponse.arrayBuffer();
 
-    if (!width || !height) {
-      return getDimensionsFromDeviceType(this.deviceType);
-    }
+    // Zapisz oryginalny obraz w R2
+    await saveImageToR2(pathParts.join('/'), originalBuffer, r2Bucket);
 
-    return { width, height };
+    // Optymalizuj obraz
+    optimizedBuffer = await optimizeImage(originalBuffer, bestFormat, width, height);
+
+    // Zapisz zoptymalizowany obraz w R2
+    await saveImageToR2(optimizedKey, optimizedBuffer, r2Bucket);
+    console.log('Optimized image saved to R2');
+  } else {
+    console.log('Optimized image found in R2');
   }
+
+  return `${config.R2_PUB}/${optimizedKey}`;
 }
