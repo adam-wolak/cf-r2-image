@@ -16,11 +16,16 @@ export async function transformImage(originalImage: ArrayBuffer, imagePath: stri
 
   const response = await fetch(transformUrl.toString(), {
     method: 'POST',
-    body: originalImage
+    body: originalImage,
+    headers: {
+      'Content-Type': 'image/jpeg' // Zakładamy, że oryginał to JPEG
+    }
   });
 
   if (!response.ok) {
-    throw new Error('Error transforming image');
+    const errorText = await response.text();
+    console.error('Transformation error:', errorText);
+    throw new Error(`Error transforming image: ${response.status} ${response.statusText}`);
   }
 
   return response.arrayBuffer();

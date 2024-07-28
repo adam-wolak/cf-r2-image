@@ -10,22 +10,9 @@ import { config } from '../config';
 
 export function getOptimizedImagePath(path: string, format: string): string {
   // Usuń początkowy slash, jeśli istnieje
-  path = path.replace(/^\//, '');
+  path = path.replace(/^\/+/, '');
   // Zamień rozszerzenie na nowy format
-  const newPath = path.replace(/\.(jpg|jpeg|png|gif|webp)$/i, `.${format}`);
-  return `${config.R2_PUB}/${config.R2_BUCKET_NAME}/${newPath}`;
-}
-
-export function getOriginalImagePath(path: string): string {
-  return path.replace(/-\d+x\d+\.(jpg|jpeg|png|gif|webp)$/i, '.$1');
-}
-
-export function getImageDimensions(path: string): { width: number | null, height: number | null } {
-  const match = path.match(/-(\d+)x(\d+)\.(jpg|jpeg|png|gif|webp)$/i);
-  return {
-    width: match ? parseInt(match[1]) : null,
-    height: match ? parseInt(match[2]) : null
-  };
+  return path.replace(/\.(jpg|jpeg|png|gif|webp)$/i, `.${format}`);
 }
 
 export function getBestImageFormat(accept: string): string {
@@ -34,24 +21,66 @@ export function getBestImageFormat(accept: string): string {
   return 'jpeg'; // fallback to jpeg
 }
 
-export async function getOrCreateImage(bucket: R2Bucket, imagePath: string, format: string): Promise<ArrayBuffer> {
-  const optimizedPath = getOptimizedImagePath(imagePath, format).replace(`${config.R2_PUB}/${config.R2_BUCKET_NAME}/`, '');
+export async function getOrCreateImage(bucket: R2Bucket, imagePath: string, format: string): Promise<string> {
+  imagePath = imagePath.replace(/^\/+/, '');
+  const originalPath = imagePath.replace(/-\d+x\d+(?=\.[a-z]+$)/, '');
+  const optimizedPath = getOptimizedImagePath(originalPath, format);
+  
   console.log(`Checking for optimized image: ${optimizedPath}`);
-  let optimizedImage = await getFromR2(bucket, optimizedPath);
+  let optimizedImage = await bucket.get(optimizedPath);
 
   if (!optimizedImage) {
-    console.log('Optimized image not found, creating...');
-    const originalImageUrl = `${config.ORIGIN}${imagePath}`;
-    console.log(`Fetching original image from: ${originalImageUrl}`);
-    const originalImage = await fetch(originalImageUrl).then(res => res.arrayBuffer());
-    console.log('Original image fetched, transforming...');
-    optimizedImage = await transformImage(originalImage, imagePath, format);
-    console.log('Image transformed, saving to R2...');
-    await saveToR2(bucket, optimizedPath, optimizedImage);
-    console.log('Optimized image created and saved to R2');
-  } else {
-    console.log('Optimized image found in R2');
+    console.log('Optimized image not found, checking for original...');
+    let originalImage = await bucket.get(originalPath);
+
+    if (!originalImage) {
+      console.log('Original image not found in R2, fetching from origin...');
+      const originalImageUrl = `${config.ORIGIN}/${originalPath}`;
+      console.log(`Fetching original image from: ${originalImageUrl}`);
+      const response = await fetch(originalImageUrl);
+      if (!response.ok) {
+        console.error(`Failed to fetch original image: ${response.status} ${response.statusText}`);
+        return `${config.ORIGIN}/${originalPath}`; // Zwróć oryginalny URL w przypadku błędu
+      }
+      const originalImageBuffer = await response.arrayBuffer();
+      console.log('Saving original image to R2...');
+      await bucket.put(originalPath, originalImageBuffer);
+      originalImage = await bucket.get(originalPath);
+    }
+
+    if (!originalImage) {
+      console.error('Failed to get original image after saving to R2');
+      return `${config.ORIGIN}/${originalPath}`; // Zwróć oryginalny URL w przypadku błędu
+    }
+
+    console.log('Transforming image...');
+    try {
+      const transformedImage = await transformImage(await originalImage.arrayBuffer(), originalPath, format);
+      console.log('Saving optimized image to R2...');
+      await bucket.put(optimizedPath, transformedImage);
+      optimizedImage = await bucket.get(optimizedPath);
+    } catch (error) {
+      console.error('Error during image transformation:', error);
+      return `${config.R2_PUB}/${originalPath}`; // Zwróć oryginalny obraz z R2 w przypadku błędu transformacji
+    }
   }
 
-  return optimizedImage;
+  if (!optimizedImage) {
+    console.error('Failed to get optimized image after saving to R2');
+    return `${config.R2_PUB}/${originalPath}`; // Zwróć oryginalny obraz z R2 w przypadku błędu
+  }
+
+  return `${config.R2_PUB}/${optimizedPath}`;
 }
+
+export function getImageDimensions(imagePath: string): { width?: number; height?: number } {
+  const match = imagePath.match(/-(\d+)x(\d+)\./);
+  if (match) {
+    return {
+      width: parseInt(match[1], 10),
+      height: parseInt(match[2], 10)
+    };
+  }
+  return {};
+}
+
