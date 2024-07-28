@@ -6,60 +6,61 @@ async function modifyHtml(html: string, accept: string, env: Env): Promise<strin
   const bestFormat = getBestImageFormat(accept);
   console.log('Best format:', bestFormat);
 
-const limit = pLimit(3); // Ograniczenie do 3 jednoczesnych żądań
-const isLazy = match.includes('loading="lazy"');
-const newSrc = await processImage(value, isLazy);
+  const limit = pLimit(5);
 
-const processImage = async (src: string, isLazy: boolean) => {
-  if (isImagePath(src)) {
-    const fullSrc = new URL(src, config.ORIGIN).pathname.replace(/^\/+/, '');
-    console.log('Processing image:', fullSrc);
-    
-    if (isLazy) {
-      // Dla leniwych obrazów, zwróć oryginalny URL i zaplanuj przetwarzanie w tle
-      setTimeout(() => {
-        getOrCreateImage(env.R2_BUCKET, fullSrc, bestFormat).catch(console.error);
-      }, 0);
-      return src;
+  const processImage = async (src: string) => {
+    if (isImagePath(src)) {
+      const fullSrc = new URL(src, config.ORIGIN).pathname.replace(/^\/+/, '');
+      console.log('Processing image:', fullSrc);
+      
+      try {
+        const newSrc = await limit(() => getOrCreateImage(env.R2_BUCKET, fullSrc, bestFormat));
+        console.log('New src:', newSrc);
+        return newSrc;
+      } catch (error) {
+        console.error('Error processing image:', error);
+        return src;
+      }
     }
+    return src;
+  };
 
-    try {
-      const newSrc = await limit(() => getOrCreateImage(env.R2_BUCKET, fullSrc, bestFormat));
-      console.log('New src:', newSrc);
-      return newSrc;
-    } catch (error) {
-      console.error('Error processing image:', error);
-      return src;
-    }
-  }
-  return src;
-};
+  const promises: Promise<string>[] = [];
 
-  // Modyfikacja src i srcset
-  const promises = [];
-  html = html.replace(
-  /<img[^>]+(?:src|srcset)=["']([^"']+)["']/gi,
-  async (match, value) => {
-    if (match.includes('srcset')) {
+  // Funkcja do przetwarzania pojedynczego tagu img
+  const processImgTag = async (match: string): Promise<string> => {
+    const srcMatch = match.match(/src=["']([^"']+)["']/i);
+    const srcsetMatch = match.match(/srcset=["']([^"']+)["']/i);
+
+    if (srcsetMatch) {
+      const srcset = srcsetMatch[1];
       const newSrcset = await Promise.all(
-        value.split(',').map(async (src) => {
+        srcset.split(',').map(async (src) => {
           const [url, size] = src.trim().split(' ');
           const newUrl = await processImage(url);
           return `${newUrl} ${size}`;
         })
       );
-      return match.replace(value, newSrcset.join(', '));
-    } else {
-      const newSrc = await processImage(value);
-      return match.replace(value, newSrc);
+      match = match.replace(srcset, newSrcset.join(', '));
     }
-  }
-);
 
-      promises.push(promise);
-      return match;
+    if (srcMatch) {
+      const src = srcMatch[1];
+      const newSrc = await processImage(src);
+      match = match.replace(src, newSrc);
     }
-  );
+
+    return match;
+  };
+
+  // Znajdź wszystkie tagi img i przetwórz je
+  const imgTags = html.match(/<img[^>]+>/gi) || [];
+  for (const imgTag of imgTags) {
+    const promise = processImgTag(imgTag).then(newImgTag => {
+      html = html.replace(imgTag, newImgTag);
+    });
+    promises.push(promise);
+  }
 
   // Poczekaj na zakończenie wszystkich operacji przetwarzania obrazów
   await Promise.all(promises);
