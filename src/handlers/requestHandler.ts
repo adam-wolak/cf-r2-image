@@ -1,11 +1,22 @@
 import { getOptimizedImagePath, isImagePath, getBestImageFormat, getOrCreateImage } from '../utils/imageUtils';
 import { config } from '../config';
+import { Queue } from '../utils/queue';
+
+const MAX_CONCURRENT_REQUESTS = 10;
+
+import { getOptimizedImagePath, isImagePath, getBestImageFormat, getOrCreateImage } from '../utils/imageUtils';
+import { config } from '../config';
 
 export async function handleRequest(request: Request, env: Env): Promise<Response> {
   console.log('Worker started processing request');
   console.log('Request URL:', request.url);
 
   const url = new URL(request.url);
+
+  if (url.pathname === '/favicon.ico') {
+    return new Response(null, { status: 404 });
+  }
+
   const targetUrl = url.searchParams.get('url');
 
   if (targetUrl) {
@@ -18,11 +29,14 @@ export async function handleRequest(request: Request, env: Env): Promise<Respons
       let html = await targetResponse.text();
       const imagePromises = [];
 
-      html = html.replace(/<img[^>]+src="([^"]+)"[^>]*>/g, (match, src) => {
-        if (isImagePath(src) && !src.includes('slider') && !src.includes('slider4')) {
+      // Usuń sekcję slidera
+      html = html.replace(/<div[^>]*class="[^"]*slider[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
+
+      html = html.replace(/<img[^>]+src="([^"]+)"[^>]*>/g, async (match, src) => {
+        if (isImagePath(src) && !src.includes('/slider/')) {
           const bestFormat = getBestImageFormat(request.headers.get('Accept') || '');
           const optimizedSrc = getOptimizedImagePath(src, bestFormat);
-          console.log('Replacing image src:', src, 'with:', optimizedSrc);
+          console.log('Processing image:', src, 'to format:', bestFormat);
 
           // Queue image processing
           imagePromises.push(getOrCreateImage(src, env, bestFormat));
@@ -33,8 +47,9 @@ export async function handleRequest(request: Request, env: Env): Promise<Respons
             const newSrcset = srcset.split(',').map(srcItem => {
               const [itemSrc, size] = srcItem.trim().split(' ');
               if (isImagePath(itemSrc)) {
-                const optimizedItemSrc = getOptimizedImagePath(itemSrc, bestFormat);
-                imagePromises.push(getOrCreateImage(itemSrc, env, bestFormat));
+                const [width, height] = size.split('x').map(Number);
+                const optimizedItemSrc = getOptimizedImagePath(itemSrc, bestFormat, width, height);
+                imagePromises.push(getOrCreateImage(itemSrc, env, bestFormat, width, height));
                 return `${config.R2_PUB}/${optimizedItemSrc} ${size}`;
               }
               return srcItem;
@@ -47,7 +62,7 @@ export async function handleRequest(request: Request, env: Env): Promise<Respons
         return match;
       });
 
-      // Wait for all image processing to complete
+      // Process images
       await Promise.all(imagePromises);
 
       console.log('Returning modified HTML');
@@ -55,9 +70,6 @@ export async function handleRequest(request: Request, env: Env): Promise<Respons
         headers: targetResponse.headers,
       });
     }
-
-    console.log('Returning original response from target URL');
-    return targetResponse;
   }
 
   // Handle direct image requests

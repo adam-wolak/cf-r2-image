@@ -1,27 +1,35 @@
 import { TransformParams } from '../types';
 import { config } from '../config';
 
-export async function transformImage(imageBuffer: ArrayBuffer, params: any, format: string): Promise<ArrayBuffer | null> {
-  const blob = new Blob([imageBuffer]);
-  const formData = new FormData();
-  formData.append('file', blob, 'image');
-  
-  const transformUrl = new URL(`${config.ORIGIN}/cdn-cgi/image/`);
+export async function transformImage(imagePath: string, params: TransformParams, format: string): Promise<ArrayBuffer | null> {
+  const transformUrl = new URL(`${config.CLOUDFLARE_ZONE}/cdn-cgi/image/`);
+
+  // Dodaj parametry transformacji do URL
   Object.entries(params).forEach(([key, value]) => {
-    transformUrl.searchParams.append(key, value.toString());
+    if (value !== undefined && value !== null) {
+      transformUrl.searchParams.append(key, value.toString());
+    }
   });
+
+  // Dodaj format do parametrów URL
   transformUrl.searchParams.append('format', format);
+
+  // Dodaj ścieżkę obrazu do URL
+  transformUrl.pathname += imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
 
   console.log(`Transforming image with URL: ${transformUrl.toString()}`);
 
-  const response = await fetch(transformUrl.toString(), {
-    method: 'POST',
-    body: formData,
-  });
+  try {
+    const response = await fetch(transformUrl.toString());
 
-  if (!response.ok) {
-    console.error(`Error transforming image: ${response.status} ${response.statusText}`);
+    if (!response.ok) {
+      console.error(`Error transforming image: ${response.status} ${response.statusText}`);
+      return null;
+    }
+
+    return response.arrayBuffer();
+  } catch (error) {
+    console.error(`Error fetching transformed image: ${error}`);
     return null;
   }
-
-  return response.arrayBuffer();
+}
