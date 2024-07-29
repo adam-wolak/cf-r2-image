@@ -1,12 +1,18 @@
+import { Env } from './types';
 import { handleRequest } from './handlers/requestHandler';
-import { config } from './config';
-
-export interface Env {
-  R2_BUCKET: R2Bucket;
-}
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-    return handleRequest(request, env.R2_BUCKET);
-  },
+    console.log("Worker started processing request");
+    console.log("Available environment variables:", Object.keys(env));
+    console.log("R2_BUCKET available:", !!env.R2_BUCKET);
+    try {
+      const response = await handleRequest(request, env, ctx);
+      console.log("Request processed successfully");
+      return response;
+    } catch (error) {
+      console.error("Error in worker:", error);
+      return new Response("Internal Server Error", { status: 500 });
+    }
+  }
 };
