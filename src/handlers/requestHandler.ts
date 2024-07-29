@@ -1,113 +1,93 @@
 import { getOptimizedImagePath, isImagePath, getBestImageFormat, getOrCreateImage } from '../utils/imageUtils';
 import { config } from '../config';
-import pLimit from 'p-limit';
-
-async function modifyHtml(html: string, accept: string, env: Env): Promise<string> {
-  const bestFormat = getBestImageFormat(accept);
-  console.log('Best format:', bestFormat);
-
-  const limit = pLimit(5);
-
-  const processImage = async (src: string) => {
-    if (isImagePath(src)) {
-      const fullSrc = new URL(src, config.ORIGIN).pathname.replace(/^\/+/, '');
-      console.log('Processing image:', fullSrc);
-      
-      try {
-        const newSrc = await limit(() => getOrCreateImage(env.R2_BUCKET, fullSrc, bestFormat));
-        console.log('New src:', newSrc);
-        return newSrc;
-      } catch (error) {
-        console.error('Error processing image:', error);
-        return src;
-      }
-    }
-    return src;
-  };
-
-  const promises: Promise<string>[] = [];
-
-  // Funkcja do przetwarzania pojedynczego tagu img
-  const processImgTag = async (match: string): Promise<string> => {
-    const srcMatch = match.match(/src=["']([^"']+)["']/i);
-    const srcsetMatch = match.match(/srcset=["']([^"']+)["']/i);
-
-    if (srcsetMatch) {
-      const srcset = srcsetMatch[1];
-      const newSrcset = await Promise.all(
-        srcset.split(',').map(async (src) => {
-          const [url, size] = src.trim().split(' ');
-          const newUrl = await processImage(url);
-          return `${newUrl} ${size}`;
-        })
-      );
-      match = match.replace(srcset, newSrcset.join(', '));
-    }
-
-    if (srcMatch) {
-      const src = srcMatch[1];
-      const newSrc = await processImage(src);
-      match = match.replace(src, newSrc);
-    }
-
-    return match;
-  };
-
-  // Znajdź wszystkie tagi img i przetwórz je
-  const imgTags = html.match(/<img[^>]+>/gi) || [];
-  for (const imgTag of imgTags) {
-    const promise = processImgTag(imgTag).then(newImgTag => {
-      html = html.replace(imgTag, newImgTag);
-    });
-    promises.push(promise);
-  }
-
-  // Poczekaj na zakończenie wszystkich operacji przetwarzania obrazów
-  await Promise.all(promises);
-
-  return html;
-}
 
 export async function handleRequest(request: Request, env: Env): Promise<Response> {
+  console.log('Worker started processing request');
+  console.log('Request URL:', request.url);
+
   const url = new URL(request.url);
   const targetUrl = url.searchParams.get('url');
-  
-  console.log('Received request for URL:', targetUrl);
 
-  if (!targetUrl) {
-    console.log('No target URL provided');
-    return new Response('No URL provided', { status: 400 });
-  }
+  if (targetUrl) {
+    console.log('Target URL:', targetUrl);
+    const targetResponse = await fetch(targetUrl);
+    const contentType = targetResponse.headers.get('Content-Type');
 
-  try {
-    const targetUrlObject = new URL(targetUrl);
-    const path = targetUrlObject.pathname;
+    if (contentType && contentType.includes('text/html')) {
+      console.log('Modifying HTML from target URL');
+      let html = await targetResponse.text();
+      const imagePromises = [];
 
-    console.log('Extracted path:', path);
+      html = html.replace(/<img[^>]+src="([^"]+)"[^>]*>/g, (match, src) => {
+        if (isImagePath(src) && !src.includes('slider') && !src.includes('slider4')) {
+          const bestFormat = getBestImageFormat(request.headers.get('Accept') || '');
+          const optimizedSrc = getOptimizedImagePath(src, bestFormat);
+          console.log('Replacing image src:', src, 'with:', optimizedSrc);
 
-    if (path === '/' || path.endsWith('.html')) {
-      console.log('Processing HTML');
-      const response = await fetch(targetUrl);
-      const html = await response.text();
-      const accept = request.headers.get('Accept') || '';
-      const modifiedHtml = await modifyHtml(html, accept, env);
-      return new Response(modifiedHtml, {
-        headers: { 'Content-Type': 'text/html' }
+          // Queue image processing
+          imagePromises.push(getOrCreateImage(src, env, bestFormat));
+
+          // Modify srcset
+          let newMatch = match.replace(src, `${config.R2_PUB}/${optimizedSrc}`);
+          newMatch = newMatch.replace(/srcset="([^"]+)"/g, (srcsetMatch, srcset) => {
+            const newSrcset = srcset.split(',').map(srcItem => {
+              const [itemSrc, size] = srcItem.trim().split(' ');
+              if (isImagePath(itemSrc)) {
+                const optimizedItemSrc = getOptimizedImagePath(itemSrc, bestFormat);
+                imagePromises.push(getOrCreateImage(itemSrc, env, bestFormat));
+                return `${config.R2_PUB}/${optimizedItemSrc} ${size}`;
+              }
+              return srcItem;
+            }).join(', ');
+            return `srcset="${newSrcset}"`;
+          });
+
+          return newMatch;
+        }
+        return match;
+      });
+
+      // Wait for all image processing to complete
+      await Promise.all(imagePromises);
+
+      console.log('Returning modified HTML');
+      return new Response(html, {
+        headers: targetResponse.headers,
       });
     }
 
-    if (isImagePath(path)) {
-      console.log('Processing image:', path);
-      const accept = request.headers.get('Accept') || '';
-      const bestFormat = getBestImageFormat(accept);
-      const newSrc = await getOrCreateImage(env.R2_BUCKET, path, bestFormat);
-      return Response.redirect(newSrc, 301);
-    }
-
-    console.log('Not an image path, fetching original');
-    return fetch(targetUrl);
-  } catch (error) {
-    console.error('Error processing request:', error);
-    return new Response('Error processing request', { status: 500 });
+    console.log('Returning original response from target URL');
+    return targetResponse;
   }
+
+  // Handle direct image requests
+  const imagePath = url.pathname.replace(/^\//, '');
+  console.log('Image path:', imagePath);
+
+  if (isImagePath(imagePath)) {
+    console.log('Processing image:', imagePath);
+    const bestFormat = getBestImageFormat(request.headers.get('Accept') || '');
+    const optimizedImagePath = getOptimizedImagePath(imagePath, bestFormat);
+
+    console.log('Best format:', bestFormat);
+    console.log('Optimized image path:', optimizedImagePath);
+
+    try {
+      const imageBuffer = await getOrCreateImage(imagePath, env, bestFormat);
+      if (imageBuffer) {
+        console.log('Returning optimized image');
+        return new Response(imageBuffer, {
+          headers: {
+            'Content-Type': `image/${bestFormat}`,
+            'Cache-Control': config.R2_CACHE_CONTROL,
+          },
+        });
+      }
+    } catch (error) {
+      console.error('Error processing image:', error);
+    }
+  }
+
+  console.log('No matching conditions, returning 404');
+  return new Response('Not Found', { status: 404 });
 }

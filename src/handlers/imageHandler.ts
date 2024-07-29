@@ -1,43 +1,60 @@
 import { Env } from '../types';
-import { getImageDimensions } from '../utils/imageUtils';
-import { transformImage } from '../transformers/imageHandler';
-import { getFromR2, saveToR2 } from '../utils/r2Storage';
-import { isImagePath, getOptimizedImagePath, getOriginalImagePath } from '../utils/imageUtils';
+import { Queue } from '../utils/queue';
+import { fetchOriginalImage, saveOriginalToR2, saveTransformedToR2 } from '../utils/r2Storage';
+import { transformImage } from '../transformers/imageTransformer';
 import { config } from '../config';
+import { getOptimalImageFormat } from '../utils/imageUtils';
 
-export async function handleImageRequest(request: Request, env: Env): Promise<Response> {
+const imageQueue = new Queue(5);
+
+export async function handleImage(request: Request, env: Env): Promise<Response> {
   const url = new URL(request.url);
-  const imagePath = url.pathname;
+  const imagePath = url.pathname.replace(/^\//, '');
 
-  if (!isImagePath(imagePath)) {
+  if (imagePath.includes('slider')) {
     return fetch(request);
   }
 
-  const optimizedPath = getOptimizedImagePath(imagePath);
-  const optimizedImage = await getFromR2(env.MY_BUCKET, optimizedPath);
+  const optimalFormat = getOptimalImageFormat(request.headers.get('Accept') || '');
+  const optimizedImagePath = imagePath.replace(/\.(jpg|jpeg|png|gif|webp)$/i, `.${optimalFormat}`);
 
-  if (optimizedImage) {
-    return new Response(optimizedImage, {
-      headers: { 'Content-Type': 'image/avif' }
-    });
-  }
+  return imageQueue.enqueue(async () => {
+    try {
+      const optimizedImage = await env.R2_BUCKET.get(optimizedImagePath);
+      if (optimizedImage) {
+        return new Response(optimizedImage.body, {
+          headers: {
+            'Content-Type': `image/${optimalFormat}`,
+            'Cache-Control': config.R2_CACHE_CONTROL,
+          },
+        });
+      }
 
-  const originalPath = getOriginalImagePath(imagePath);
-  let originalImage = await getFromR2(env.MY_BUCKET, originalPath);
+      const originalImage = await fetchOriginalImage(imagePath, env);
+      if (!originalImage) {
+        console.log(`Original image not found: ${imagePath}`);
+        return fetch(request);
+      }
 
-  if (!originalImage) {
-    const originResponse = await fetch(`${config.ORIGIN}${originalPath}`);
-    if (!originResponse.ok) {
-      return new Response('Image not found', { status: 404 });
+      await saveOriginalToR2(originalImage, imagePath, env);
+
+      const transformedImage = await transformImage(originalImage, config.TRANSFORM_PARAMS, optimalFormat);
+      if (!transformedImage) {
+        console.error(`Failed to transform image: ${imagePath}`);
+        return fetch(request);
+      }
+
+      await saveTransformedToR2(transformedImage, optimizedImagePath, env, optimalFormat);
+
+      return new Response(transformedImage, {
+        headers: {
+          'Content-Type': `image/${optimalFormat}`,
+          'Cache-Control': config.R2_CACHE_CONTROL,
+        },
+      });
+    } catch (error) {
+      console.error(`Error processing image ${imagePath}:`, error);
+      return fetch(request);
     }
-    originalImage = await originResponse.arrayBuffer();
-    await saveToR2(env.MY_BUCKET, originalPath, originalImage);
-  }
-
-  const transformedImage = await transformImage(originalImage, imagePath);
-  await saveToR2(env.MY_BUCKET, optimizedPath, transformedImage);
-
-  return new Response(transformedImage, {
-    headers: { 'Content-Type': 'image/avif' }
   });
 }
