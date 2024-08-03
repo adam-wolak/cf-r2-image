@@ -1,6 +1,13 @@
 import { Env } from '../types';
-import { transformImage } from '../utils/imageUtils';
 import { getOptimalImageFormat } from '../utils/browserUtils';
+
+async function transformImage(imageUrl: string, env: Env, optimalFormat: string): Promise<string> {
+  // Implementacja transformacji obrazu
+  console.log(`Transforming image: ${imageUrl} to format: ${optimalFormat}`);
+  // Tutaj dodaj logikę transformacji obrazu
+  // Na razie zwracamy oryginalny URL jako przykład
+  return imageUrl;
+}
 
 export async function handleTransform(request: Request, env: Env): Promise<Response> {
   console.log('Image Transformer: Received transform request');
@@ -27,9 +34,12 @@ export async function handleTransform(request: Request, env: Env): Promise<Respo
       }
     }));
 
-    return new Response(JSON.stringify({ transformedImages: transformedImages.filter(Boolean) }), {
+     return new Response(JSON.stringify({ 
+      transformedImages: transformedImages.filter(Boolean) 
+      }), {
       headers: { 'Content-Type': 'application/json' }
     });
+
   } catch (error) {
     console.error('Error in handleTransform:', error);
     return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
