@@ -20,11 +20,9 @@ export async function handleRequest(request: Request, env: Env): Promise<Respons
 
     const originalVersions = imageUrls.map(addOriginalVersion).filter(Boolean) as string[];
     const noDimensionsVersions = imageUrls.map(removeImageDimensions);
-    
     imageUrls = [...new Set([...imageUrls, ...originalVersions, ...noDimensionsVersions])];
 
     const processedImages = [];
-
     for (const imageUrl of imageUrls) {
       try {
         const key = await ensureImageInR2(normalizeUrl(imageUrl), env.R2_BUCKET, env);
@@ -37,35 +35,45 @@ export async function handleRequest(request: Request, env: Env): Promise<Respons
     console.log('Image Collector: Finished processing images');
 
     // Call the Image Transformer
-    console.log('Calling Image Transformer...');
-    const transformerResponse = await fetch(`https://${env.IMAGE_TRANSFORMER_WORKER}/transform`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'User-Agent': request.headers.get('User-Agent') || '',
-      },
-      body: JSON.stringify({ images: processedImages }),
-    });
+    try {
+      console.log('Calling Image Transformer...');
+      const transformerResponse = await fetch(`https://${env.IMAGE_TRANSFORMER_WORKER}/transform`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': request.headers.get('User-Agent') || '',
+        },
+        body: JSON.stringify({ images: processedImages }),
+      });
 
-    console.log('Image Transformer response status:', transformerResponse.status);
+      console.log('Image Transformer response status:', transformerResponse.status);
+      const responseText = await transformerResponse.text();
+      console.log('Image Transformer response body:', responseText);
+      const transformerResult = JSON.parse(responseText);
+      console.log('Image Transformer result:', transformerResult);
 
-    const transformerResult = await transformerResponse.json();
-
-    console.log('Image Transformer result:', transformerResult);
-    return new Response(JSON.stringify({
-      collectorResult: {
-        processedUrl: targetUrl,
-        imagesFound: imageUrls.length,
-        imagesProcessed: processedImages.length,
-        images: processedImages
-      },
-      transformerResult
-    }), {
-      headers: { 'Content-Type': 'application/json' }
-    });
+      return new Response(JSON.stringify({
+        collectorResult: {
+          processedUrl: targetUrl,
+          imagesFound: imageUrls.length,
+          imagesProcessed: processedImages.length,
+          images: processedImages
+        },
+        transformerResult
+      }), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    } catch (error) {
+      console.error('Error calling Image Transformer:', error);
+      console.error('Error details:', error.stack);
+      return new Response(JSON.stringify({ error: 'Error calling Image Transformer' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
   } catch (error) {
-    console.error('Error in handleRequest:', error);
-    return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
+    console.error('Error in Image Collector:', error);
+    return new Response(JSON.stringify({ error: 'Error in Image Collector' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
     });

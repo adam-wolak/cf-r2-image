@@ -1,36 +1,33 @@
 import { Env } from '../types';
-import { ensureTransformedImageInR2 } from '../utils/r2Utils';
+import { transformImage } from '../utils/imageUtils';
 import { getOptimalImageFormat } from '../utils/browserUtils';
 
-async function handleTransform(request: Request, env: Env): Promise<Response> {
-
+export async function handleTransform(request: Request, env: Env): Promise<Response> {
   console.log('Image Transformer: Received transform request');
-  const body = await request.json();
-  console.log('Image Transformer: Received body:', body);
-  console.log('Image Transformer: Starting transform process');
-  const userAgent = request.headers.get('User-Agent') || '';
-  const optimalFormat = getOptimalImageFormat(userAgent);
-
   try {
-    const body = await request.json() as { images: string[] };
-    const { images } = body;
-    const transformedImages = [];
+    const body = await request.json();
+    console.log('Image Transformer: Received body:', body);
 
-    for (const imageKey of images) {
-      try {
-        const dimensions = extractDimensions(imageKey);
-        const transformedKey = await ensureTransformedImageInR2(imageKey, env.R2_BUCKET, env, optimalFormat, dimensions.width, dimensions.height);
-        transformedImages.push(transformedKey);
-      } catch (error) {
-        console.error(`Error transforming image ${imageKey}:`, error);
-      }
+    if (!body.images || !Array.isArray(body.images)) {
+      return new Response(JSON.stringify({ error: 'Invalid request body' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
-    console.log('Image Transformer: Process completed successfully');
-    return new Response(JSON.stringify({
-      imagesTransformed: transformedImages.length,
-      transformedImages
-    }), {
+    const userAgent = request.headers.get('User-Agent') || '';
+    const optimalFormat = getOptimalImageFormat(userAgent);
+
+    const transformedImages = await Promise.all(body.images.map(async (image: string) => {
+      try {
+        return await transformImage(image, env, optimalFormat);
+      } catch (error) {
+        console.error(`Error transforming image ${image}:`, error);
+        return null;
+      }
+    }));
+
+    return new Response(JSON.stringify({ transformedImages: transformedImages.filter(Boolean) }), {
       headers: { 'Content-Type': 'application/json' }
     });
   } catch (error) {
@@ -42,14 +39,6 @@ async function handleTransform(request: Request, env: Env): Promise<Response> {
   }
 }
 
-function extractDimensions(key: string): { width?: number, height?: number } {
-  const match = key.match(/-(\d+)x(\d+)\.[^.]+$/);
-  if (match) {
-    return { width: parseInt(match[1]), height: parseInt(match[2]) };
-  }
-  return {};
-}
-
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     console.log(`Received ${request.method} request for ${request.url}`);
@@ -58,7 +47,6 @@ export default {
       return handleTransform(request, env);
     }
     
-    // Handle other requests
     return new Response('Not Found', { status: 404 });
   },
 };
