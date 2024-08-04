@@ -1,3 +1,8 @@
+export interface ProcessedImage {
+  url: string;
+  base64: string;
+}
+
 export interface Env {
   R2_BUCKET: R2Bucket;
   WORKER_URL: string;
@@ -21,4 +26,3 @@ export interface Env {
     quality: string;
   };
 }
-
