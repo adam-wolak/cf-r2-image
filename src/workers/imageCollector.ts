@@ -47,13 +47,7 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     });
   } catch (error) {
     console.error('Error in Image Collector:', error);
-    let errorMessage: string;
-    if (error instanceof Error) {
-      errorMessage = error.message;
-    } else {
-      errorMessage = String(error);
-    }
-    return new Response(JSON.stringify({ error: 'Error in Image Collector', details: errorMessage }), {
+    return new Response(JSON.stringify({ error: 'Error in Image Collector', details: error instanceof Error ? error.message : String(error) }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
     });
@@ -61,5 +55,5 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
 }
 
 export default {
-  fetch: handleRequest,
-} as const;
+  fetch: handleRequest
+};
