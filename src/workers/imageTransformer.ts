@@ -1,93 +1,106 @@
-import { Env } from '../types';
-import { saveToR2, getFromR2 } from '../utils/r2Utils';
-import { transformImage } from '../utils/imageUtils';
+import { Env, R2Object } from '../types';
 import { getOptimalImageFormat } from '../utils/browserUtils';
-import { parseImageDimensions } from '../utils/htmlUtils';
 
-async function transformImage(imageUrl: string, env: Env, userAgent: string, srcset?: string, sizes?: string): Promise<string> {
-  console.log('Transforming image:', imageUrl);
-  
-  const url = new URL(imageUrl);
-  const transformParams = JSON.parse(env.TRANSFORM_PARAMS);
-  
-  url.searchParams.set('format', 'avif');
-  url.searchParams.set('width', 'auto');
-  url.searchParams.set('height', 'auto');
-  url.searchParams.set('fit', transformParams.fit || 'cover');
-  url.searchParams.set('quality', transformParams.quality || '85');
+async function transformAndSaveImage(imageUrl: string, env: Env, userAgent: string): Promise<string> {
+  const optimalFormat = getOptimalImageFormat(userAgent);
 
-  const transformedUrl = `${url.origin}/cdn-cgi/image/${url.searchParams.toString()}${url.pathname}`;
-  console.log('Transformed URL:', transformedUrl);
+  const transformParams = [
+    `format=${optimalFormat}`,
+    `quality=${env.TRANSFORM_PARAMS.quality}`,
+    `fit=${env.TRANSFORM_PARAMS.fit}`,
+    `gravity=${env.TRANSFORM_PARAMS.gravity}`
+  ].join(',');
 
-  return transformedUrl;
+  const cdnUrl = new URL('https://bielskoclinic.pl/cdn-cgi/image/');
+  cdnUrl.pathname += `${transformParams}/${imageUrl}`;
+
+  console.log(`Transforming image: ${cdnUrl}`);
+
+  const transformedResponse = await fetch(cdnUrl.toString(), {
+    headers: {
+      'Accept': `image/${optimalFormat}`,
+      'User-Agent': userAgent,
+    },
+  });
+
+  if (!transformedResponse.ok) {
+    throw new Error(`Transform failed with status: ${transformedResponse.status}`);
+  }
+
+  const arrayBuffer = await transformedResponse.arrayBuffer();
+  const contentType = transformedResponse.headers.get('Content-Type') || `image/${optimalFormat}`;
+
+  const urlObj = new URL(imageUrl);
+  const key = urlObj.pathname.replace(/^\//, '').replace(/\.[^/.]+$/, `.${optimalFormat}`);
+
+  await env.R2_BUCKET.put(key, arrayBuffer, {
+    httpMetadata: { contentType: contentType },
+  });
+
+  console.log(`Image saved to R2: ${key}`);
+  return key;  // Zwracamy klucz
 }
 
+async function handleImageRetrieval(imagePath: string, env: Env): Promise<Response> {
+  const object = await env.R2_BUCKET.get(imagePath);
+  
+  if (!object) {
+    return new Response('Image not found', { status: 404 });
+  }
+  
+  console.log('Full object structure:', JSON.stringify(object, null, 2));
+  
+  const contentType = object.httpMetadata?.contentType || 'image/avif';
+  console.log('Retrieved object Content-Type:', contentType);
+  console.log('Retrieved object size:', object.size);
 
-export async function handleTransform(request: Request, env: Env): Promise<Response> {
-  console.log('Image Transformer: Received transform request');
-  try {
-    let images;
-    if (request.method === 'POST') {
-      const body = await request.json() as { processedImages: { url: string; base64: string }[] };
-      images = body.processedImages;
-    } else if (request.method === 'GET') {
-      const url = new URL(request.url);
-      const targetUrl = url.searchParams.get('url');
-      if (!targetUrl) {
-        return new Response('Missing url parameter', { status: 400 });
-      }
-      images = [{ url: targetUrl, base64: '' }];
-    } else {
-      return new Response('Method Not Allowed', { status: 405 });
+  const arrayBuffer = await object.arrayBuffer();
+  const signature = new Uint8Array(arrayBuffer.slice(0, 12));
+  console.log('Retrieved file signature:', Array.from(signature).map(b => b.toString(16).padStart(2, '0')).join(' '));
+  
+  const headers = new Headers();
+  headers.set('Content-Type', contentType);
+  headers.set('Cache-Control', 'public, max-age=31536000');
+  
+  return new Response(arrayBuffer, { headers });
+}
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+    
+    if (url.pathname.startsWith('/retrieve/')) {
+      const imagePath = url.pathname.replace(/^\/retrieve\//, '');
+      return handleImageRetrieval(imagePath, env);
+    }
+    
+    const imageUrl = url.searchParams.get('url');
+    if (!imageUrl) {
+      return new Response('Missing image URL', { status: 400 });
     }
 
-    if (!Array.isArray(images)) {
-      return new Response(JSON.stringify({ error: 'Invalid request body' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' }
-      });
+    try {
+      new URL(imageUrl);
+    } catch (error) {
+      return new Response('Invalid image URL', { status: 400 });
+    }
+
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.avif'];
+    if (!imageExtensions.some(ext => imageUrl.toLowerCase().endsWith(ext))) {
+      return new Response('URL does not point to an image', { status: 400 });
     }
 
     const userAgent = request.headers.get('User-Agent') || '';
 
-    const transformedImages = await Promise.all(images.map(async (image) => {
-      try {
-        const r2Key = new URL(image.url).pathname.slice(1);
-        const existingImage = await getFromR2(env, r2Key);
-        
-        if (existingImage) {
-          console.log(`Image already transformed: ${image.url}`);
-          return `${env.R2_PUB}/${r2Key}`;
-        }
-
-        const transformedUrl = transformImageUrl(image.url, env);
-        const response = await fetch(transformedUrl);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const imageData = await response.arrayBuffer();
-
-        await saveToR2(env, r2Key, imageData, 'image/avif');
-
-        return `${env.R2_PUB}/${r2Key}`;
-      } catch (error) {
-        console.error(`Error transforming image ${image.url}:`, error);
-        return null;
-      }
-    }));
-
-    return new Response(JSON.stringify({ transformedImages: transformedImages.filter(Boolean) }), {
-      headers: { 'Content-Type': 'application/json' }
-    });
-  } catch (error) {
-    console.error('Error in handleTransform:', error);
-    return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    try {
+      const savedKey = await transformAndSaveImage(imageUrl, env, userAgent);
+      const retrieveUrl = new URL(request.url);
+      retrieveUrl.pathname = `/retrieve/${savedKey}`;
+      return Response.redirect(retrieveUrl.toString(), 302);
+    } catch (error) {
+      console.error('Error during image transformation:', error);
+      return new Response('Internal server error', { status: 500 });
+    }
   }
-}
-
-export default {
-  fetch: handleTransform
 };
+
