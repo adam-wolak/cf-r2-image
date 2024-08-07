@@ -1,122 +1,139 @@
-import { Env, R2Bucket, R2Object } from '../types';
-import { parseImageDimensions } from '../utils/htmlUtils';
-import { parse, HTMLElement as ParsedHTMLElement } from 'node-html-parser';
+import { Env } from '../types';
 
-async function collectImageUrls(targetUrl: string, env: Env): Promise<string[]> {
-  console.log('Image Collector: Fetching content from:', targetUrl);
-  const response = await fetch(targetUrl);
-  const html = await response.text();
-
-  console.log('Image Collector: Extracting image URLs');
-  const imageUrls = extractImageUrls(html, targetUrl);
-  console.log('Image Collector: Found image URLs:', imageUrls.length);
-
-  for (const imageUrl of imageUrls) {
-    try {
-      const existsInR2 = await checkImageExistsInR2(imageUrl, env.R2_BUCKET);
-      if (existsInR2) {
-        console.log(`Image Collector: Image already exists in R2: ${imageUrl}`);
-      } else {
-        console.log(`Image Collector: Downloading and saving image to R2: ${imageUrl}`);
-        await downloadAndSaveImageToR2(imageUrl, env.R2_BUCKET);
-      }
-    } catch (error) {
-      console.error(`Image Collector: Error processing image ${imageUrl}:`, error);
-    }
-  }
-
-  return imageUrls;
-}
-
-async function checkImageExistsInR2(imageUrl: string, bucket: R2Bucket): Promise<boolean> {
-  const url = new URL(imageUrl);
-  const key = url.pathname.slice(1);
-  const object: R2Object | null = await bucket.head(key);
-  return object !== null;
-}
-
-async function downloadAndSaveImageToR2(imageUrl: string, bucket: R2Bucket): Promise<void> {
-  const response = await fetch(imageUrl);
-  if (!response.ok) {
-    throw new Error(`Failed to download image: ${response.statusText}`);
-  }
-  const arrayBuffer = await response.arrayBuffer();
-  const url = new URL(imageUrl);
-  const key = url.pathname.slice(1);
-  await bucket.put(key, arrayBuffer, {
-    httpMetadata: response.headers
-  });
-}
-
-
-function extractImageUrls(html: string, baseUrl: string): string[] {
-  const root = parse(html);
-  const images = root.querySelectorAll('img');
-  const imageUrls = images.map((img: ParsedHTMLElement) => {
-    const src = img.getAttribute('src');
-    if (!src) return null;
-    try {
-      return new URL(src, baseUrl).href;
-    } catch (error) {
-      console.error(`Invalid image URL: ${src}`);
-      return null;
-    }
-  }).filter((url: string | null): url is string => url !== null);
-
-  // Dodajemy obrazy z tła CSS
-  const elementsWithBackgroundImage = root.querySelectorAll('*[style*="background-image"]');
-  elementsWithBackgroundImage.forEach((element: ParsedHTMLElement) => {
-    const style = element.getAttribute('style');
-    if (style) {
-      const match = style.match(/background-image:\s*url\(['"]?([^'"()]+)['"]?\)/i);
-      if (match && match[1]) {
-        try {
-          const fullUrl = new URL(match[1], baseUrl).href;
-          if (!imageUrls.includes(fullUrl)) {
-            imageUrls.push(fullUrl);
-          }
-        } catch (error) {
-          console.error(`Invalid background image URL: ${match[1]}`);
-        }
-      }
-    }
-  });
-
-  return Array.from(new Set<string>(imageUrls)); // Usuwamy duplikaty
-}
-
-
-export async function handleRequest(request: Request, env: Env): Promise<Response> {
-  console.log('Image Collector: Received request');
-  try {
-    const url = new URL(request.url);
-    const targetUrl = url.searchParams.get('url');
-
-    if (!targetUrl) {
-      console.log('Image Collector: Missing url parameter');
-      return new Response(JSON.stringify({ error: 'Missing url parameter' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' }
-      });
-    }
-
-    const imageUrls = await collectImageUrls(targetUrl, env);
-
-    return new Response(JSON.stringify({ imageUrls }), {
-      headers: { 'Content-Type': 'application/json' }
-    });
-  } catch (error) {
-    console.error('Error in Image Collector:', error);
-    return new Response(JSON.stringify({ 
-      error: 'Error in Image Collector', 
-      details: error instanceof Error ? error.message : String(error) 
-    }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
-  }
-}
+const MAX_CONCURRENT_REQUESTS = 5; // Ustaw odpowiednią wartość
 
 export default {
-  fetch: handleRequest
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+    const pageUrl = url.searchParams.get('url');
+
+    if (!pageUrl) {
+      return new Response('Missing URL parameter', { status: 400 });
+    }
+
+    try {
+      const response = await fetch(pageUrl);
+      const html = await response.text();
+
+      const imageUrls = extractImageUrls(html, new URL(pageUrl).origin);
+      console.log(`Found ${imageUrls.length} images on the page`);
+
+      const processedImages = await processImagesWithSemaphore(imageUrls, env, MAX_CONCURRENT_REQUESTS);
+
+      return new Response(JSON.stringify({
+        totalImages: imageUrls.length,
+        processedImages: processedImages.filter(Boolean).length,
+        images: processedImages
+      }), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    } catch (error) {
+      console.error('Error in handleRequest:', error);
+      return new Response('Internal Server Error', { status: 500 });
+    }
+  }
 };
+
+async function processImagesWithSemaphore(imageUrls: string[], env: Env, maxConcurrent: number): Promise<(string | null)[]> {
+
+ if (imageUrl.toLowerCase().endsWith('.svg') || imageUrl.toLowerCase().includes('favicon')) {
+    console.log(`Skipping SVG or favicon: ${imageUrl}`);
+    return null;
+  }
+
+  const imageName = new URL(imageUrl).pathname.split('/').pop() || '';
+  const semaphore = new Semaphore(maxConcurrent);
+  const promises = imageUrls.map(async (url) => {
+    await semaphore.acquire();
+    try {
+      return await processImage(url, env);
+    } finally {
+      semaphore.release();
+    }
+  });
+  return Promise.all(promises);
+}
+
+class Semaphore {
+  private permits: number;
+  private queue: (() => void)[] = [];
+
+  constructor(permits: number) {
+    this.permits = permits;
+  }
+
+  async acquire(): Promise<void> {
+    if (this.permits > 0) {
+      this.permits--;
+      return Promise.resolve();
+    }
+    return new Promise<void>((resolve) => this.queue.push(resolve));
+  }
+
+  release(): void {
+    this.permits++;
+    if (this.queue.length > 0 && this.permits > 0) {
+      this.permits--;
+      const next = this.queue.shift();
+      if (next) next();
+    }
+  }
+}
+
+async function processImage(imageUrl: string, env: Env): Promise<string | null> {
+  const imageName = new URL(imageUrl).pathname.split('/').pop() || '';
+  
+  // Sprawdź, czy obraz istnieje w R2
+  const existingObject = await env.R2_BUCKET.head(imageName);
+  
+  if (existingObject) {
+    console.log(`Image ${imageName} already exists in R2`);
+    return `${env.WORKER_URL}/${imageName}`;
+  }
+
+  try {
+    // Pobierz obraz
+    const response = await fetch(imageUrl);
+    if (!response.ok) throw new Error(`Failed to fetch image: ${response.statusText}`);
+
+    const arrayBuffer = await response.arrayBuffer();
+    const contentType = response.headers.get('Content-Type') || 'image/jpeg';
+
+    // Zapisz w R2
+    await env.R2_BUCKET.put(imageName, arrayBuffer, {
+      httpMetadata: {
+        contentType: contentType
+      }
+    });
+
+    console.log(`Successfully uploaded ${imageName} to R2`);
+    return `${env.WORKER_URL}/${imageName}`;
+  } catch (error) {
+    console.error(`Error processing image ${imageUrl}:`, error);
+    return null;
+  }
+}
+
+function extractImageUrls(html: string, baseUrl: string): string[] {
+  const imgRegex = /<img[^>]+src=["']?([^"'\s]+)["']?[^>]*>|<source[^>]+srcset=["']?([^"'\s]+)["']?[^>]*>/g;
+  const urls: string[] = [];
+  let match;
+
+  while ((match = imgRegex.exec(html)) !== null) {
+    let url = match[1] || match[2];
+    if (!url) continue;
+    if (!url.startsWith('http')) {
+      url = new URL(url, baseUrl).href;
+    }
+    
+    // Pomijamy SVG i favicon
+    if (url.toLowerCase().endsWith('.svg') || url.toLowerCase().includes('favicon')) {
+      continue;
+    }
+
+    urls.push(url);
+  }
+
+  return [...new Set(urls)]; // Usuwamy duplikaty
+}
+
