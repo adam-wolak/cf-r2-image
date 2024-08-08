@@ -1,6 +1,8 @@
 import { Env } from '../types';
 
-const MAX_CONCURRENT_REQUESTS = 5; // Ustaw odpowiednią wartość
+const MAX_CONCURRENT_REQUESTS = 5;
+const BATCH_SIZE = 10;
+const DELAY_BETWEEN_BATCHES = 1000; // 1 sekunda między partiami
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -18,7 +20,7 @@ export default {
       const imageUrls = extractImageUrls(html, new URL(pageUrl).origin);
       console.log(`Found ${imageUrls.length} images on the page`);
 
-      const processedImages = await processImagesWithSemaphore(imageUrls, env, MAX_CONCURRENT_REQUESTS);
+      const processedImages = await processImagesInBatches(imageUrls, env);
 
       return new Response(JSON.stringify({
         totalImages: imageUrls.length,
@@ -34,14 +36,24 @@ export default {
   }
 };
 
-async function processImagesWithSemaphore(imageUrls: string[], env: Env, maxConcurrent: number): Promise<(string | null)[]> {
-
- if (imageUrl.toLowerCase().endsWith('.svg') || imageUrl.toLowerCase().includes('favicon')) {
-    console.log(`Skipping SVG or favicon: ${imageUrl}`);
-    return null;
+async function processImagesInBatches(imageUrls: string[], env: Env): Promise<(string | null)[]> {
+  const results: (string | null)[] = [];
+  for (let i = 0; i < imageUrls.length; i += BATCH_SIZE) {
+    const batch = imageUrls.slice(i, i + BATCH_SIZE);
+    const batchResults = await processImagesWithSemaphore(batch, env, MAX_CONCURRENT_REQUESTS);
+    results.push(...batchResults);
+    if (i + BATCH_SIZE < imageUrls.length) {
+      await delay(DELAY_BETWEEN_BATCHES);
+    }
   }
+  return results;
+}
 
-  const imageName = new URL(imageUrl).pathname.split('/').pop() || '';
+function delay(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function processImagesWithSemaphore(imageUrls: string[], env: Env, maxConcurrent: number): Promise<(string | null)[]> {
   const semaphore = new Semaphore(maxConcurrent);
   const promises = imageUrls.map(async (url) => {
     await semaphore.acquire();
@@ -53,6 +65,40 @@ async function processImagesWithSemaphore(imageUrls: string[], env: Env, maxConc
   });
   return Promise.all(promises);
 }
+
+function extractImageUrls(html: string, baseUrl: string): string[] {
+  const imgRegex = /<img[^>]+src=["']?([^"'\s]+)["']?[^>]*>|<source[^>]+srcset=["']?([^"'\s]+)["']?[^>]*>/g;
+  const urls: string[] = [];
+  let match;
+  let filteredCount = 0;
+
+  while ((match = imgRegex.exec(html)) !== null) {
+    let url = match[1] || match[2];
+    if (!url) continue;
+    
+    url = new URL(url, baseUrl).href;
+    
+    if (url.toLowerCase().endsWith('.svg') || 
+        url.toLowerCase().includes('favicon') || 
+        url.toLowerCase().endsWith('.ico') ||
+        url.startsWith('data:') ||
+        url.includes('wp-includes') ||
+        url.includes('wp-content/plugins')) {
+      console.log(`Filtered out: ${url}`);
+      filteredCount++;
+      continue;
+    }
+
+    urls.push(url);
+  }
+
+  console.log(`Total images found: ${urls.length + filteredCount}`);
+  console.log(`Filtered out: ${filteredCount}`);
+  console.log(`Processed: ${urls.length}`);
+
+  return [...new Set(urls)];
+}
+
 
 class Semaphore {
   private permits: number;
@@ -80,15 +126,33 @@ class Semaphore {
   }
 }
 
+
 async function processImage(imageUrl: string, env: Env): Promise<string | null> {
-  const imageName = new URL(imageUrl).pathname.split('/').pop() || '';
+  // Dodatkowe sprawdzenie dla SVG, favicon i data URL
+  if (imageUrl.toLowerCase().endsWith('.svg') || 
+      imageUrl.toLowerCase().includes('favicon') || 
+      imageUrl.startsWith('data:')) {
+    console.log(`Skipping SVG, favicon or data URL: ${imageUrl}`);
+    return null;
+  }
+
+  const url = new URL(imageUrl);
+  let imagePath = url.pathname;
   
+  // Usuwamy początkowy slash, jeśli istnieje
+  if (imagePath.startsWith('/')) {
+    imagePath = imagePath.slice(1);
+  }
+
+  // Usuwamy parametry URL z nazwy pliku
+  imagePath = imagePath.split('?')[0];
+
   // Sprawdź, czy obraz istnieje w R2
-  const existingObject = await env.R2_BUCKET.head(imageName);
+  const existingObject = await env.R2_BUCKET.head(imagePath);
   
   if (existingObject) {
-    console.log(`Image ${imageName} already exists in R2`);
-    return `${env.WORKER_URL}/${imageName}`;
+    console.log(`Image ${imagePath} already exists in R2`);
+    return `${env.WORKER_URL}/${imagePath}`;
   }
 
   try {
@@ -100,40 +164,17 @@ async function processImage(imageUrl: string, env: Env): Promise<string | null> 
     const contentType = response.headers.get('Content-Type') || 'image/jpeg';
 
     // Zapisz w R2
-    await env.R2_BUCKET.put(imageName, arrayBuffer, {
+    await env.R2_BUCKET.put(imagePath, arrayBuffer, {
       httpMetadata: {
         contentType: contentType
       }
     });
 
-    console.log(`Successfully uploaded ${imageName} to R2`);
-    return `${env.WORKER_URL}/${imageName}`;
+    console.log(`Successfully uploaded ${imagePath} to R2`);
+    console.log(`Successfully processed: ${imagePath}`);
+    return `${env.WORKER_URL}/${imagePath}`;
   } catch (error) {
     console.error(`Error processing image ${imageUrl}:`, error);
     return null;
   }
 }
-
-function extractImageUrls(html: string, baseUrl: string): string[] {
-  const imgRegex = /<img[^>]+src=["']?([^"'\s]+)["']?[^>]*>|<source[^>]+srcset=["']?([^"'\s]+)["']?[^>]*>/g;
-  const urls: string[] = [];
-  let match;
-
-  while ((match = imgRegex.exec(html)) !== null) {
-    let url = match[1] || match[2];
-    if (!url) continue;
-    if (!url.startsWith('http')) {
-      url = new URL(url, baseUrl).href;
-    }
-    
-    // Pomijamy SVG i favicon
-    if (url.toLowerCase().endsWith('.svg') || url.toLowerCase().includes('favicon')) {
-      continue;
-    }
-
-    urls.push(url);
-  }
-
-  return [...new Set(urls)]; // Usuwamy duplikaty
-}
-
