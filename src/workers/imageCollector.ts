@@ -3,18 +3,22 @@ import { Env } from '../types';
 const MAX_CONCURRENT_REQUESTS = 5;
 const BATCH_SIZE = 10;
 const DELAY_BETWEEN_BATCHES = 1000; // 1 sekunda między partiami
+const DEFAULT_USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
     const pageUrl = url.searchParams.get('url');
+    const userAgent = url.searchParams.get('ua') || DEFAULT_USER_AGENT;
 
     if (!pageUrl) {
       return new Response('Missing URL parameter', { status: 400 });
     }
 
     try {
-      const response = await fetch(pageUrl);
+      const response = await fetch(pageUrl, {
+        headers: { 'User-Agent': userAgent }
+      });
       const html = await response.text();
 
       const imageUrls = extractImageUrls(html, new URL(pageUrl).origin);
@@ -22,15 +26,17 @@ export default {
 
       const processedImages = await processImagesInBatches(imageUrls, env);
 
+      const successfullyProcessed = processedImages.filter(Boolean).length;
+
       return new Response(JSON.stringify({
-        totalImages: imageUrls.length,
-        processedImages: processedImages.filter(Boolean).length,
+        totalImagesFound: imageUrls.length,
+        successfullyProcessed: successfullyProcessed,
         images: processedImages
       }), {
         headers: { 'Content-Type': 'application/json' }
       });
     } catch (error) {
-      console.error('Error in handleRequest:', error);
+      console.error('Error in fetch:', error);
       return new Response('Internal Server Error', { status: 500 });
     }
   }
@@ -69,8 +75,8 @@ async function processImagesWithSemaphore(imageUrls: string[], env: Env, maxConc
 function extractImageUrls(html: string, baseUrl: string): string[] {
   const imgRegex = /<img[^>]+src=["']?([^"'\s]+)["']?[^>]*>|<source[^>]+srcset=["']?([^"'\s]+)["']?[^>]*>/g;
   const urls: string[] = [];
+  const skipped: string[] = [];
   let match;
-  let filteredCount = 0;
 
   while ((match = imgRegex.exec(html)) !== null) {
     let url = match[1] || match[2];
@@ -83,20 +89,22 @@ function extractImageUrls(html: string, baseUrl: string): string[] {
         url.toLowerCase().endsWith('.ico') ||
         url.startsWith('data:') ||
         url.includes('wp-includes') ||
-        url.includes('wp-content/plugins')) {
-      console.log(`Filtered out: ${url}`);
-      filteredCount++;
-      continue;
+        url.includes('wp-content/plugins') ||
+        url.includes('i.ytimg.com')) {  // Dodane pomijanie obrazów YouTube
+      skipped.push(url);
+    } else {
+      urls.push(url);
     }
-
-    urls.push(url);
   }
 
-  console.log(`Total images found: ${urls.length + filteredCount}`);
-  console.log(`Filtered out: ${filteredCount}`);
-  console.log(`Processed: ${urls.length}`);
+  const uniqueUrls = [...new Set(urls)];
+  const uniqueSkipped = [...new Set(skipped)];
 
-  return [...new Set(urls)];
+  console.log(`Found ${uniqueUrls.length} unique images on the page`);
+  console.log(`Skipped ${uniqueSkipped.length} images`);
+  console.log('Skipped images:', uniqueSkipped);
+
+  return uniqueUrls;
 }
 
 
