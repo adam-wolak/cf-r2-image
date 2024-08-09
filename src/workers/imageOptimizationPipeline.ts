@@ -7,73 +7,64 @@ export default {
 };
 
 async function handleRequest(request: Request, env: Env): Promise<Response> {
-  console.log('Image Optimization Pipeline: Received request');
-  console.log('Request URL:', request.url);
-  console.log('Request method:', request.method);
-  console.log('Environment variables:', JSON.stringify(env, null, 2))
-
   const url = new URL(request.url);
-
-  // Obsługa żądania favicon.ico
-  if (url.pathname === '/favicon.ico') {
-    return new Response('No favicon', { status: 404 });
-  }
-
   const targetUrl = url.searchParams.get('url');
+  const userAgent = request.headers.get('User-Agent');
 
-if (!targetUrl) {
-  console.log('Image Optimization Pipeline: Missing url parameter');
-  return new Response(JSON.stringify({
-    status: 'error',
-    message: 'Missing url parameter'
-  }), {
-    status: 400,
-    headers: { 'Content-Type': 'application/json' }
-  });
-}
-
-console.log(`Image Optimization Pipeline: Processing URL: ${targetUrl}`);
-
-try {
-  // Wywołanie Image Collector
-  const collectorResponse = await callImageCollector(targetUrl, env, userAgent);
-  if (!collectorResponse.ok) {
-    throw new Error(`Image Collector responded with status: ${collectorResponse.status}`);
-  }
-  const collectorData = await collectorResponse.json();
-
-  // Sprawdzenie, czy collectorData zawiera oczekiwane dane
-  if (!collectorData || !Array.isArray(collectorData.images) || collectorData.images.length === 0) {
-    throw new Error('Invalid or empty response from Image Collector');
+  if (!targetUrl) {
+    console.log('Image Optimization Pipeline: Missing url parameter');
+    return new Response(JSON.stringify({
+      status: 'error',
+      message: 'Missing url parameter'
+    }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 
-  // Wywołanie Image Transformer
-  const transformerResponse = await callImageTransformer(collectorData.images, env);
-  if (!transformerResponse.ok) {
-    throw new Error(`Image Transformer responded with status: ${transformerResponse.status}`);
+  console.log(`Image Optimization Pipeline: Processing URL: ${targetUrl}`);
+
+  try {
+    // Wywołanie Image Collector
+    const collectorResponse = await callImageCollector(targetUrl, env, userAgent);
+    if (!collectorResponse.ok) {
+      throw new Error(`Image Collector responded with status: ${collectorResponse.status}`);
+    }
+    const collectorData = await collectorResponse.json();
+
+    // Sprawdzenie, czy collectorData zawiera oczekiwane dane
+    if (!collectorData || typeof collectorData !== 'object') {
+      throw new Error('Invalid response from Image Collector');
+    }
+
+    // Wywołanie Image Transformer
+    const transformerResponse = await callImageTransformer(collectorData, env);
+    if (!transformerResponse.ok) {
+      throw new Error(`Image Transformer responded with status: ${transformerResponse.status}`);
+    }
+    const transformedData = await transformerResponse.json();
+
+    // Zwrócenie przetworzonego wyniku
+    return new Response(JSON.stringify({
+      status: 'success',
+      data: transformedData
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+  } catch (error) {
+    console.error('Error in Image Optimization Pipeline:', error);
+    return new Response(JSON.stringify({
+      status: 'error',
+      message: error instanceof Error ? error.message : 'An unknown error occurred'
+    }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
-  const transformedData = await transformerResponse.json();
-
-  // Zwrócenie przetworzonego wyniku
-  return new Response(JSON.stringify({
-    status: 'success',
-    data: transformedData
-  }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' }
-  });
-
-} catch (error) {
-  console.error('Error in Image Optimization Pipeline:', error);
-  return new Response(JSON.stringify({
-    status: 'error',
-    message: error instanceof Error ? error.message : 'An unknown error occurred'
-  }), {
-    status: 500,
-    headers: { 'Content-Type': 'application/json' }
-  });
 }
-}
+
 
 async function callImageCollector(targetUrl: string, env: Env, userAgent: string | null): Promise<Response> {
   console.log('Image Optimization Pipeline: Calling Image Collector');
@@ -108,11 +99,9 @@ async function callImageCollector(targetUrl: string, env: Env, userAgent: string
   }
 }
 
-async function callImageTransformer(images: string[], env: Env): Promise<Response> {
+async function callImageTransformer(collectorData: any, env: Env): Promise<Response> {
   console.log('Image Optimization Pipeline: Calling Image Transformer');
   
-  const collectorData = { images };  // Tworzymy obiekt collectorData
-
   try {
     const response = await env.IMAGE_TRANSFORMER.fetch(env.IMAGE_TRANSFORMER_WORKER, {
       method: 'POST',
@@ -133,4 +122,3 @@ async function callImageTransformer(images: string[], env: Env): Promise<Respons
     throw error;
   }
 }
-
