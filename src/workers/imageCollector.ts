@@ -7,6 +7,9 @@ const DEFAULT_USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKi
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
+    console.log('Image Collector: Received request');
+    console.log('Request URL:', request.url);
+    console.log('Request method:', request.method);
     const url = new URL(request.url);
     const pageUrl = url.searchParams.get('url');
     const userAgent = url.searchParams.get('ua') || DEFAULT_USER_AGENT;
