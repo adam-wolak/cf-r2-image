@@ -3,11 +3,6 @@ import { Env } from '../types';
 const MAX_CONCURRENT_TRANSFORMATIONS = 3;
 const TIMEOUT = 30000; // 30 seconds
 
-import { Env } from '../types';
-
-const MAX_CONCURRENT_TRANSFORMATIONS = 3;
-const TIMEOUT = 30000; // 30 seconds
-
 interface CollectorData {
   images: string[];
 }
@@ -72,6 +67,7 @@ async function transformImages(images: string[], env: Env): Promise<TransformedI
 
   return transformedImages;
 }
+
 
 async function transformImageIfNeeded(imageUrl: string, format: 'avif' | 'webp', env: Env) {
   const key = `transformed/${format}/${new URL(imageUrl).pathname}`;
