@@ -21,6 +21,8 @@ export interface Env {
   ACCOUNT_HASH: string;
   AUTH_KEY_SECRET: string;
   IMAGE_COLLECTOR_WORKER: string;
+  IMAGE_COLLECTOR: Fetcher;
+  IMAGE_TRANSFORMER: Fetcher;
   TRANSFORM_PARAMS: {
     fit: string;
     gravity: string;
@@ -30,6 +32,10 @@ export interface Env {
 
 // Dodane interfejsy R2
 
+export interface CollectorData {
+  images: string[];
+  // inne pola, jeśli są
+}
 export interface ExecutionContext {
   waitUntil(promise: Promise<any>): void;
   passThroughOnException(): void;
