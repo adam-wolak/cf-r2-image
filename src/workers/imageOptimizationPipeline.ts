@@ -1,14 +1,20 @@
-import { Env } from '../types';
+import { Env, CollectorData } from '../types';
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     try {
+      const originalUrl = new URL(request.url).searchParams.get('url');
+      if (!originalUrl) {
+        throw new Error('No URL provided');
+      }
+
+      console.log(`Original URL: ${originalUrl}`);
       console.log(`Image Collector Worker URL: ${env.IMAGE_COLLECTOR_WORKER}`);
       
-      const url = new URL(env.IMAGE_COLLECTOR_WORKER);
-      url.searchParams.set('url', request.url);
+      const collectorUrl = new URL(env.IMAGE_COLLECTOR_WORKER);
+      collectorUrl.searchParams.set('url', originalUrl);
 
-      const collectorResponse = await env.IMAGE_COLLECTOR.fetch(url.toString(), {
+      const collectorResponse = await env.IMAGE_COLLECTOR.fetch(collectorUrl.toString(), {
         method: 'GET',
         headers: request.headers
       });
@@ -20,13 +26,19 @@ export default {
       const collectorData = await collectorResponse.json() as CollectorData;
       console.log('Collector data:', JSON.stringify(collectorData));
 
+      if (collectorData.images.length === 0) {
+        return new Response(JSON.stringify({ message: 'No images found' }), {
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
+
       // Przetwarzanie obrazów w mniejszych partiach, aby uniknąć timeoutu
       const batchSize = 10; // Możesz dostosować tę wartość
-      const transformedImages = [];
+      const transformedImages: (object | null)[] = [];
 
       for (let i = 0; i < collectorData.images.length; i += batchSize) {
         const batch = collectorData.images.slice(i, i + batchSize);
-        const batchPromises = batch.map(imageUrl => this.transformImage(imageUrl, env));
+        const batchPromises = batch.map((imageUrl: string) => this.transformImage(imageUrl, env));
         const batchResults = await Promise.all(batchPromises);
         transformedImages.push(...batchResults);
       }
@@ -43,10 +55,13 @@ export default {
       return new Response('Internal Server Error: ' + errorMessage, { status: 500 });
     }
   },
+
   async transformImage(imageUrl: string, env: Env): Promise<object | null> {
     try {
       const transformerUrl = new URL(env.IMAGE_TRANSFORMER_WORKER);
       transformerUrl.searchParams.set('url', imageUrl);
+
+      console.log(`Transforming image: ${imageUrl}`);
 
       const response = await env.IMAGE_TRANSFORMER.fetch(transformerUrl.toString(), {
         method: 'GET'
@@ -57,7 +72,9 @@ export default {
         return null;
       }
 
-      return response.json();
+      const transformedData = await response.json();
+      console.log(`Transformed image data:`, transformedData);
+      return transformedData;
     } catch (error) {
       console.error(`Error transforming image ${imageUrl}:`, error);
       return null;
