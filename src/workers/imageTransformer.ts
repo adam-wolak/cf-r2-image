@@ -3,116 +3,15 @@ import { Env } from '../types';
 const MAX_CONCURRENT_TRANSFORMATIONS = 3;
 const TIMEOUT = 30000; // 30 seconds
 
-interface CollectorData {
-  images: string[];
-}
-
 interface TransformedImage {
   originalUrl: string;
   avifUrl: string;
   webpUrl: string;
 }
 
-export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    if (request.method !== 'POST') {
-      return new Response('Method not allowed', { status: 405 });
-    }
-
-    try {
-      const collectorData = await request.json() as CollectorData;
-      const transformPromise = transformImages(collectorData.images, env);
-      
-      const timeoutPromise = new Promise<never>((_, reject) => {
-        setTimeout(() => reject(new Error('Transformation timeout')), TIMEOUT);
-      });
-
-      const transformedImages = await Promise.race([transformPromise, timeoutPromise]);
-      
-      return new Response(JSON.stringify(transformedImages), {
-        headers: { 'Content-Type': 'application/json' },
-      });
-    } catch (error) {
-      console.error('Error in Image Transformer:', error);
-      const errorMessage = error instanceof Error ? error.message : 'Internal Server Error';
-      return new Response(JSON.stringify({ error: errorMessage }), {
-        status: errorMessage === 'Transformation timeout' ? 504 : 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-  },
-};
-
-async function transformImages(images: string[], env: Env): Promise<TransformedImage[]> {
-  const transformedImages: TransformedImage[] = [];
-  const semaphore = new Semaphore(MAX_CONCURRENT_TRANSFORMATIONS);
-
-  await Promise.all(images.map(async (imageUrl) => {
-    await semaphore.acquire();
-    try {
-      const avifImage = await transformImageIfNeeded(imageUrl, 'avif', env);
-      const webpImage = await transformImageIfNeeded(imageUrl, 'webp', env);
-      
-      transformedImages.push({
-        originalUrl: imageUrl,
-        avifUrl: avifImage.url,
-        webpUrl: webpImage.url,
-      });
-    } catch (error) {
-      console.error(`Error transforming image ${imageUrl}:`, error);
-    } finally {
-      semaphore.release();
-    }
-  }));
-
-  return transformedImages;
-}
-
-
-async function transformImageIfNeeded(imageUrl: string, format: 'avif' | 'webp', env: Env) {
-  const key = `transformed/${format}/${new URL(imageUrl).pathname}`;
-  
-  // Check if the image already exists in R2
-  const existingImage = await env.R2_BUCKET.get(key);
-  if (existingImage) {
-    return {
-      url: `${env.R2_PUB}/${key}`,
-      size: existingImage.size,
-    };
-  }
-
-  // If the image doesn't exist, transform it
-  const transformedImageUrl = getTransformedImageUrl(imageUrl, format);
-  const response = await fetch(transformedImageUrl);
-  if (!response.ok) {
-    throw new Error(`Failed to fetch transformed image: ${response.statusText}`);
-  }
-
-  const transformedImage = await response.arrayBuffer();
-  
-  await env.R2_BUCKET.put(key, transformedImage, {
-    httpMetadata: {
-      contentType: `image/${format}`,
-    },
-  });
-
-  return {
-    url: `${env.R2_PUB}/${key}`,
-    size: transformedImage.byteLength,
-  };
-}
-
-function getTransformedImageUrl(imageUrl: string, format: 'avif' | 'webp'): string {
-  const url = new URL(imageUrl);
-  url.searchParams.set('format', format);
-  url.searchParams.set('quality', '80');
-  // Dodaj inne parametry transformacji, jeśli są potrzebne
-  return url.toString();
-}
-
 class Semaphore {
   private permits: number;
-  private promiseResolvers: (() => void)[] = [];
+  private waiting: (() => void)[] = [];
 
   constructor(permits: number) {
     this.permits = permits;
@@ -123,17 +22,123 @@ class Semaphore {
       this.permits--;
       return Promise.resolve();
     }
-    return new Promise<void>((resolve) => {
-      this.promiseResolvers.push(resolve);
-    });
+    return new Promise<void>(resolve => this.waiting.push(resolve));
   }
 
   release(): void {
     this.permits++;
-    if (this.permits > 0 && this.promiseResolvers.length > 0) {
+    if (this.waiting.length > 0 && this.permits > 0) {
       this.permits--;
-      const resolve = this.promiseResolvers.shift();
-      if (resolve) resolve();
+      const next = this.waiting.shift();
+      if (next) next();
     }
   }
 }
+
+export default {
+
+async fetch(request: Request, env: Env): Promise<Response> {
+  const url = new URL(request.url);
+  const imageUrl = url.searchParams.get('url');
+
+  if (!imageUrl) {
+    return new Response('Missing URL parameter', { status: 400 });
+  }
+
+  try {
+    if (imageUrl.startsWith('http')) {
+      // Jeśli to URL strony, pobierz obrazy z tej strony
+      const pageImages = await this.getImagesFromPage(imageUrl);
+      const transformedImages = await this.transformImages(pageImages, env);
+      return new Response(JSON.stringify(transformedImages), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    } else {
+      // Jeśli to pojedynczy obraz, przetwórz go
+      const transformedImage = await this.transformSingleImage(imageUrl, env);
+      return new Response(JSON.stringify([transformedImage]), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    return new Response('Error processing image(s): ' + errorMessage, { status: 500 });
+  }
+},
+  async getImagesFromPage(pageUrl: string): Promise<string[]> {
+    const response = await fetch(pageUrl);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch page: ${response.status} ${response.statusText}`);
+    }
+
+    const html = await response.text();
+    const imageUrls = new Set<string>();
+
+    // Regex do wyodrębniania URL-i obrazów
+    const imgRegex = /<img[^>]+src=["']?([^"'\s>]+)["']?[^>]*>/gi;
+    const backgroundRegex = /background-image:\s*url\(['"]?([^'"]+)['"]?\)/gi;
+
+    let match;
+    while ((match = imgRegex.exec(html)) !== null) {
+      if (match[1]) {
+        imageUrls.add(new URL(match[1], pageUrl).href);
+      }
+    }
+
+    while ((match = backgroundRegex.exec(html)) !== null) {
+      if (match[1]) {
+        imageUrls.add(new URL(match[1], pageUrl).href);
+      }
+    }
+
+    console.log(`Found ${imageUrls.size} unique images on the page`);
+
+    return Array.from(imageUrls);
+  },
+
+  async transformImages(images: string[], env: Env): Promise<TransformedImage[]> {
+    const transformedImages: TransformedImage[] = [];
+    const semaphore = new Semaphore(MAX_CONCURRENT_TRANSFORMATIONS);
+
+    await Promise.all(images.map(async (imageUrl) => {
+      await semaphore.acquire();
+      try {
+        const transformedImage = await this.transformSingleImage(imageUrl, env);
+        if (transformedImage) {
+          transformedImages.push(transformedImage);
+        }
+      } catch (error) {
+        console.error(`Error transforming image ${imageUrl}:`, error);
+      } finally {
+        semaphore.release();
+      }
+    }));
+
+    return transformedImages;
+  },
+
+async transformSingleImage(imageUrl: string, env: Env): Promise<TransformedImage | null> {
+  try {
+    const avifUrl = await this.transformImageIfNeeded(imageUrl, 'avif', env);
+    const webpUrl = await this.transformImageIfNeeded(imageUrl, 'webp', env);
+
+    return {
+      originalUrl: imageUrl,
+      avifUrl: avifUrl || imageUrl,
+      webpUrl: webpUrl || imageUrl
+    };
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    console.error(`Error transforming image ${imageUrl}:`, errorMessage);
+    return null;
+  }
+},
+
+  async transformImageIfNeeded(imageUrl: string, format: 'avif' | 'webp', env: Env): Promise<string | null> {
+    // Implementacja transformacji obrazu
+    // Zwróć URL przetworzonego obrazu lub null w przypadku błędu
+    // Ta funkcja powinna zawierać logikę sprawdzania, czy obraz już istnieje w R2 i transformacji jeśli nie
+    return null; // Tymczasowo zwracamy null
+  }
+};

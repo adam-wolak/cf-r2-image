@@ -74,7 +74,14 @@ export default {
 
       const transformedData = await response.json();
       console.log(`Transformed image data:`, transformedData);
-      return transformedData;
+      
+      // Sprawdzenie, czy transformedData jest obiektem
+      if (typeof transformedData === 'object' && transformedData !== null) {
+        return transformedData;
+      } else {
+        console.error(`Unexpected data type for transformed image ${imageUrl}`);
+        return null;
+      }
     } catch (error) {
       console.error(`Error transforming image ${imageUrl}:`, error);
       return null;
