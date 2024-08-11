@@ -1,0 +1,5070 @@
+przerwałem poprzedni proces workera.
+Zobacz log!
+{
+  "truncated": true,
+  "outcome": "canceled",
+  "scriptVersion": {
+    "id": "edc0feb5-5bb3-4323-921c-9dd51f7b1448"
+  },
+  "scriptName": "image-collector",
+  "diagnosticsChannelEvents": [],
+  "exceptions": [],
+  "logs": [
+    {
+      "message": [
+        "Image Collector: Starting process"
+      ],
+      "level": "log",
+      "timestamp": 1723386415025
+    },
+    {
+      "message": [
+        "Processing URL: https://bielskoclinic.pl"
+      ],
+      "level": "log",
+      "timestamp": 1723386415025
+    },
+    {
+      "message": [
+        "Raw HTML length: 356255"
+      ],
+      "level": "log",
+      "timestamp": 1723386415073
+    },
+    {
+      "message": [
+        "Found 41 <img> tags and 63 srcset attributes"
+      ],
+      "level": "log",
+      "timestamp": 1723386415073
+    },
+    {
+      "message": [
+        "Total unique non-SVG image URLs: 105"
+      ],
+      "level": "log",
+      "timestamp": 1723386415073
+    },
+    {
+      "message": [
+        "Image Collector: Found 105 unique image URLs (excluding SVG)"
+      ],
+      "level": "log",
+      "timestamp": 1723386415073
+    },
+    {
+      "message": [
+        "Total unique image URLs to process: 111"
+      ],
+      "level": "log",
+      "timestamp": 1723386415073
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/645c3bde354ad581d971404049be0507/bg_radiofrekwencja_mikroiglowa-1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386415394
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/489837b2b913792efd03878c157ced00/bg_bezbolesna_epilacja_laserowa.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386415414
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/10fe33a1b0dfdbab9ad670864710effe/bg_fala_akustyczna.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386415485
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/12e0426cdbe00ca55b1e0f09335cbeb7/bg_mezoterapia_mikroiglowa.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386416797
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/9daa133a8094c5ba2169688d4ff4c316/bg_usta_wolumetria-2.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386416898
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/b091176ebe41dd6366d007984bd98815/bg_laser_tulowy_3.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386416909
+    },
+    {
+      "message": [
+        "Saved image to R2: data:image/svg+xml;base64,phn2zyb4bwxucz0iahr0cdovl3d3dy53my5vcmcvmjawmc9zdmciihdpzhropsizmiigagvpz2h0psizmiigdmlld0jved0imcawidmyidmyij4nciagica8cgf0acbmawxspsijzmzmzmzmiibvcgfjaxr5psiwljgiigzpbgwtcnvszt0izxzlbm9kzcinciagicagicagicbkpsjnmtguotk1oca4ljk5mddjmc0undi0ls4ymdqtljcymy0unjetljg5oc0unda5ls4xnzmtljc3mi0umta0lteumdkzljiwowwtny4wmdygni45nzvjls4ymdeumtk5ls4yotcundm3ls4yodyunze2idaglji2ny4wotyundk4lji4ni42odlsny4wmdygny4wmdfjljmyms4zmjeunjg0ljm4osaxlja5my4ymdkunda2ls4xnzqunjetljq4mi42ms0uotiyvjguotkwn3oilz4ncjwvc3znpg=="
+      ],
+      "level": "log",
+      "timestamp": 1723386418185
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider4/playbutton_old.png"
+      ],
+      "level": "log",
+      "timestamp": 1723386418202
+    },
+    {
+      "message": [
+        "Saved image to R2: data:image/svg+xml;base64,phn2zyb3awr0ad0imziiighlawdodd0imziiihzpzxdcb3g9ijagmcazmiazmiigeg1sbnm9imh0dha6ly93d3cudzmub3jnlziwmdavc3znij4nciagica8cgf0acbkpsjnmtigoc45owmwls40mjmumja0ls43mjiunjetljg5ny40mdgtlje3my43nzitljewncaxlja5mi4ymww3ljawnia2ljk3ngmumjayljiumjk4ljqzny4yodcunze2idaglji2ny0umdk2ljq5oc0umjg3ljy5bc03ljawnia3yy0umziumzitljy4nc4zos0xlja5mi4yms0unda2ls4xnzutljyxls40odmtljyxls45mjnwoc45oxoidqogicagicagicagzmlsbd0ii2zmzmzmziigb3bhy2l0et0imc44iibmawxslxj1bgu9imv2zw5vzgqilz4ncjwvc3znpg=="
+      ],
+      "level": "log",
+      "timestamp": 1723386418212
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2-460x592.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386419584
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386419616
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2-460x592.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386419618
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2-460x592.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386420925
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2-460x592.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386420929
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2-460x592.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386420930
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/2023/06/czego-potrzebujesz_1_2-2.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386422258
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/2023/06/czego-potrzebujesz_2.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386422269
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2-460x592.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386422313
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/f5c784709498e316f1f296fa119ce688/przed-po_botox_14.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386423653
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/4153e2db5a60282e036a3985a1f84f22/przed-po_wolumetria_twarzy_bruzdy.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386423677
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/4720d82dce2430f24cca6a53a49f3642/przed-po_modelowanie-ust_12_1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386423735
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/6a48930d40521d9b9c1cf7883ee1f523/przed-po_wolumetria-twarzy_04.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386425083
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/9952f65a5e16f0253da451194601caf4/przed-po_wolumetria_brody_2.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386425095
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/2fc2c5a742a967b78f84e38486404734/przed-po_wolumetria-twarzy_01.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386425169
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/36944a60aa0da3b384164f2aaf78204a/przed-po_dolina_lez_1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386426536
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/5b5bfd768b9d649b1ac4792627f1151c/przed-po_wolumetria-twarzy_05.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386426552
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/a35da9a2997c38fef7a73353698f1dd3/przed-po_lysienie_plackowate.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386426561
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/959cded64cdead1a0de4c067dc90d229/przed-po_przebarwienia-laser_tulowy_2.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386427928
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/d506e886c6137d13bf59011945b7566d/przed-po_szyja-mezoterapia-i-biostymulatory.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386427934
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/89424441854683913bc4977440732f91/przed-po_przebarwienia-laser_tulowy_1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386428128
+    },
+    {
+      "message": [
+        "Saved image to R2: data:image/svg+xml;base64,phn2zyb3awr0ad0imziiighlawdodd0imziiihzpzxdcb3g9ijagmcazmiazmiigeg1sbnm9imh0dha6ly93d3cudzmub3jnlziwmdavc3znij4nciagica8cgf0acbkpsjnmjeunjg4ide0ljy4oggtny45ntvsms44mzmtms42ns0umda0ls4wmdnjlji2ny0umjqundm4ls41oduundm4ls45nzmgmc0unzi0ls41odgtms4zmtitms4zmtmtms4zmtitljmznyawls42ndiumtmtljg3nc4zngwtljawnc0umdazltqumzc2idmuotm3ljawnc4wmdrdos4xnyaxns4ynjggosaxns42mtigosaxnnmumtcunzmyljqzoc45nzjsls4wmdqumda0idqumzc1idmuotm3ljawmi0umdazyy4ymzmumjeuntm4ljm0ljg3ni4znc43mjqgmcaxljmxmi0untg4ideumzeylteumzezidatljm4ny0umtctljczls40mzgtljk3mmwumda0ls4wmdmtms44mzmtms42nwg3ljk1ngmunzi1idagms4zmtmtlju4nyaxljmxmy0xljmxmiawls43mjutlju4oc0xljmxmy0xljmxmy0xljmxm3pnmtygmkm4lji2ocayidigoc4ynjggmiaxnnm2lji2ocaxncaxncaxncaxnc02lji2ocaxnc0xnfmymy43mzigmiaxniayem0widi1ljm3num5ljcxocayny4znzugnc42mjugmjiumjgyidqunji1ide2uzkunze4idqunji1ide2idqunji1idi3ljm3nsa5ljcxocayny4znzugmtygmjiumjgyidi3ljm3nsaxniayny4znzv6ig0kicagicagicagigzpbgw9iimwmdawmdaiig9wywnpdhk9ijeiigzpbgwtcnvszt0izxzlbm9kzcivpg0kpc9zdmc+"
+      ],
+      "level": "log",
+      "timestamp": 1723386429441
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/1eda4747457af2d88c0b09e308b530cb/przed-po_endermologia_1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386429441
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/230ed4255663a83210d31d940c54c425/przed-po_endermologia_2.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386429457
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://i.ytimg.com/vi/zevlb21ycia/maxresdefault.jpg:",
+        "Error: Failed to fetch image: Not Found"
+      ],
+      "level": "error",
+      "timestamp": 1723386430615
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/6dfbaa92dfe303d0f74c03ad159f708d/bg_bezbolesna_epilacja_laserowa.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723386430779
+    },
+    {
+      "message": [
+        "Saved image to R2: data:image/svg+xml;base64,phn2zyb3awr0ad0imziiighlawdodd0imziiihzpzxdcb3g9ijagmcazmiazmiigeg1sbnm9imh0dha6ly93d3cudzmub3jnlziwmdavc3znij4nciagica8cgf0acbkpsjnmtgumtkgmteumdg3yy0umjm1ls4ymdytlju0ls4zmzctljg3oc0umzm3ls43mjqgmc0xljmxmi41odgtms4zmtigms4zmtmgmcaumzg3lje3ljczljqzoc45nzjsms44myaxljy1mkgxmc4zmum5lju4ocaxnc42odcgosaxns4ynzugosaxnnmuntg4ideumzezideumzezideumzezadcuotu0bc0xljgzmyaxljy1yy0umjyzlji0my0undm0lju4ny0undm0ljk3ncawic43mjuuntg4ideumzezideumzezideumzezljmznyawic42nditljezljg3ns0umzrsnc4znzgtmy45mzrjlji2my0umjq0ljqznc0untg4ljqznc0uotc2cy0umtctljczmi0undm4ls45nzjsltqumzctmy45nhpnmtygmkm4lji2ocayidigoc4ynjggmiaxnnm2lji2ocaxncaxncaxncaxnc02lji2ocaxnc0xnfmymy43mzigmiaxniayem0widi1ljm3num5ljcxocayny4znzugnc42mjugmjiumjgyidqunji1ide2uzkunze4idqunji1ide2idqunji1idi3ljm3nsa5ljcxocayny4znzugmtygmjiumjgyidi3ljm3nsaxniayny4znzv6ig0kicagicagicagigzpbgw9iimwmdawmdaiig9wywnpdhk9ijeiigzpbgwtcnvszt0izxzlbm9kzcivpg0kpc9zdmc+"
+      ],
+      "level": "log",
+      "timestamp": 1723386430824
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://i.ytimg.com/vi/zevlb21ycia/maxresdefault.jpg:",
+        "Error: Failed to fetch image: Not Found"
+      ],
+      "level": "error",
+      "timestamp": 1723386432688
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://i.ytimg.com/vi/zevlb21ycia/maxresdefault.jpg:",
+        "Error: Failed to fetch image: Not Found"
+      ],
+      "level": "error",
+      "timestamp": 1723386434766
+    },
+    {
+      "message": [
+        "Error processing image https://i.ytimg.com/vi/ZEVlB21YCIA/maxresdefault.jpg:",
+        "Error: Failed to fetch image: Not Found"
+      ],
+      "level": "error",
+      "timestamp": 1723386434766
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/d69bf24ed5f5680f0d8b8e8358a57282/bg_bezbolesna_epilacja_laserowa.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723386436097
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/255f19b6824f4981bc64e884d27aa8ca/bg_bezbolesna_epilacja_laserowa.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723386436099
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/d8bac7ae0967bb22125d96bce60fd284/bg_radiofrekwencja_mikroiglowa-1.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723386436221
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/7f73efb98cab644f5b6fca41fa5281bc/bg_radiofrekwencja_mikroiglowa-1.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723386437517
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/5c53e7af618cbbd2d4e335c358687569/bg_radiofrekwencja_mikroiglowa-1.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723386437524
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/cb47900bcd52e25181e872e00c0fff0b/bg_fala_akustyczna.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723386437548
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/52e6ef1a220dd7c5762747696af349de/bg_fala_akustyczna.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723386438852
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/65684b7e9090c2205a5a74ef61e4225c/bg_usta_wolumetria-2.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723386438880
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/5539b264e941d1ae5a5f4ee74c21f00d/bg_fala_akustyczna.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723386438959
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/ce54ef2c9a729a571d39000e2417714d/bg_laser_tulowy_3.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723386440301
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/5e9d44b76a183f35e1abd63083256e18/bg_usta_wolumetria-2.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723386440359
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/19b1dca959e43e13e5dec31fd0a05677/bg_usta_wolumetria-2.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723386440407
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/2023/08/bg_mezoterapia_phone_1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723386441714
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/82f1cd973df38a73ca82faad167227e2/bg_laser_tulowy_3.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723386441734
+    },
+    {
+      "message": [
+        "Saved image to R2: https://bielskoclinic.pl/wp-content/uploads/slider/cache/faf04f563bcd679cb3db0d46bdfc644b/bg_laser_tulowy_3.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723386441780
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-300x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386442848
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/edf56b9226d1f18d7524ce81566d7e6a/playbutton_old.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386442849
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/08/bg_mezoterapia_tablet_1.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386442853
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-300x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386444908
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/edf56b9226d1f18d7524ce81566d7e6a/playbutton_old.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386444908
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/08/bg_mezoterapia_tablet_1.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386444912
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/edf56b9226d1f18d7524ce81566d7e6a/playbutton_old.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386446971
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/edf56b9226d1f18d7524ce81566d7e6a/playbutton_old.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386446971
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/08/bg_mezoterapia_tablet_1.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386446982
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/08/bg_mezoterapia_tablet_1.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386446982
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-300x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386446993
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-300x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386446993
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-150x150.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386448064
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-370x370.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386448065
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-280x280.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386448066
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-370x370.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386450141
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-150x150.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386450142
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-280x280.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386450144
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-370x370.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386452201
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-370x370.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386452201
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-280x280.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386452203
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-280x280.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386452203
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-150x150.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386452204
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-150x150.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386452204
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386453277
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386453282
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386453282
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386455331
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386455338
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386455367
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386457399
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386457399
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386457400
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386457400
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386457440
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386457440
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386458504
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386458506
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386458507
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386460595
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386460599
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386460605
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386462657
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386462657
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386462658
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386462658
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386462661
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386462661
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/dc327edd5460b33a81354f40aac726a0/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386463734
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6d8505de330dfa115cbcb3fd2de49317/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386463739
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9162cb06c2c90e1b3959418b4e44ea78/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386463741
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/dc327edd5460b33a81354f40aac726a0/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386465791
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9162cb06c2c90e1b3959418b4e44ea78/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386465800
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6d8505de330dfa115cbcb3fd2de49317/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386465803
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/dc327edd5460b33a81354f40aac726a0/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386467846
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/dc327edd5460b33a81354f40aac726a0/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386467846
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9162cb06c2c90e1b3959418b4e44ea78/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386467861
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/9162cb06c2c90e1b3959418b4e44ea78/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386467861
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6d8505de330dfa115cbcb3fd2de49317/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386467869
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/6d8505de330dfa115cbcb3fd2de49317/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386467869
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0ac3b8048cb479603774272977959a22/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386468949
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/5cbbdd244bde25b25869e5b3c6c9ed8b/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386468950
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9ba6bce9987a780e344d2ec112e8e743/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386468952
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0ac3b8048cb479603774272977959a22/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386471010
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/5cbbdd244bde25b25869e5b3c6c9ed8b/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386471012
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9ba6bce9987a780e344d2ec112e8e743/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386471019
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0ac3b8048cb479603774272977959a22/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386473071
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/0ac3b8048cb479603774272977959a22/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386473071
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/5cbbdd244bde25b25869e5b3c6c9ed8b/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386473076
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/5cbbdd244bde25b25869e5b3c6c9ed8b/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386473076
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9ba6bce9987a780e344d2ec112e8e743/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386473079
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/9ba6bce9987a780e344d2ec112e8e743/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386473079
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a8698eb0fd656c4eec555a45864d7320/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386474146
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/feaf96f7601f87a21413ad85385885f5/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386474149
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6cd513bb4b06a16703f3198393dfec15/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386474150
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a8698eb0fd656c4eec555a45864d7320/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386476204
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6cd513bb4b06a16703f3198393dfec15/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386476209
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/feaf96f7601f87a21413ad85385885f5/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386476210
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6cd513bb4b06a16703f3198393dfec15/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386478272
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/6cd513bb4b06a16703f3198393dfec15/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386478272
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a8698eb0fd656c4eec555a45864d7320/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386478273
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/a8698eb0fd656c4eec555a45864d7320/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386478273
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/feaf96f7601f87a21413ad85385885f5/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386478274
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/feaf96f7601f87a21413ad85385885f5/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386478274
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/e6eb45ebcb668540d84b0ec68e859bbf/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386479360
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/aca3fd2442ba35b1e5522fbc5b5bccc2/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386479366
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6c38c159ba2bd7f8de90fbe3f52d3134/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386479366
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/e6eb45ebcb668540d84b0ec68e859bbf/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386481429
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6c38c159ba2bd7f8de90fbe3f52d3134/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386481430
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/aca3fd2442ba35b1e5522fbc5b5bccc2/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386481431
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/e6eb45ebcb668540d84b0ec68e859bbf/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386483490
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/e6eb45ebcb668540d84b0ec68e859bbf/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386483490
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6c38c159ba2bd7f8de90fbe3f52d3134/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386483497
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/6c38c159ba2bd7f8de90fbe3f52d3134/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386483497
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/aca3fd2442ba35b1e5522fbc5b5bccc2/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386483498
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/aca3fd2442ba35b1e5522fbc5b5bccc2/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386483498
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/39fe92fdbcad3b0801da40d9ff2a5d1c/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386484565
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/cc696960f74f9720d05e79e390abdafc/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386484569
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a9aa7f8ad8639f56d5e0b62dc421cdac/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386484575
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/39fe92fdbcad3b0801da40d9ff2a5d1c/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386486633
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/cc696960f74f9720d05e79e390abdafc/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386486633
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a9aa7f8ad8639f56d5e0b62dc421cdac/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386486640
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/cc696960f74f9720d05e79e390abdafc/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386488710
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/cc696960f74f9720d05e79e390abdafc/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386488710
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/39fe92fdbcad3b0801da40d9ff2a5d1c/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386488712
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/39fe92fdbcad3b0801da40d9ff2a5d1c/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386488712
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a9aa7f8ad8639f56d5e0b62dc421cdac/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386488722
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/a9aa7f8ad8639f56d5e0b62dc421cdac/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386488722
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/7601258507c9d52f2ce64cc58b2d3f2b/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386489796
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0c4fcfdac29194e771412b7f2643962d/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386489802
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/265209e279e0caac40be699fae607092/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386489804
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0c4fcfdac29194e771412b7f2643962d/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386491860
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/265209e279e0caac40be699fae607092/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386491860
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/7601258507c9d52f2ce64cc58b2d3f2b/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386491861
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0c4fcfdac29194e771412b7f2643962d/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386493923
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/0c4fcfdac29194e771412b7f2643962d/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386493923
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/7601258507c9d52f2ce64cc58b2d3f2b/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386493926
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/7601258507c9d52f2ce64cc58b2d3f2b/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386493926
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/265209e279e0caac40be699fae607092/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386493928
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/265209e279e0caac40be699fae607092/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386493928
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/635d6d703cf746b6fc9ff953bdc613ea/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386495003
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/750756b8a2aaa2802ca22fd8ae710b18/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386495004
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/27b57769b065323b8409973ca7e57d38/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386495007
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/750756b8a2aaa2802ca22fd8ae710b18/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386497064
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/27b57769b065323b8409973ca7e57d38/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386497066
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/635d6d703cf746b6fc9ff953bdc613ea/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386497071
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/635d6d703cf746b6fc9ff953bdc613ea/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386499147
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/635d6d703cf746b6fc9ff953bdc613ea/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386499147
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/750756b8a2aaa2802ca22fd8ae710b18/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386499150
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/750756b8a2aaa2802ca22fd8ae710b18/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386499150
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/27b57769b065323b8409973ca7e57d38/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386499152
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/27b57769b065323b8409973ca7e57d38/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386499152
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/8e912163b21a269d06ab4078efc50211/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386500222
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/8411535b85dc76beee56577989ee5806/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386500224
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/485566f02134e4d4528286748999a445/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386500226
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/8e912163b21a269d06ab4078efc50211/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386502296
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/8411535b85dc76beee56577989ee5806/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386502305
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/485566f02134e4d4528286748999a445/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386502306
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/8e912163b21a269d06ab4078efc50211/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386504356
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/8e912163b21a269d06ab4078efc50211/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386504356
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/8411535b85dc76beee56577989ee5806/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386504368
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/8411535b85dc76beee56577989ee5806/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386504368
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/485566f02134e4d4528286748999a445/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386504371
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/485566f02134e4d4528286748999a445/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386504371
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/966624534babd84906ddfb645b7afc1b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386505433
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/2e9f56ce0849b3f313ca41481294b81b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386505437
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/c26a027aab6e5c2203815472bd21620d/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386505440
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/966624534babd84906ddfb645b7afc1b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386507491
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/2e9f56ce0849b3f313ca41481294b81b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386507499
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/c26a027aab6e5c2203815472bd21620d/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386507505
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/966624534babd84906ddfb645b7afc1b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386509569
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/966624534babd84906ddfb645b7afc1b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386509569
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/2e9f56ce0849b3f313ca41481294b81b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386509575
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/2e9f56ce0849b3f313ca41481294b81b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386509575
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/c26a027aab6e5c2203815472bd21620d/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386509576
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/c26a027aab6e5c2203815472bd21620d/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386509576
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/2f9452ff8111543922517c1536007192/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386510666
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/d67c7a443e949197acf1635c94a30611/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386510667
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/bcec5dfb53a7b7591153fd250b6ebd73/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386510669
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/bcec5dfb53a7b7591153fd250b6ebd73/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386512723
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/d67c7a443e949197acf1635c94a30611/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386512728
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/2f9452ff8111543922517c1536007192/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386512729
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/bcec5dfb53a7b7591153fd250b6ebd73/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386514794
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/bcec5dfb53a7b7591153fd250b6ebd73/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386514794
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/2f9452ff8111543922517c1536007192/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386514796
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/2f9452ff8111543922517c1536007192/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386514796
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/d67c7a443e949197acf1635c94a30611/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386514798
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/d67c7a443e949197acf1635c94a30611/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386514798
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/88624b53da8f27b6f6c7d86e0fd2d565/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386515860
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/95150bc3a2bd1729c5aef59ebc8793ee/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386515866
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/562d6a19cd128563dd84d4700aa65428/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386515870
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/88624b53da8f27b6f6c7d86e0fd2d565/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386517920
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/95150bc3a2bd1729c5aef59ebc8793ee/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386517927
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/562d6a19cd128563dd84d4700aa65428/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386517933
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/88624b53da8f27b6f6c7d86e0fd2d565/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386519978
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/88624b53da8f27b6f6c7d86e0fd2d565/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386519978
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/562d6a19cd128563dd84d4700aa65428/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386519996
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/562d6a19cd128563dd84d4700aa65428/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386519996
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/95150bc3a2bd1729c5aef59ebc8793ee/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386520000
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/95150bc3a2bd1729c5aef59ebc8793ee/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386520000
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a6bed676d91cd8b642a71db77fce93eb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386521072
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/d0463b70bec597efbdb9a4ed2eee9436/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386521075
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/7d2bd3a9e082275ff6766f0b01ed43fb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386521078
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/d0463b70bec597efbdb9a4ed2eee9436/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386523137
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/7d2bd3a9e082275ff6766f0b01ed43fb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386523142
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a6bed676d91cd8b642a71db77fce93eb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386523144
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/d0463b70bec597efbdb9a4ed2eee9436/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386525212
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/d0463b70bec597efbdb9a4ed2eee9436/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386525212
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a6bed676d91cd8b642a71db77fce93eb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386525220
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/a6bed676d91cd8b642a71db77fce93eb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386525220
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/7d2bd3a9e082275ff6766f0b01ed43fb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386525229
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/7d2bd3a9e082275ff6766f0b01ed43fb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386525229
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/67c86cb37afa84a16bcd8947c748b8b8/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386526299
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0a60b05b38d7531d298cf56e05cce2ee/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386526301
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/61ed078a7ed172e6603b1396d979ec81/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386526318
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/67c86cb37afa84a16bcd8947c748b8b8/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386528366
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0a60b05b38d7531d298cf56e05cce2ee/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386528369
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/61ed078a7ed172e6603b1396d979ec81/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386528382
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/67c86cb37afa84a16bcd8947c748b8b8/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386530421
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/67c86cb37afa84a16bcd8947c748b8b8/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386530421
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0a60b05b38d7531d298cf56e05cce2ee/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386530437
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/0a60b05b38d7531d298cf56e05cce2ee/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386530437
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/61ed078a7ed172e6603b1396d979ec81/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386530464
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/61ed078a7ed172e6603b1396d979ec81/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386530464
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/c41330432545f8689b41889ae3b7fba4/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386531528
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/f26e419f21d489d111b00871cf5e043b/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386531530
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/3a674af5670505f9dc3a15a6ad5769b3/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386531549
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/c41330432545f8689b41889ae3b7fba4/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386533590
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/f26e419f21d489d111b00871cf5e043b/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386533592
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/3a674af5670505f9dc3a15a6ad5769b3/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386533610
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/f26e419f21d489d111b00871cf5e043b/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386535652
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/f26e419f21d489d111b00871cf5e043b/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386535652
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/c41330432545f8689b41889ae3b7fba4/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386535654
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/c41330432545f8689b41889ae3b7fba4/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386535654
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/3a674af5670505f9dc3a15a6ad5769b3/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386535675
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/3a674af5670505f9dc3a15a6ad5769b3/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386535675
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386536773
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386536777
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386536779
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386538829
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386538843
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386538844
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386540902
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386540902
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386540904
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386540904
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386540913
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386540913
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386541995
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386541997
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386541999
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386544080
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386544088
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386544088
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386546175
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386546175
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386546175
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386546175
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386546176
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386546176
+    },
+    {
+      "message": [
+        "Retrying 61 failed images"
+      ],
+      "level": "log",
+      "timestamp": 1723386547176
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/edf56b9226d1f18d7524ce81566d7e6a/playbutton_old.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386547243
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/08/bg_mezoterapia_tablet_1.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386547247
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://i.ytimg.com/vi/zevlb21ycia/maxresdefault.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386547248
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/edf56b9226d1f18d7524ce81566d7e6a/playbutton_old.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386549317
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://i.ytimg.com/vi/zevlb21ycia/maxresdefault.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386549318
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/08/bg_mezoterapia_tablet_1.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386549322
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://i.ytimg.com/vi/zevlb21ycia/maxresdefault.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386551378
+    },
+    {
+      "message": [
+        "Error processing image https://i.ytimg.com/vi/ZEVlB21YCIA/maxresdefault.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386551378
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/edf56b9226d1f18d7524ce81566d7e6a/playbutton_old.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386551380
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/edf56b9226d1f18d7524ce81566d7e6a/playbutton_old.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386551380
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/08/bg_mezoterapia_tablet_1.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386551387
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/08/bg_mezoterapia_tablet_1.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386551387
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-280x280.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386552451
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-300x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386552452
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-370x370.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386552463
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-300x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386554523
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-280x280.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386554526
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-370x370.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386554536
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-280x280.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386556584
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-280x280.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386556584
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-300x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386556588
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-300x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386556588
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-370x370.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386556589
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-370x370.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386556589
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-150x150.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386557648
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386557653
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386557656
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386559717
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-150x150.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386559717
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386559720
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386561788
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386561788
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386561790
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386561790
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-150x150.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386561792
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-150x150.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386561792
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386562868
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386562872
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386562872
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386564940
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386564941
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386564942
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386567010
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386567010
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386567018
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386567018
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386567019
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386567019
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9162cb06c2c90e1b3959418b4e44ea78/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386568088
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386568089
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/dc327edd5460b33a81354f40aac726a0/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386568096
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386570154
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9162cb06c2c90e1b3959418b4e44ea78/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386570157
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/dc327edd5460b33a81354f40aac726a0/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386570164
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386572215
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386572215
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/dc327edd5460b33a81354f40aac726a0/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386572222
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/dc327edd5460b33a81354f40aac726a0/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386572222
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9162cb06c2c90e1b3959418b4e44ea78/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386572224
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/9162cb06c2c90e1b3959418b4e44ea78/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386572224
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/5cbbdd244bde25b25869e5b3c6c9ed8b/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386573290
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0ac3b8048cb479603774272977959a22/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386573291
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6d8505de330dfa115cbcb3fd2de49317/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386573300
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0ac3b8048cb479603774272977959a22/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386575352
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6d8505de330dfa115cbcb3fd2de49317/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386575358
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/5cbbdd244bde25b25869e5b3c6c9ed8b/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386575358
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0ac3b8048cb479603774272977959a22/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386577421
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/0ac3b8048cb479603774272977959a22/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386577421
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6d8505de330dfa115cbcb3fd2de49317/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386577431
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/6d8505de330dfa115cbcb3fd2de49317/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386577431
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/5cbbdd244bde25b25869e5b3c6c9ed8b/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386577434
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/5cbbdd244bde25b25869e5b3c6c9ed8b/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386577434
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9ba6bce9987a780e344d2ec112e8e743/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386578501
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a8698eb0fd656c4eec555a45864d7320/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386578503
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6cd513bb4b06a16703f3198393dfec15/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386578504
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a8698eb0fd656c4eec555a45864d7320/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386580572
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9ba6bce9987a780e344d2ec112e8e743/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386580573
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6cd513bb4b06a16703f3198393dfec15/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386580574
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6cd513bb4b06a16703f3198393dfec15/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386582637
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/6cd513bb4b06a16703f3198393dfec15/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386582637
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9ba6bce9987a780e344d2ec112e8e743/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386582637
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/9ba6bce9987a780e344d2ec112e8e743/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386582637
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a8698eb0fd656c4eec555a45864d7320/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386582639
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/a8698eb0fd656c4eec555a45864d7320/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386582639
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6c38c159ba2bd7f8de90fbe3f52d3134/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386583704
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/feaf96f7601f87a21413ad85385885f5/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386583707
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/e6eb45ebcb668540d84b0ec68e859bbf/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386583708
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/e6eb45ebcb668540d84b0ec68e859bbf/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386585771
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6c38c159ba2bd7f8de90fbe3f52d3134/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386585771
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/feaf96f7601f87a21413ad85385885f5/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386585773
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/e6eb45ebcb668540d84b0ec68e859bbf/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386587845
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/e6eb45ebcb668540d84b0ec68e859bbf/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386587845
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/feaf96f7601f87a21413ad85385885f5/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386587848
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/feaf96f7601f87a21413ad85385885f5/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386587848
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6c38c159ba2bd7f8de90fbe3f52d3134/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386587851
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/6c38c159ba2bd7f8de90fbe3f52d3134/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386587851
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/aca3fd2442ba35b1e5522fbc5b5bccc2/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386588915
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/39fe92fdbcad3b0801da40d9ff2a5d1c/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386588922
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/cc696960f74f9720d05e79e390abdafc/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386588922
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/aca3fd2442ba35b1e5522fbc5b5bccc2/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386591000
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/cc696960f74f9720d05e79e390abdafc/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386591003
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/39fe92fdbcad3b0801da40d9ff2a5d1c/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386591009
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/aca3fd2442ba35b1e5522fbc5b5bccc2/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386593059
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/aca3fd2442ba35b1e5522fbc5b5bccc2/przed-po_wolumetria-twarzy_04.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386593059
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/cc696960f74f9720d05e79e390abdafc/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386593065
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/cc696960f74f9720d05e79e390abdafc/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386593065
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/39fe92fdbcad3b0801da40d9ff2a5d1c/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386593066
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/39fe92fdbcad3b0801da40d9ff2a5d1c/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386593066
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/7601258507c9d52f2ce64cc58b2d3f2b/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386594152
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a9aa7f8ad8639f56d5e0b62dc421cdac/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386594158
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0c4fcfdac29194e771412b7f2643962d/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386594163
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/7601258507c9d52f2ce64cc58b2d3f2b/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386596221
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a9aa7f8ad8639f56d5e0b62dc421cdac/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386596233
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0c4fcfdac29194e771412b7f2643962d/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386596237
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/7601258507c9d52f2ce64cc58b2d3f2b/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386598276
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/7601258507c9d52f2ce64cc58b2d3f2b/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386598276
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a9aa7f8ad8639f56d5e0b62dc421cdac/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386598312
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/a9aa7f8ad8639f56d5e0b62dc421cdac/przed-po_wolumetria_brody_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386598312
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0c4fcfdac29194e771412b7f2643962d/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386598395
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/0c4fcfdac29194e771412b7f2643962d/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386598395
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/265209e279e0caac40be699fae607092/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386599459
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/635d6d703cf746b6fc9ff953bdc613ea/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386599460
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/750756b8a2aaa2802ca22fd8ae710b18/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386599468
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/635d6d703cf746b6fc9ff953bdc613ea/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386601559
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/750756b8a2aaa2802ca22fd8ae710b18/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386601580
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/265209e279e0caac40be699fae607092/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386601607
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/635d6d703cf746b6fc9ff953bdc613ea/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386603619
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/635d6d703cf746b6fc9ff953bdc613ea/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386603619
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/750756b8a2aaa2802ca22fd8ae710b18/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386603650
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/750756b8a2aaa2802ca22fd8ae710b18/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386603650
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/265209e279e0caac40be699fae607092/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386603668
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/265209e279e0caac40be699fae607092/przed-po_wolumetria-twarzy_01.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386603668
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/8e912163b21a269d06ab4078efc50211/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386604736
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/27b57769b065323b8409973ca7e57d38/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386604736
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/8411535b85dc76beee56577989ee5806/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386604739
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/8e912163b21a269d06ab4078efc50211/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386606789
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/27b57769b065323b8409973ca7e57d38/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386606798
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/8411535b85dc76beee56577989ee5806/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386606837
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/8e912163b21a269d06ab4078efc50211/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386608849
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/8e912163b21a269d06ab4078efc50211/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386608849
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/27b57769b065323b8409973ca7e57d38/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386608853
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/27b57769b065323b8409973ca7e57d38/przed-po_lysienie_plackowate.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386608853
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/8411535b85dc76beee56577989ee5806/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386608894
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/8411535b85dc76beee56577989ee5806/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386608894
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/966624534babd84906ddfb645b7afc1b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386609965
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/485566f02134e4d4528286748999a445/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386609966
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/2e9f56ce0849b3f313ca41481294b81b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386609971
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/485566f02134e4d4528286748999a445/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386612048
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/966624534babd84906ddfb645b7afc1b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386612048
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/2e9f56ce0849b3f313ca41481294b81b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386612059
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/485566f02134e4d4528286748999a445/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386614111
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/485566f02134e4d4528286748999a445/przed-po_dolina_lez_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386614111
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/966624534babd84906ddfb645b7afc1b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386614117
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/966624534babd84906ddfb645b7afc1b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386614117
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/2e9f56ce0849b3f313ca41481294b81b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386614119
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/2e9f56ce0849b3f313ca41481294b81b/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386614119
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/2f9452ff8111543922517c1536007192/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386615196
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/c26a027aab6e5c2203815472bd21620d/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386615201
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/bcec5dfb53a7b7591153fd250b6ebd73/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386615203
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/2f9452ff8111543922517c1536007192/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386617277
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/bcec5dfb53a7b7591153fd250b6ebd73/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386617280
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/c26a027aab6e5c2203815472bd21620d/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386617281
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/2f9452ff8111543922517c1536007192/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386619348
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/2f9452ff8111543922517c1536007192/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386619348
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/bcec5dfb53a7b7591153fd250b6ebd73/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386619349
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/bcec5dfb53a7b7591153fd250b6ebd73/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386619349
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/c26a027aab6e5c2203815472bd21620d/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386619349
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/c26a027aab6e5c2203815472bd21620d/przed-po_wolumetria-twarzy_05.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386619349
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/562d6a19cd128563dd84d4700aa65428/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386620413
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/d67c7a443e949197acf1635c94a30611/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386620414
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/88624b53da8f27b6f6c7d86e0fd2d565/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386620417
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/d67c7a443e949197acf1635c94a30611/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386622478
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/88624b53da8f27b6f6c7d86e0fd2d565/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386622493
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/562d6a19cd128563dd84d4700aa65428/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386622500
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/d67c7a443e949197acf1635c94a30611/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386624552
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/d67c7a443e949197acf1635c94a30611/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386624552
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/88624b53da8f27b6f6c7d86e0fd2d565/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386624552
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/88624b53da8f27b6f6c7d86e0fd2d565/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386624552
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/562d6a19cd128563dd84d4700aa65428/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386624569
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/562d6a19cd128563dd84d4700aa65428/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386624569
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a6bed676d91cd8b642a71db77fce93eb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386625635
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/d0463b70bec597efbdb9a4ed2eee9436/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386625636
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/95150bc3a2bd1729c5aef59ebc8793ee/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386625638
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a6bed676d91cd8b642a71db77fce93eb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386627697
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/d0463b70bec597efbdb9a4ed2eee9436/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386627698
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/95150bc3a2bd1729c5aef59ebc8793ee/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386627699
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a6bed676d91cd8b642a71db77fce93eb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386629755
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/a6bed676d91cd8b642a71db77fce93eb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386629755
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/d0463b70bec597efbdb9a4ed2eee9436/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386629759
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/d0463b70bec597efbdb9a4ed2eee9436/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386629759
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/95150bc3a2bd1729c5aef59ebc8793ee/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386629762
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/95150bc3a2bd1729c5aef59ebc8793ee/przed-po_przebarwienia-laser_tulowy_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386629762
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/67c86cb37afa84a16bcd8947c748b8b8/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386630830
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0a60b05b38d7531d298cf56e05cce2ee/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386630831
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/7d2bd3a9e082275ff6766f0b01ed43fb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386630833
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/67c86cb37afa84a16bcd8947c748b8b8/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386632897
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0a60b05b38d7531d298cf56e05cce2ee/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386632901
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/7d2bd3a9e082275ff6766f0b01ed43fb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386632911
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/67c86cb37afa84a16bcd8947c748b8b8/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386634968
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/67c86cb37afa84a16bcd8947c748b8b8/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386634968
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0a60b05b38d7531d298cf56e05cce2ee/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386634985
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/0a60b05b38d7531d298cf56e05cce2ee/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386634985
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/7d2bd3a9e082275ff6766f0b01ed43fb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386634987
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/7d2bd3a9e082275ff6766f0b01ed43fb/przed-po_przebarwienia-laser_tulowy_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386634987
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/61ed078a7ed172e6603b1396d979ec81/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386636059
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/f26e419f21d489d111b00871cf5e043b/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386636061
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/c41330432545f8689b41889ae3b7fba4/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386636062
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/f26e419f21d489d111b00871cf5e043b/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386638124
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/61ed078a7ed172e6603b1396d979ec81/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386638125
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/c41330432545f8689b41889ae3b7fba4/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386638129
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/f26e419f21d489d111b00871cf5e043b/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386640187
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/f26e419f21d489d111b00871cf5e043b/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386640187
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/c41330432545f8689b41889ae3b7fba4/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386640193
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/c41330432545f8689b41889ae3b7fba4/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386640193
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/61ed078a7ed172e6603b1396d979ec81/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386640197
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/61ed078a7ed172e6603b1396d979ec81/przed-po_endermologia_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386640197
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/3a674af5670505f9dc3a15a6ad5769b3/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386641263
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386641264
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386641265
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386643345
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386643347
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/3a674af5670505f9dc3a15a6ad5769b3/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386643348
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386645424
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386645424
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386645427
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386645427
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/3a674af5670505f9dc3a15a6ad5769b3/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386645429
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/3a674af5670505f9dc3a15a6ad5769b3/przed-po_endermologia_2.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386645429
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386646491
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386646494
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386646496
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386648599
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386648601
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386648602
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386650667
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386650667
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386650669
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386650669
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386650683
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386650683
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386651764
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386653830
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386655895
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386655895
+    },
+    {
+      "message": [
+        "Retrying 61 failed images"
+      ],
+      "level": "log",
+      "timestamp": 1723386656895
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://i.ytimg.com/vi/zevlb21ycia/maxresdefault.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386656966
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/08/bg_mezoterapia_tablet_1.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386656969
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/edf56b9226d1f18d7524ce81566d7e6a/playbutton_old.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386656969
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://i.ytimg.com/vi/zevlb21ycia/maxresdefault.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386659069
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/edf56b9226d1f18d7524ce81566d7e6a/playbutton_old.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386659072
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/08/bg_mezoterapia_tablet_1.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386659084
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/edf56b9226d1f18d7524ce81566d7e6a/playbutton_old.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386661152
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/edf56b9226d1f18d7524ce81566d7e6a/playbutton_old.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386661152
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://i.ytimg.com/vi/zevlb21ycia/maxresdefault.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386661154
+    },
+    {
+      "message": [
+        "Error processing image https://i.ytimg.com/vi/ZEVlB21YCIA/maxresdefault.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386661154
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/08/bg_mezoterapia_tablet_1.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386661158
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/08/bg_mezoterapia_tablet_1.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386661158
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-280x280.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386662246
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-370x370.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386662248
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-300x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386662249
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-370x370.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386664318
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-280x280.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386664320
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-300x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386664337
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-370x370.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386666380
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-370x370.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386666380
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-280x280.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386666381
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-280x280.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386666381
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-300x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386666399
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-300x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386666399
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-150x150.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386667472
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386667473
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386667477
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-150x150.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386669537
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386669538
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386669540
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386671604
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386671604
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-150x150.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386671605
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-150x150.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386671605
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386671606
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386671606
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386672671
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386672673
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386672682
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386674732
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386674735
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386674746
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386676809
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386676809
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386676809
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386676809
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386676814
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386676814
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9162cb06c2c90e1b3959418b4e44ea78/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386677878
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/dc327edd5460b33a81354f40aac726a0/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386677879
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386677883
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/dc327edd5460b33a81354f40aac726a0/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386679935
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9162cb06c2c90e1b3959418b4e44ea78/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386679935
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386679946
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/dc327edd5460b33a81354f40aac726a0/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386681981
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/dc327edd5460b33a81354f40aac726a0/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386681981
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9162cb06c2c90e1b3959418b4e44ea78/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386681984
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/9162cb06c2c90e1b3959418b4e44ea78/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386681984
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386682009
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2-234x300.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386682009
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6d8505de330dfa115cbcb3fd2de49317/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386683074
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/5cbbdd244bde25b25869e5b3c6c9ed8b/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386683075
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0ac3b8048cb479603774272977959a22/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386683079
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/5cbbdd244bde25b25869e5b3c6c9ed8b/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386685135
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0ac3b8048cb479603774272977959a22/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386685139
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6d8505de330dfa115cbcb3fd2de49317/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386685139
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/0ac3b8048cb479603774272977959a22/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386687199
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/0ac3b8048cb479603774272977959a22/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386687199
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/5cbbdd244bde25b25869e5b3c6c9ed8b/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386687202
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/5cbbdd244bde25b25869e5b3c6c9ed8b/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386687202
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6d8505de330dfa115cbcb3fd2de49317/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386687204
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/6d8505de330dfa115cbcb3fd2de49317/przed-po_botox_14.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386687204
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9ba6bce9987a780e344d2ec112e8e743/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386688271
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6cd513bb4b06a16703f3198393dfec15/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386688273
+    },
+    {
+      "message": [
+        "Attempt 1 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a8698eb0fd656c4eec555a45864d7320/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386688275
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/6cd513bb4b06a16703f3198393dfec15/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386690336
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a8698eb0fd656c4eec555a45864d7320/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386690339
+    },
+    {
+      "message": [
+        "Attempt 2 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9ba6bce9987a780e344d2ec112e8e743/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386690340
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/a8698eb0fd656c4eec555a45864d7320/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386692400
+    },
+    {
+      "message": [
+        "Error processing image https://bielskoclinic.pl/wp-content/uploads/slider/cache/a8698eb0fd656c4eec555a45864d7320/przed-po_wolumetria_twarzy_bruzdy.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386692400
+    },
+    {
+      "message": [
+        "Attempt 3 failed for https://bielskoclinic.pl/wp-content/uploads/slider/cache/9ba6bce9987a780e344d2ec112e8e743/przed-po_modelowanie-ust_12_1.webp:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723386692401
+    },
+    {
+      "message": [
+        "Log size limit exceeded: More than 128KB of data (across console.log statements, exception, request metadata and headers) was logged during a single request. Subsequent data for this request will not be recorded in logs, appear when tailing this Worker's logs, or in Tail Workers."
+      ],
+      "level": "warn",
+      "timestamp": 1723386692401
+    }
+  ],
+  "eventTimestamp": 1723386415016,
+  "event": {
+    "request": {
+      "url": "https://image-collector.bielskoclinic.workers.dev/?url=https://bielskoclinic.pl",
+      "method": "GET",
+      "headers": {
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+        "accept-encoding": "gzip, br",
+        "accept-language": "pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cache-control": "max-age=0",
+        "cf-connecting-ip": "83.28.227.26",
+        "cf-ipcountry": "PL",
+        "cf-ray": "8b18e745bf2ac012",
+        "cf-visitor": "{\"scheme\":\"https\"}",
+        "connection": "Keep-Alive",
+        "cookie": "REDACTED",
+        "dnt": "1",
+        "host": "image-collector.bielskoclinic.workers.dev",
+        "priority": "u=0, i",
+        "sec-ch-ua": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "sec-fetch-dest": "document",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
+        "x-forwarded-proto": "https",
+        "x-real-ip": "83.28.227.26"
+      },
+      "cf": {
+        "longitude": "19.94420",
+        "httpProtocol": "HTTP/3",
+        "tlsCipher": "AEAD-AES128-GCM-SHA256",
+        "continent": "EU",
+        "asn": 5617,
+        "clientAcceptEncoding": "gzip, deflate, br, zstd",
+        "tlsClientExtensionsSha1": "fpR4bnRJJ5HW69huFj92ly0TcS0=",
+        "isEUCountry": "1",
+        "verifiedBotCategory": "",
+        "tlsClientAuth": {
+          "certIssuerDNLegacy": "",
+          "certIssuerSKI": "",
+          "certSubjectDNRFC2253": "",
+          "certSubjectDNLegacy": "",
+          "certFingerprintSHA256": "",
+          "certNotBefore": "",
+          "certSKI": "",
+          "certSerial": "",
+          "certIssuerDN": "",
+          "certVerified": "NONE",
+          "certNotAfter": "",
+          "certSubjectDN": "",
+          "certPresented": "0",
+          "certRevoked": "0",
+          "certIssuerSerial": "",
+          "certIssuerDNRFC2253": "",
+          "certFingerprintSHA1": ""
+        },
+        "tlsExportedAuthenticator": {
+          "clientFinished": "b4dc85499e871ff9a31c54c652c67b3f5a2fe275aa3ff59bbe3b679b098b4040",
+          "clientHandshake": "4e2fa4e45265b88709ea492c96cd308484e48bf600726d956a8c806e6240604a",
+          "serverHandshake": "d09fa35351d002a15e6cbbea9fc1fb81471c426b79b4deda5c2b7dbcf90bb503",
+          "serverFinished": "3ec42970c902a3a3ef3b2ec3d416cc8f3209be964b6acb39776fd665bd5a373a"
+        },
+        "tlsVersion": "TLSv1.3",
+        "city": "Krakow",
+        "timezone": "Europe/Warsaw",
+        "tlsClientHelloLength": "2022",
+        "requestPriority": "",
+        "edgeRequestKeepAliveStatus": 1,
+        "tlsClientRandom": "b/CyJKgaJKZqNssrnk7K62JGRmDkAbjvUjaMlE48tF8=",
+        "region": "Lesser Poland",
+        "latitude": "50.06430",
+        "postalCode": "31-042",
+        "regionCode": "12",
+        "asOrganization": "Orange Polska",
+        "colo": "WAW",
+        "country": "PL"
+      }
+    }
+  },
+  "id": 0
+}
