@@ -2,7 +2,7 @@
   "truncated": false,
   "outcome": "ok",
   "scriptVersion": {
-    "id": "8d6b8eff-2d1e-4e75-b96c-033136d2199f"
+    "id": "cbb2c0a6-bd77-4dc1-98d6-ddb758750c71"
   },
   "scriptName": "image-collector",
   "diagnosticsChannelEvents": [],
@@ -13,543 +13,886 @@
         "Image Collector: Starting process"
       ],
       "level": "log",
-      "timestamp": 1723397578889
+      "timestamp": 1723398709577
     },
     {
       "message": [
         "Normalized URL: https://bielskoclinic.pl"
       ],
       "level": "log",
-      "timestamp": 1723397578889
+      "timestamp": 1723398709577
     },
     {
       "message": [
         "Processing URL: https://bielskoclinic.pl"
       ],
       "level": "log",
-      "timestamp": 1723397578889
+      "timestamp": 1723398709577
     },
     {
       "message": [
         "Raw HTML length: 356255"
       ],
       "level": "log",
-      "timestamp": 1723397578917
-    },
-    {
-      "message": [
-        "Found 41 <img> tags and 63 srcset attributes"
-      ],
-      "level": "log",
-      "timestamp": 1723397578917
-    },
-    {
-      "message": [
-        "Total unique non-SVG image URLs: 105"
-      ],
-      "level": "log",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
         "Image Collector: Found 100 unique image URLs (excluding SVG and favicon)"
       ],
       "level": "log",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
         "Total unique image URLs to process: 106"
       ],
       "level": "log",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-150x150.jpg",
-        "Error: Too many subrequests."
+        "Attempting to fetch 106 images"
       ],
-      "level": "error",
-      "timestamp": 1723397578917
+      "level": "log",
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-370x370.jpg",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-150x150.jpg:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-280x280.jpg",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-370x370.jpg:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2-234x300.jpg",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/2023/07/aniapati_3-280x280.jpg:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2-234x300.jpg",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2-234x300.jpg:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2-234x300.jpg",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2-234x300.jpg:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2-234x300.jpg",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2-234x300.jpg:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2-234x300.jpg",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2-234x300.jpg:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2-234x300.jpg",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2-234x300.jpg:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/dc327edd5460b33a81354f40aac726a0/przed-po_botox_14.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2-234x300.jpg:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/6d8505de330dfa115cbcb3fd2de49317/przed-po_botox_14.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/dc327edd5460b33a81354f40aac726a0/przed-po_botox_14.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/9162cb06c2c90e1b3959418b4e44ea78/przed-po_botox_14.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/6d8505de330dfa115cbcb3fd2de49317/przed-po_botox_14.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/0ac3b8048cb479603774272977959a22/przed-po_modelowanie-ust_12_1.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/9162cb06c2c90e1b3959418b4e44ea78/przed-po_botox_14.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/9ba6bce9987a780e344d2ec112e8e743/przed-po_modelowanie-ust_12_1.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/0ac3b8048cb479603774272977959a22/przed-po_modelowanie-ust_12_1.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/5cbbdd244bde25b25869e5b3c6c9ed8b/przed-po_modelowanie-ust_12_1.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/9ba6bce9987a780e344d2ec112e8e743/przed-po_modelowanie-ust_12_1.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/6cd513bb4b06a16703f3198393dfec15/przed-po_wolumetria_twarzy_bruzdy.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/5cbbdd244bde25b25869e5b3c6c9ed8b/przed-po_modelowanie-ust_12_1.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/feaf96f7601f87a21413ad85385885f5/przed-po_wolumetria_twarzy_bruzdy.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/6cd513bb4b06a16703f3198393dfec15/przed-po_wolumetria_twarzy_bruzdy.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/a8698eb0fd656c4eec555a45864d7320/przed-po_wolumetria_twarzy_bruzdy.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/feaf96f7601f87a21413ad85385885f5/przed-po_wolumetria_twarzy_bruzdy.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/e6eb45ebcb668540d84b0ec68e859bbf/przed-po_wolumetria-twarzy_04.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/a8698eb0fd656c4eec555a45864d7320/przed-po_wolumetria_twarzy_bruzdy.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/aca3fd2442ba35b1e5522fbc5b5bccc2/przed-po_wolumetria-twarzy_04.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/e6eb45ebcb668540d84b0ec68e859bbf/przed-po_wolumetria-twarzy_04.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/6c38c159ba2bd7f8de90fbe3f52d3134/przed-po_wolumetria-twarzy_04.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/aca3fd2442ba35b1e5522fbc5b5bccc2/przed-po_wolumetria-twarzy_04.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/a9aa7f8ad8639f56d5e0b62dc421cdac/przed-po_wolumetria_brody_2.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/6c38c159ba2bd7f8de90fbe3f52d3134/przed-po_wolumetria-twarzy_04.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/cc696960f74f9720d05e79e390abdafc/przed-po_wolumetria_brody_2.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/a9aa7f8ad8639f56d5e0b62dc421cdac/przed-po_wolumetria_brody_2.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/39fe92fdbcad3b0801da40d9ff2a5d1c/przed-po_wolumetria_brody_2.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/cc696960f74f9720d05e79e390abdafc/przed-po_wolumetria_brody_2.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/0c4fcfdac29194e771412b7f2643962d/przed-po_wolumetria-twarzy_01.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/39fe92fdbcad3b0801da40d9ff2a5d1c/przed-po_wolumetria_brody_2.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/7601258507c9d52f2ce64cc58b2d3f2b/przed-po_wolumetria-twarzy_01.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/0c4fcfdac29194e771412b7f2643962d/przed-po_wolumetria-twarzy_01.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/265209e279e0caac40be699fae607092/przed-po_wolumetria-twarzy_01.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/7601258507c9d52f2ce64cc58b2d3f2b/przed-po_wolumetria-twarzy_01.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/635d6d703cf746b6fc9ff953bdc613ea/przed-po_lysienie_plackowate.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/265209e279e0caac40be699fae607092/przed-po_wolumetria-twarzy_01.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/27b57769b065323b8409973ca7e57d38/przed-po_lysienie_plackowate.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/635d6d703cf746b6fc9ff953bdc613ea/przed-po_lysienie_plackowate.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/750756b8a2aaa2802ca22fd8ae710b18/przed-po_lysienie_plackowate.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/27b57769b065323b8409973ca7e57d38/przed-po_lysienie_plackowate.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/485566f02134e4d4528286748999a445/przed-po_dolina_lez_1.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/750756b8a2aaa2802ca22fd8ae710b18/przed-po_lysienie_plackowate.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/8411535b85dc76beee56577989ee5806/przed-po_dolina_lez_1.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/485566f02134e4d4528286748999a445/przed-po_dolina_lez_1.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/8e912163b21a269d06ab4078efc50211/przed-po_dolina_lez_1.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/8411535b85dc76beee56577989ee5806/przed-po_dolina_lez_1.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/c26a027aab6e5c2203815472bd21620d/przed-po_wolumetria-twarzy_05.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/8e912163b21a269d06ab4078efc50211/przed-po_dolina_lez_1.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/2e9f56ce0849b3f313ca41481294b81b/przed-po_wolumetria-twarzy_05.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/c26a027aab6e5c2203815472bd21620d/przed-po_wolumetria-twarzy_05.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/966624534babd84906ddfb645b7afc1b/przed-po_wolumetria-twarzy_05.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/2e9f56ce0849b3f313ca41481294b81b/przed-po_wolumetria-twarzy_05.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/2f9452ff8111543922517c1536007192/przed-po_szyja-mezoterapia-i-biostymulatory.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/966624534babd84906ddfb645b7afc1b/przed-po_wolumetria-twarzy_05.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/d67c7a443e949197acf1635c94a30611/przed-po_szyja-mezoterapia-i-biostymulatory.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/2f9452ff8111543922517c1536007192/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/bcec5dfb53a7b7591153fd250b6ebd73/przed-po_szyja-mezoterapia-i-biostymulatory.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/d67c7a443e949197acf1635c94a30611/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/562d6a19cd128563dd84d4700aa65428/przed-po_przebarwienia-laser_tulowy_2.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/bcec5dfb53a7b7591153fd250b6ebd73/przed-po_szyja-mezoterapia-i-biostymulatory.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/95150bc3a2bd1729c5aef59ebc8793ee/przed-po_przebarwienia-laser_tulowy_2.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/562d6a19cd128563dd84d4700aa65428/przed-po_przebarwienia-laser_tulowy_2.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/88624b53da8f27b6f6c7d86e0fd2d565/przed-po_przebarwienia-laser_tulowy_2.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/95150bc3a2bd1729c5aef59ebc8793ee/przed-po_przebarwienia-laser_tulowy_2.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/a6bed676d91cd8b642a71db77fce93eb/przed-po_przebarwienia-laser_tulowy_1.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/88624b53da8f27b6f6c7d86e0fd2d565/przed-po_przebarwienia-laser_tulowy_2.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/7d2bd3a9e082275ff6766f0b01ed43fb/przed-po_przebarwienia-laser_tulowy_1.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/a6bed676d91cd8b642a71db77fce93eb/przed-po_przebarwienia-laser_tulowy_1.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/d0463b70bec597efbdb9a4ed2eee9436/przed-po_przebarwienia-laser_tulowy_1.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/7d2bd3a9e082275ff6766f0b01ed43fb/przed-po_przebarwienia-laser_tulowy_1.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/0a60b05b38d7531d298cf56e05cce2ee/przed-po_endermologia_1.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/d0463b70bec597efbdb9a4ed2eee9436/przed-po_przebarwienia-laser_tulowy_1.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/61ed078a7ed172e6603b1396d979ec81/przed-po_endermologia_1.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/0a60b05b38d7531d298cf56e05cce2ee/przed-po_endermologia_1.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/67c86cb37afa84a16bcd8947c748b8b8/przed-po_endermologia_1.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/61ed078a7ed172e6603b1396d979ec81/przed-po_endermologia_1.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/c41330432545f8689b41889ae3b7fba4/przed-po_endermologia_2.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/67c86cb37afa84a16bcd8947c748b8b8/przed-po_endermologia_1.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/f26e419f21d489d111b00871cf5e043b/przed-po_endermologia_2.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/c41330432545f8689b41889ae3b7fba4/przed-po_endermologia_2.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/slider/cache/3a674af5670505f9dc3a15a6ad5769b3/przed-po_endermologia_2.webp",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/f26e419f21d489d111b00871cf5e043b/przed-po_endermologia_2.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2.jpg",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/slider/cache/3a674af5670505f9dc3a15a6ad5769b3/przed-po_endermologia_2.webp:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2.jpg",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-ania_2.jpg:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2.jpg",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-patrycja_2.jpg:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2.jpg",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-dorota_2.jpg:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2.jpg",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/2024/04/team-judyta_2.jpg:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
     },
     {
       "message": [
-        "Failed to fetch image: https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2.jpg",
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-edyta_2.jpg:",
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723397578917
+      "timestamp": 1723398709642
+    },
+    {
+      "message": [
+        "Error fetching image https://bielskoclinic.pl/wp-content/uploads/2023/05/team-milena_2.jpg:",
+        "Error: Too many subrequests."
+      ],
+      "level": "error",
+      "timestamp": 1723398709642
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/645c3bde354ad581d971404049be0507/bg_radiofrekwencja_mikroiglowa-1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709662
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/489837b2b913792efd03878c157ced00/bg_bezbolesna_epilacja_laserowa.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709664
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/b091176ebe41dd6366d007984bd98815/bg_laser_tulowy_3.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709668
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/9daa133a8094c5ba2169688d4ff4c316/bg_usta_wolumetria-2.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709669
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/10fe33a1b0dfdbab9ad670864710effe/bg_fala_akustyczna.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709670
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/12e0426cdbe00ca55b1e0f09335cbeb7/bg_mezoterapia_mikroiglowa.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709670
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/2023/05/team-ania_2-460x592.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709692
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider4/playbutton_old.png"
+      ],
+      "level": "log",
+      "timestamp": 1723398709693
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/2023/05/team-dorota_2-460x592.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709693
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/2024/04/team-judyta_2-460x592.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709698
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/2023/07/aniapati_3.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709698
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/2023/05/team-patrycja_2-460x592.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709705
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/2023/05/team-milena_2-460x592.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709711
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/2023/05/team-edyta_2-460x592.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709712
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/2023/06/czego-potrzebujesz_1_2-2.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709714
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/2023/06/czego-potrzebujesz_2.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709718
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/4720d82dce2430f24cca6a53a49f3642/przed-po_modelowanie-ust_12_1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709724
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/f5c784709498e316f1f296fa119ce688/przed-po_botox_14.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709728
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/6a48930d40521d9b9c1cf7883ee1f523/przed-po_wolumetria-twarzy_04.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709730
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/4153e2db5a60282e036a3985a1f84f22/przed-po_wolumetria_twarzy_bruzdy.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709730
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/9952f65a5e16f0253da451194601caf4/przed-po_wolumetria_brody_2.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709733
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/2fc2c5a742a967b78f84e38486404734/przed-po_wolumetria-twarzy_01.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709739
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/a35da9a2997c38fef7a73353698f1dd3/przed-po_lysienie_plackowate.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709747
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/36944a60aa0da3b384164f2aaf78204a/przed-po_dolina_lez_1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709751
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/959cded64cdead1a0de4c067dc90d229/przed-po_przebarwienia-laser_tulowy_2.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709755
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/5b5bfd768b9d649b1ac4792627f1151c/przed-po_wolumetria-twarzy_05.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709758
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/d506e886c6137d13bf59011945b7566d/przed-po_szyja-mezoterapia-i-biostymulatory.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709759
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/230ed4255663a83210d31d940c54c425/przed-po_endermologia_2.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709770
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/89424441854683913bc4977440732f91/przed-po_przebarwienia-laser_tulowy_1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709771
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/d69bf24ed5f5680f0d8b8e8358a57282/bg_bezbolesna_epilacja_laserowa.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709776
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/6dfbaa92dfe303d0f74c03ad159f708d/bg_bezbolesna_epilacja_laserowa.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709778
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/255f19b6824f4981bc64e884d27aa8ca/bg_bezbolesna_epilacja_laserowa.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709780
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/1eda4747457af2d88c0b09e308b530cb/przed-po_endermologia_1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709781
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/7f73efb98cab644f5b6fca41fa5281bc/bg_radiofrekwencja_mikroiglowa-1.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709792
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/5c53e7af618cbbd2d4e335c358687569/bg_radiofrekwencja_mikroiglowa-1.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709797
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/d8bac7ae0967bb22125d96bce60fd284/bg_radiofrekwencja_mikroiglowa-1.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709799
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/cb47900bcd52e25181e872e00c0fff0b/bg_fala_akustyczna.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709800
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/52e6ef1a220dd7c5762747696af349de/bg_fala_akustyczna.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709800
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/5539b264e941d1ae5a5f4ee74c21f00d/bg_fala_akustyczna.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709803
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/65684b7e9090c2205a5a74ef61e4225c/bg_usta_wolumetria-2.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709812
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/5e9d44b76a183f35e1abd63083256e18/bg_usta_wolumetria-2.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709815
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/19b1dca959e43e13e5dec31fd0a05677/bg_usta_wolumetria-2.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709816
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/ce54ef2c9a729a571d39000e2417714d/bg_laser_tulowy_3.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709817
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/faf04f563bcd679cb3db0d46bdfc644b/bg_laser_tulowy_3.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709822
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/82f1cd973df38a73ca82faad167227e2/bg_laser_tulowy_3.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709823
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/2023/08/bg_mezoterapia_phone_1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709836
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/2023/08/bg_mezoterapia_tablet_1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709836
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/edf56b9226d1f18d7524ce81566d7e6a/playbutton_old.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723398709843
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/2023/07/aniapati_3-300x300.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723398709846
+    },
+    {
+      "message": [
+        "Successfully fetched 49 out of 106 images"
+      ],
+      "level": "log",
+      "timestamp": 1723398709846
     },
     {
       "message": [
         "Successfully fetched 49 images"
       ],
       "level": "log",
-      "timestamp": 1723397579138
+      "timestamp": 1723398709846
     },
     {
       "message": [
         "Found 49 existing images in R2"
       ],
       "level": "log",
-      "timestamp": 1723397579214
+      "timestamp": 1723398709950
     },
     {
       "message": [
         "Saved 0 new images to R2"
       ],
       "level": "log",
-      "timestamp": 1723397579214
+      "timestamp": 1723398709950
     },
     {
       "message": [
-        "Image Collector: Finished processing images. Total time: 0.325 seconds"
+        "Image Collector: Finished processing images. Total time: 0.373 seconds"
       ],
       "level": "log",
-      "timestamp": 1723397579214
+      "timestamp": 1723398709950
     }
   ],
-  "eventTimestamp": 1723397578889,
+  "eventTimestamp": 1723398709577,
   "event": {
     "request": {
       "url": "https://image-collector.bielskoclinic.workers.dev/favicon.ico",
@@ -560,7 +903,7 @@
         "accept-language": "pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7",
         "cf-connecting-ip": "83.28.227.26",
         "cf-ipcountry": "PL",
-        "cf-ray": "8b19f7d40c49c01c",
+        "cf-ray": "8b1a136ed8ca34f4",
         "cf-visitor": "{\"scheme\":\"https\"}",
         "connection": "Keep-Alive",
         "cookie": "REDACTED",
@@ -585,7 +928,7 @@
         "continent": "EU",
         "asn": 5617,
         "clientAcceptEncoding": "gzip, deflate, br, zstd",
-        "tlsClientExtensionsSha1": "0x4IVrz3JQZBZnUq6N2kFOKL2aw=",
+        "tlsClientExtensionsSha1": "WESU9wPsMO7bRhFXR9P4SpWMVZQ=",
         "isEUCountry": "1",
         "verifiedBotCategory": "",
         "tlsClientAuth": {
@@ -608,18 +951,18 @@
           "certFingerprintSHA1": ""
         },
         "tlsExportedAuthenticator": {
-          "clientFinished": "20134a387a6e9596e9b8037e430f8f3ae8261c320c8dd36800ad6c282a0dee8a",
-          "clientHandshake": "03a58b2454ad54efec66c79d943bd48cdc2d319769142854d2bb942482c3f5d8",
-          "serverHandshake": "7d09be36c88d012183bf15593fd3de9bd610738b5015d2652afc2a948dec1244",
-          "serverFinished": "06e898e424e443a32b2e9d3d21146abc5381733afd6549043ffd4a65657533a9"
+          "clientFinished": "b3a8a7d3d9bb7c71aa0cbbfdb89287d2d653b4d3d9c9e5efcb23c056b02bfb5b",
+          "clientHandshake": "be2a6c32c6e9262a4d62e9fb843dcd3011dcb76ff2e9a2d5ac3c42b4291f7976",
+          "serverHandshake": "3309ca4218add7bd8b11a480aac311457f1df832c60aeebcd97db9f45e4d42ee",
+          "serverFinished": "7f09e45ccb7a5ec48ad7d295144fcd42a59a5fc3f908384130df7cd925330e9c"
         },
         "tlsVersion": "TLSv1.3",
         "city": "Krakow",
         "timezone": "Europe/Warsaw",
-        "tlsClientHelloLength": "2029",
+        "tlsClientHelloLength": "1975",
         "requestPriority": "",
         "edgeRequestKeepAliveStatus": 1,
-        "tlsClientRandom": "xKIl773CYrs5KyRM3rV6ZrEF8Gl3H8w6wb0CIGfpink=",
+        "tlsClientRandom": "7rtWU+AlbcxAW3HV2QQtn/dy/Ekpr4XvHvv414jlCtY=",
         "region": "Lesser Poland",
         "latitude": "50.06430",
         "postalCode": "31-042",
