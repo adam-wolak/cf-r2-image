@@ -1,191 +1,219 @@
+import type { R2Bucket } from '@cloudflare/workers-types';
 import { Env } from '../types';
+import { extractImageUrls } from '../utils/htmlUtils';
+import { normalizeUrl, addOriginalVersion, removeImageDimensions } from '../utils/imageUtils';
 
-const MAX_CONCURRENT_REQUESTS = 5;
-const BATCH_SIZE = 10;
-const DELAY_BETWEEN_BATCHES = 1000; // 1 sekunda między partiami
-const DEFAULT_USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
 
-export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    console.log('Image Collector: Received request');
-    console.log('Request URL:', request.url);
-    console.log('Request method:', request.method);
-    const url = new URL(request.url);
-    const pageUrl = url.searchParams.get('url');
-    const userAgent = url.searchParams.get('ua') || DEFAULT_USER_AGENT;
+interface ProcessLog {
+  requestId: string;
+  steps: string[];
+}
 
-    if (!pageUrl) {
-      return new Response('Missing URL parameter', { status: 400 });
-    }
 
+
+function extractImagePath(url: string): string | null {
+  const match = url.match(/wp-content\/uploads\/.+/);
+  return match ? match[0] : null;
+}
+
+function getMimeType(url: string): string {
+  if (url.endsWith('.webp')) return 'image/webp';
+  if (url.endsWith('.png')) return 'image/png';
+  if (url.endsWith('.jpg') || url.endsWith('.jpeg')) return 'image/jpeg';
+  if (url.endsWith('.gif')) return 'image/gif';
+  return 'application/octet-stream';
+}
+
+async function fetchAllImages(imageUrls: string[]): Promise<Map<string, ArrayBuffer>> {
+  const imageMap = new Map<string, ArrayBuffer>();
+  console.log(`Attempting to fetch ${imageUrls.length} images`);
+
+
+  const fetchPromises = imageUrls.map(async (url) => {
     try {
-      const response = await fetch(pageUrl, {
-        headers: { 'User-Agent': userAgent }
-      });
-      const html = await response.text();
+      const imagePath = extractImagePath(url);
+      if (!imagePath) {
+        console.log(`Skipping image with invalid path: ${url}`);
+        return;
+      }
 
-      const imageUrls = extractImageUrls(html, new URL(pageUrl).origin);
-      console.log(`Found ${imageUrls.length} images on the page`);
-
-      const processedImages = await processImagesInBatches(imageUrls, env);
-
-      const successfullyProcessed = processedImages.filter(Boolean).length;
-
-      return new Response(JSON.stringify({
-        totalImagesFound: imageUrls.length,
-        successfullyProcessed: successfullyProcessed,
-        images: processedImages
-      }), {
-        headers: { 'Content-Type': 'application/json' }
-      });
+      const response = await fetch(url);
+      if (response.ok) {
+        const buffer = await response.arrayBuffer();
+        imageMap.set(imagePath, buffer);
+        console.log(`Successfully fetched and mapped: ${imagePath}`);
+      } else {
+        console.log(`Failed to fetch image (status ${response.status}): ${url}`);
+      }
     } catch (error) {
-      console.error('Error in fetch:', error);
-      return new Response('Internal Server Error', { status: 500 });
-    }
-  }
-};
-
-async function processImagesInBatches(imageUrls: string[], env: Env): Promise<(string | null)[]> {
-  const results: (string | null)[] = [];
-  for (let i = 0; i < imageUrls.length; i += BATCH_SIZE) {
-    const batch = imageUrls.slice(i, i + BATCH_SIZE);
-    const batchResults = await processImagesWithSemaphore(batch, env, MAX_CONCURRENT_REQUESTS);
-    results.push(...batchResults);
-    if (i + BATCH_SIZE < imageUrls.length) {
-      await delay(DELAY_BETWEEN_BATCHES);
-    }
-  }
-  return results;
-}
-
-function delay(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-async function processImagesWithSemaphore(imageUrls: string[], env: Env, maxConcurrent: number): Promise<(string | null)[]> {
-  const semaphore = new Semaphore(maxConcurrent);
-  const promises = imageUrls.map(async (url) => {
-    await semaphore.acquire();
-    try {
-      return await processImage(url, env);
-    } finally {
-      semaphore.release();
+      console.error(`Error fetching image ${url}:`, error);
     }
   });
-  return Promise.all(promises);
-}
 
-function extractImageUrls(html: string, baseUrl: string): string[] {
-  const imgRegex = /<img[^>]+src=["']?([^"'\s]+)["']?[^>]*>|<source[^>]+srcset=["']?([^"'\s]+)["']?[^>]*>/g;
-  const urls: string[] = [];
-  const skipped: string[] = [];
-  let match;
+  await Promise.all(fetchPromises);
 
-  while ((match = imgRegex.exec(html)) !== null) {
-    let url = match[1] || match[2];
-    if (!url) continue;
-    
-    url = new URL(url, baseUrl).href;
-    
-    if (url.toLowerCase().endsWith('.svg') || 
-        url.toLowerCase().includes('favicon') || 
-        url.toLowerCase().endsWith('.ico') ||
-        url.startsWith('data:') ||
-        url.includes('wp-includes') ||
-        url.includes('wp-content/plugins') ||
-        url.includes('i.ytimg.com')) {  // Dodane pomijanie obrazów YouTube
-      skipped.push(url);
-    } else {
-      urls.push(url);
-    }
-  }
-
-  const uniqueUrls = [...new Set(urls)];
-  const uniqueSkipped = [...new Set(skipped)];
-
-  console.log(`Found ${uniqueUrls.length} unique images on the page`);
-  console.log(`Skipped ${uniqueSkipped.length} images`);
-  console.log('Skipped images:', uniqueSkipped);
-
-  return uniqueUrls;
+  console.log(`Successfully fetched ${imageMap.size} out of ${imageUrls.length} images`);
+  return imageMap;
 }
 
 
-class Semaphore {
-  private permits: number;
-  private queue: (() => void)[] = [];
+async function listExistingImagesInR2(bucket: R2Bucket): Promise<Set<string>> {
 
-  constructor(permits: number) {
-    this.permits = permits;
-  }
+  addLog(requestId, `Processing URL: ${targetUrl}`);
 
-  async acquire(): Promise<void> {
-    if (this.permits > 0) {
-      this.permits--;
-      return Promise.resolve();
+  const existingImages = new Set<string>();
+  let truncated = true;
+  let cursor: string | undefined;
+
+  while (truncated) {
+    const listed = await bucket.list({ prefix: 'wp-content/uploads/', cursor });
+    for (const object of listed.objects) {
+      existingImages.add(object.key);
     }
-    return new Promise<void>((resolve) => this.queue.push(resolve));
+    truncated = listed.truncated;
+    cursor = listed.truncated ? listed.cursor : undefined;
   }
 
-  release(): void {
-    this.permits++;
-    if (this.queue.length > 0 && this.permits > 0) {
-      this.permits--;
-      const next = this.queue.shift();
-      if (next) next();
-    }
-  }
+  return existingImages;
 }
 
+async function saveNewImagesToR2(bucket: R2Bucket, imageMap: Map<string, ArrayBuffer>, existingImages: Set<string>): Promise<string[]> {
+  const savedImages: string[] = [];
+  addLog(requestId, `Processing URL: ${targetUrl}`);
 
-async function processImage(imageUrl: string, env: Env): Promise<string | null> {
-  // Dodatkowe sprawdzenie dla SVG, favicon i data URL
-  if (imageUrl.toLowerCase().endsWith('.svg') || 
-      imageUrl.toLowerCase().includes('favicon') || 
-      imageUrl.startsWith('data:')) {
-    console.log(`Skipping SVG, favicon or data URL: ${imageUrl}`);
-    return null;
+  const savePromises = Array.from(imageMap.entries()).map(async ([path, buffer]) => {
+    if (!existingImages.has(path)) {
+      await bucket.put(path, buffer, {
+        httpMetadata: { contentType: getMimeType(path) },
+      });
+      savedImages.push(path);
+    }
+  });
+
+  await Promise.all(savePromises);
+  return savedImages;
+}
+
+interface ProcessLog {
+  requestId: string;
+  steps: string[];
+}
+
+const processLogs: Map<string, ProcessLog> = new Map();
+
+function addLog(requestId: string, message: string) {
+  let log = processLogs.get(requestId);
+  if (!log) {
+    log = { requestId, steps: [] };
+    processLogs.set(requestId, log);
   }
+  log.steps.push(`${new Date().toISOString()} - ${message}`);
+  console.log(`[${requestId}] ${message}`);
+}
 
-  const url = new URL(imageUrl);
-  let imagePath = url.pathname;
+export async function handleRequest(request: Request, env: Env): Promise<Response> {
+  const startTime = Date.now();
+  const requestId = Math.random().toString(36).substring(7);
+  addLog(requestId, 'Image Collector: Starting process');
   
-  // Usuwamy początkowy slash, jeśli istnieje
-  if (imagePath.startsWith('/')) {
-    imagePath = imagePath.slice(1);
-  }
+  const url = new URL(request.url);
+  const targetUrl = normalizeUrl(url.searchParams.get('url') || env.ORIGIN);
+  const baseUrl = new URL(targetUrl).origin;
 
-  // Usuwamy parametry URL z nazwy pliku
-  imagePath = imagePath.split('?')[0];
-
-  // Sprawdź, czy obraz istnieje w R2
-  const existingObject = await env.R2_BUCKET.head(imagePath);
-  
-  if (existingObject) {
-    console.log(`Image ${imagePath} already exists in R2`);
-    return `${env.WORKER_URL}/${imagePath}`;
-  }
+  addLog(requestId, `Processing URL: ${targetUrl}`);
 
   try {
-    // Pobierz obraz
-    const response = await fetch(imageUrl);
-    if (!response.ok) throw new Error(`Failed to fetch image: ${response.statusText}`);
+    const originalResponse = await fetch(targetUrl);
+    const html = await originalResponse.text();
+    addLog(requestId, `Raw HTML length: ${html.length}`);
 
-    const arrayBuffer = await response.arrayBuffer();
-    const contentType = response.headers.get('Content-Type') || 'image/jpeg';
+    let imageUrls = extractImageUrls(html, baseUrl)
+      .filter(url => url.includes('/wp-content/uploads/') && !url.endsWith('.svg') && !url.includes('favicon'));
+    addLog(requestId, `Image Collector: Found ${imageUrls.length} unique image URLs (including srcset, excluding SVG and favicon)`);
 
-    // Zapisz w R2
-    await env.R2_BUCKET.put(imagePath, arrayBuffer, {
-      httpMetadata: {
-        contentType: contentType
-      }
+    // Add original versions of images and versions without dimensions
+    const originalVersions = imageUrls.map(addOriginalVersion).filter(Boolean) as string[];
+    const noDimensionsVersions = imageUrls.map(removeImageDimensions).filter(Boolean);
+    imageUrls = [...new Set([...imageUrls, ...originalVersions, ...noDimensionsVersions])];
+
+    addLog(requestId, `Total unique image URLs to process: ${imageUrls.length}`);
+
+    const imageMap = await fetchAllImages(imageUrls, requestId);
+    addLog(requestId, `Successfully fetched ${imageMap.size} images`);
+
+    const existingImages = await listExistingImagesInR2(env.R2_BUCKET as any);
+    addLog(requestId, `Found ${existingImages.size} existing images in R2`);
+
+    const savedImages = await saveNewImagesToR2(env.R2_BUCKET as any, imageMap, existingImages, requestId);
+    addLog(requestId, `Saved ${savedImages.length} new images to R2`);
+
+    const endTime = Date.now();
+    const totalTime = (endTime - startTime) / 1000;
+    addLog(requestId, `Image Collector: Finished processing images. Total time: ${totalTime} seconds`);
+
+    const log = processLogs.get(requestId);
+    processLogs.delete(requestId);
+
+    return new Response(JSON.stringify({
+      requestId,
+      processedUrl: targetUrl,
+      imagesFound: imageUrls.length,
+      imagesProcessed: savedImages.length + existingImages.size,
+      newImagesSaved: savedImages.length,
+      existingImages: existingImages.size,
+      totalTime: totalTime,
+      log: log?.steps
+    }), {
+      headers: { 'Content-Type': 'application/json' }
     });
-
-    console.log(`Successfully uploaded ${imagePath} to R2`);
-    console.log(`Successfully processed: ${imagePath}`);
-    return `${env.WORKER_URL}/${imagePath}`;
   } catch (error) {
-    console.error(`Error processing image ${imageUrl}:`, error);
-    return null;
+    addLog(requestId, `Error in handleRequest: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    const log = processLogs.get(requestId);
+    processLogs.delete(requestId);
+    return new Response(JSON.stringify({ 
+      requestId,
+      error: 'Internal Server Error', 
+      message: error instanceof Error ? error.message : 'Unknown error',
+      log: log?.steps
+    }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 }
+
+async function fetchAllImages(imageUrls: string[], requestId: string): Promise<Map<string, ArrayBuffer>> {
+  const imageMap = new Map<string, ArrayBuffer>();
+  addLog(requestId, `Attempting to fetch ${imageUrls.length} images`);
+
+  for (const url of imageUrls) {
+    try {
+      const imagePath = extractImagePath(url);
+      if (!imagePath) {
+        addLog(requestId, `Skipping image with invalid path: ${url}`);
+        continue;
+      }
+
+      const response = await fetch(url);
+      if (response.ok) {
+        const buffer = await response.arrayBuffer();
+        imageMap.set(imagePath, buffer);
+        addLog(requestId, `Successfully fetched and mapped: ${imagePath}`);
+      } else {
+        addLog(requestId, `Failed to fetch image (status ${response.status}): ${url}`);
+      }
+    } catch (error) {
+      addLog(requestId, `Error fetching image ${url}: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  addLog(requestId, `Successfully fetched ${imageMap.size} out of ${imageUrls.length} images`);
+  return imageMap;
+}
+
+// Podobnie zmodyfikuj funkcje listExistingImagesInR2 i saveNewImagesToR2, dodając parametr requestId i używając addLog
+
+
+export default {
+  fetch: handleRequest,
+};
