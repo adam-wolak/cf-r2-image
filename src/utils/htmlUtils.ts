@@ -1,34 +1,26 @@
 // src/utils/htmlUtils.ts
 
 export function extractImageUrls(html: string, baseUrl: string): string[] {
-  const imageUrls = new Set<string>();
-  const srcRegex = /<img[^>]+src\s*=\s*['"]([^'"]+)['"][^>]*>/gi;
-  const srcsetRegex = /<img[^>]+srcset\s*=\s*['"]([^'"]+)['"][^>]*>/gi;
-
+  const imgRegex = /<img[^>]+src\s*=\s*['"]([^'"]+)['"][^>]*>/gi;
+  const srcsetRegex = /srcset\s*=\s*['"]([^'"]+)['"]/gi;
+  
+  const urls = new Set<string>();
+  
   let match;
-  while ((match = srcRegex.exec(html)) !== null) {
-    try {
-      imageUrls.add(new URL(match[1], baseUrl).href);
-    } catch (error) {
-      console.error(`Error processing src URL: ${match[1]}`, error);
+  while ((match = imgRegex.exec(html)) !== null) {
+    urls.add(new URL(match[1], baseUrl).href);
+  }
+  
+  while ((match = srcsetRegex.exec(html)) !== null) {
+    const srcset = match[1].split(',');
+    for (const src of srcset) {
+      const [url] = src.trim().split(' ');
+      urls.add(new URL(url, baseUrl).href);
     }
   }
-
-  while ((match = srcsetRegex.exec(html)) !== null) {
-    const srcset = match[1];
-    srcset.split(',').forEach(src => {
-      try {
-        const url = src.trim().split(' ')[0];
-        imageUrls.add(new URL(url, baseUrl).href);
-      } catch (error) {
-        console.error(`Error processing srcset URL: ${src}`, error);
-      }
-    });
-  }
-
-  return Array.from(imageUrls);
+  
+  return Array.from(urls);
 }
-
 
 
 export function parseImageDimensions(srcset?: string, sizes?: string): { width?: number, height?: number } {

@@ -3,36 +3,33 @@ import { normalizeUrl, getKeyFromUrl } from './imageUtils';
 import { Env } from '../types';
 
 export async function ensureImageInR2(imageUrl: string, bucket: R2Bucket, env: Env): Promise<void> {
-  const key = new URL(imageUrl).pathname.slice(1); // Remove leading '/'
-
-  // Sprawdź, czy plik już istnieje w R2
-  const existingObject = await bucket.head(key);
-  if (existingObject) {
-    console.log(`Image already exists in R2: ${key}`);
-    return;
-  }
-
+  const key = getKeyFromUrl(imageUrl);
   try {
-    const response = await fetch(imageUrl);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch image: ${response.statusText}`);
+    const existing = await bucket.head(key);
+
+    if (!existing) {
+      const response = await fetch(imageUrl);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch image: ${response.statusText}`);
+      }
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.startsWith('image/')) {
+        throw new Error('Invalid content type');
+      }
+      const arrayBuffer = await response.arrayBuffer();
+      await bucket.put(key, arrayBuffer, {
+        httpMetadata: { contentType: contentType },
+      });
+      console.log(`Saved image to R2: ${imageUrl}`);
+    } else {
+      console.log(`Image already exists in R2: ${imageUrl}`);
     }
-
-    const contentType = response.headers.get('content-type') || 'application/octet-stream';
-    const arrayBuffer = await response.arrayBuffer();
-
-    await bucket.put(key, arrayBuffer, {
-      httpMetadata: {
-        contentType: contentType,
-      },
-    });
-
-    console.log(`Saved image to R2: ${key}`);
   } catch (error) {
-    console.error(`Error saving image to R2: ${imageUrl}`, error);
-    throw error;
+    console.error(`Error in ensureImageInR2 for ${imageUrl}:`, error);
+    throw error; // Re-throw the error to be caught in the calling function
   }
 }
+
 
 export async function ensureTransformedImageInR2(imageKey: string, bucket: R2Bucket, env: Env, optimalFormat: string, width?: number, height?: number): Promise<string> {
   const extension = optimalFormat === 'jpg' ? 'jpeg' : optimalFormat;
