@@ -10,52 +10,52 @@
   "logs": [
     {
       "message": [
-        "[bolfqn] Image Collector: Starting process"
+        "[srv18o] Image Collector: Starting process"
       ],
       "level": "log",
-      "timestamp": 1723399571154
+      "timestamp": 1723399631864
     },
     {
       "message": [
         "Normalized URL: https://bielskoclinic.pl"
       ],
       "level": "log",
-      "timestamp": 1723399571154
+      "timestamp": 1723399631864
     },
     {
       "message": [
-        "[bolfqn] Processing URL: https://bielskoclinic.pl"
+        "[srv18o] Processing URL: https://bielskoclinic.pl"
       ],
       "level": "log",
-      "timestamp": 1723399571154
+      "timestamp": 1723399631864
     },
     {
       "message": [
-        "[bolfqn] Raw HTML length: 356255"
+        "[srv18o] Raw HTML length: 356033"
       ],
       "level": "log",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
-        "[bolfqn] Image Collector: Found 100 unique image URLs (including srcset, excluding SVG and favicon)"
+        "[srv18o] Image Collector: Found 100 unique image URLs (including srcset, excluding SVG and favicon)"
       ],
       "level": "log",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
-        "[bolfqn] Total unique image URLs to process: 106"
+        "[srv18o] Total unique image URLs to process: 106"
       ],
       "level": "log",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
         "Attempting to fetch 106 images"
       ],
       "level": "log",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -63,7 +63,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -71,7 +71,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -79,7 +79,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -87,7 +87,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -95,7 +95,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -103,7 +103,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -111,7 +111,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -119,7 +119,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -127,7 +127,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -135,7 +135,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -143,7 +143,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -151,7 +151,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -159,7 +159,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -167,7 +167,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -175,7 +175,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -183,7 +183,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -191,7 +191,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -199,7 +199,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -207,7 +207,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -215,7 +215,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -223,7 +223,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -231,7 +231,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -239,7 +239,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -247,7 +247,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -255,7 +255,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -263,7 +263,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -271,7 +271,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -279,7 +279,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -287,7 +287,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -295,7 +295,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -303,7 +303,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -311,7 +311,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -319,7 +319,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -327,7 +327,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -335,7 +335,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -343,7 +343,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -351,7 +351,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -359,7 +359,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -367,7 +367,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -375,7 +375,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -383,7 +383,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -391,7 +391,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -399,7 +399,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -407,7 +407,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -415,7 +415,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -423,7 +423,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -431,7 +431,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -439,7 +439,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -447,7 +447,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -455,7 +455,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -463,7 +463,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -471,7 +471,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -479,7 +479,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -487,7 +487,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -495,7 +495,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -503,7 +503,7 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
+      "timestamp": 1723399631925
     },
     {
       "message": [
@@ -511,425 +511,416 @@
         "Error: Too many subrequests."
       ],
       "level": "error",
-      "timestamp": 1723399571184
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/645c3bde354ad581d971404049be0507/bg_radiofrekwencja_mikroiglowa-1.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571205
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/12e0426cdbe00ca55b1e0f09335cbeb7/bg_mezoterapia_mikroiglowa.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571206
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/9daa133a8094c5ba2169688d4ff4c316/bg_usta_wolumetria-2.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571207
+      "timestamp": 1723399631925
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/slider/cache/b091176ebe41dd6366d007984bd98815/bg_laser_tulowy_3.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571209
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/489837b2b913792efd03878c157ced00/bg_bezbolesna_epilacja_laserowa.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571218
+      "timestamp": 1723399632065
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/slider/cache/10fe33a1b0dfdbab9ad670864710effe/bg_fala_akustyczna.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571219
+      "timestamp": 1723399632073
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/12e0426cdbe00ca55b1e0f09335cbeb7/bg_mezoterapia_mikroiglowa.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723399632109
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/9daa133a8094c5ba2169688d4ff4c316/bg_usta_wolumetria-2.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723399632115
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/645c3bde354ad581d971404049be0507/bg_radiofrekwencja_mikroiglowa-1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723399632176
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/slider4/playbutton_old.png"
       ],
       "level": "log",
-      "timestamp": 1723399571225
+      "timestamp": 1723399632201
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/489837b2b913792efd03878c157ced00/bg_bezbolesna_epilacja_laserowa.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723399632207
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/2023/07/aniapati_3.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571231
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/2023/05/team-ania_2-460x592.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571232
+      "timestamp": 1723399632221
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/2023/05/team-patrycja_2-460x592.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571235
+      "timestamp": 1723399632257
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/2023/05/team-ania_2-460x592.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723399632262
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/2024/04/team-judyta_2-460x592.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571240
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/2023/06/czego-potrzebujesz_2.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571254
+      "timestamp": 1723399632336
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/2023/05/team-edyta_2-460x592.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571255
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/2023/05/team-dorota_2-460x592.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571256
+      "timestamp": 1723399632363
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/2023/05/team-milena_2-460x592.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571264
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/4720d82dce2430f24cca6a53a49f3642/przed-po_modelowanie-ust_12_1.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571274
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/4153e2db5a60282e036a3985a1f84f22/przed-po_wolumetria_twarzy_bruzdy.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571276
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/f5c784709498e316f1f296fa119ce688/przed-po_botox_14.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571284
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/9952f65a5e16f0253da451194601caf4/przed-po_wolumetria_brody_2.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571290
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/6a48930d40521d9b9c1cf7883ee1f523/przed-po_wolumetria-twarzy_04.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571294
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/a35da9a2997c38fef7a73353698f1dd3/przed-po_lysienie_plackowate.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571300
+      "timestamp": 1723399632381
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/2023/06/czego-potrzebujesz_1_2-2.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571303
+      "timestamp": 1723399632404
     },
     {
       "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/5b5bfd768b9d649b1ac4792627f1151c/przed-po_wolumetria-twarzy_05.jpg"
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/4153e2db5a60282e036a3985a1f84f22/przed-po_wolumetria_twarzy_bruzdy.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571315
+      "timestamp": 1723399632542
     },
     {
       "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/36944a60aa0da3b384164f2aaf78204a/przed-po_dolina_lez_1.jpg"
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/6a48930d40521d9b9c1cf7883ee1f523/przed-po_wolumetria-twarzy_04.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571316
+      "timestamp": 1723399632543
     },
     {
       "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/d506e886c6137d13bf59011945b7566d/przed-po_szyja-mezoterapia-i-biostymulatory.jpg"
+        "Successfully fetched and mapped: wp-content/uploads/2023/06/czego-potrzebujesz_2.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571323
+      "timestamp": 1723399632618
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/2023/05/team-dorota_2-460x592.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723399632680
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/slider/cache/2fc2c5a742a967b78f84e38486404734/przed-po_wolumetria-twarzy_01.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571326
+      "timestamp": 1723399632681
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/9952f65a5e16f0253da451194601caf4/przed-po_wolumetria_brody_2.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723399632703
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/4720d82dce2430f24cca6a53a49f3642/przed-po_modelowanie-ust_12_1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723399632759
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/a35da9a2997c38fef7a73353698f1dd3/przed-po_lysienie_plackowate.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723399632812
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/f5c784709498e316f1f296fa119ce688/przed-po_botox_14.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723399632819
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/d506e886c6137d13bf59011945b7566d/przed-po_szyja-mezoterapia-i-biostymulatory.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723399632853
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/slider/cache/959cded64cdead1a0de4c067dc90d229/przed-po_przebarwienia-laser_tulowy_2.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571330
+      "timestamp": 1723399632895
     },
     {
       "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/6dfbaa92dfe303d0f74c03ad159f708d/bg_bezbolesna_epilacja_laserowa.webp"
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/5b5bfd768b9d649b1ac4792627f1151c/przed-po_wolumetria-twarzy_05.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571346
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/230ed4255663a83210d31d940c54c425/przed-po_endermologia_2.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571347
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/1eda4747457af2d88c0b09e308b530cb/przed-po_endermologia_1.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571350
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/89424441854683913bc4977440732f91/przed-po_przebarwienia-laser_tulowy_1.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571351
+      "timestamp": 1723399632932
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/slider/cache/d69bf24ed5f5680f0d8b8e8358a57282/bg_bezbolesna_epilacja_laserowa.webp"
       ],
       "level": "log",
-      "timestamp": 1723399571363
+      "timestamp": 1723399632950
     },
     {
       "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/7f73efb98cab644f5b6fca41fa5281bc/bg_radiofrekwencja_mikroiglowa-1.webp"
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/1eda4747457af2d88c0b09e308b530cb/przed-po_endermologia_1.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571365
+      "timestamp": 1723399632954
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/89424441854683913bc4977440732f91/przed-po_przebarwienia-laser_tulowy_1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723399632960
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/230ed4255663a83210d31d940c54c425/przed-po_endermologia_2.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723399632990
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/6dfbaa92dfe303d0f74c03ad159f708d/bg_bezbolesna_epilacja_laserowa.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723399633025
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/slider/cache/d8bac7ae0967bb22125d96bce60fd284/bg_radiofrekwencja_mikroiglowa-1.webp"
       ],
       "level": "log",
-      "timestamp": 1723399571369
+      "timestamp": 1723399633084
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/slider/cache/255f19b6824f4981bc64e884d27aa8ca/bg_bezbolesna_epilacja_laserowa.webp"
       ],
       "level": "log",
-      "timestamp": 1723399571371
+      "timestamp": 1723399633093
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/7f73efb98cab644f5b6fca41fa5281bc/bg_radiofrekwencja_mikroiglowa-1.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723399633095
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/36944a60aa0da3b384164f2aaf78204a/przed-po_dolina_lez_1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723399633155
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/slider/cache/cb47900bcd52e25181e872e00c0fff0b/bg_fala_akustyczna.webp"
       ],
       "level": "log",
-      "timestamp": 1723399571376
+      "timestamp": 1723399633176
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/slider/cache/5c53e7af618cbbd2d4e335c358687569/bg_radiofrekwencja_mikroiglowa-1.webp"
       ],
       "level": "log",
-      "timestamp": 1723399571379
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/5539b264e941d1ae5a5f4ee74c21f00d/bg_fala_akustyczna.webp"
-      ],
-      "level": "log",
-      "timestamp": 1723399571382
+      "timestamp": 1723399633190
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/slider/cache/65684b7e9090c2205a5a74ef61e4225c/bg_usta_wolumetria-2.webp"
       ],
       "level": "log",
-      "timestamp": 1723399571386
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/5e9d44b76a183f35e1abd63083256e18/bg_usta_wolumetria-2.webp"
-      ],
-      "level": "log",
-      "timestamp": 1723399571388
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/19b1dca959e43e13e5dec31fd0a05677/bg_usta_wolumetria-2.webp"
-      ],
-      "level": "log",
-      "timestamp": 1723399571389
+      "timestamp": 1723399633225
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/slider/cache/52e6ef1a220dd7c5762747696af349de/bg_fala_akustyczna.webp"
       ],
       "level": "log",
-      "timestamp": 1723399571393
+      "timestamp": 1723399633236
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/5e9d44b76a183f35e1abd63083256e18/bg_usta_wolumetria-2.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723399633286
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/5539b264e941d1ae5a5f4ee74c21f00d/bg_fala_akustyczna.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723399633311
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/19b1dca959e43e13e5dec31fd0a05677/bg_usta_wolumetria-2.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723399633323
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/slider/cache/ce54ef2c9a729a571d39000e2417714d/bg_laser_tulowy_3.webp"
       ],
       "level": "log",
-      "timestamp": 1723399571396
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/2023/08/bg_mezoterapia_tablet_1.jpg"
-      ],
-      "level": "log",
-      "timestamp": 1723399571406
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/edf56b9226d1f18d7524ce81566d7e6a/playbutton_old.webp"
-      ],
-      "level": "log",
-      "timestamp": 1723399571407
-    },
-    {
-      "message": [
-        "Successfully fetched and mapped: wp-content/uploads/slider/cache/82f1cd973df38a73ca82faad167227e2/bg_laser_tulowy_3.webp"
-      ],
-      "level": "log",
-      "timestamp": 1723399571408
+      "timestamp": 1723399633332
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/slider/cache/faf04f563bcd679cb3db0d46bdfc644b/bg_laser_tulowy_3.webp"
       ],
       "level": "log",
-      "timestamp": 1723399571415
+      "timestamp": 1723399633374
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/82f1cd973df38a73ca82faad167227e2/bg_laser_tulowy_3.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723399633399
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/slider/cache/edf56b9226d1f18d7524ce81566d7e6a/playbutton_old.webp"
+      ],
+      "level": "log",
+      "timestamp": 1723399633454
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/2023/07/aniapati_3-300x300.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571415
+      "timestamp": 1723399633462
+    },
+    {
+      "message": [
+        "Successfully fetched and mapped: wp-content/uploads/2023/08/bg_mezoterapia_tablet_1.jpg"
+      ],
+      "level": "log",
+      "timestamp": 1723399633477
     },
     {
       "message": [
         "Successfully fetched and mapped: wp-content/uploads/2023/08/bg_mezoterapia_phone_1.jpg"
       ],
       "level": "log",
-      "timestamp": 1723399571415
+      "timestamp": 1723399633542
     },
     {
       "message": [
         "Successfully fetched 49 out of 106 images"
       ],
       "level": "log",
-      "timestamp": 1723399571415
+      "timestamp": 1723399633542
     },
     {
       "message": [
-        "[bolfqn] Successfully fetched 49 images"
+        "[srv18o] Successfully fetched 49 images"
       ],
       "level": "log",
-      "timestamp": 1723399571415
+      "timestamp": 1723399633542
     },
     {
       "message": [
-        "[bolfqn] Found 49 existing images in R2"
+        "[srv18o] Found 49 existing images in R2"
       ],
       "level": "log",
-      "timestamp": 1723399571494
+      "timestamp": 1723399634158
     },
     {
       "message": [
-        "[bolfqn] Saved 0 new images to R2"
+        "[srv18o] Saved 0 new images to R2"
       ],
       "level": "log",
-      "timestamp": 1723399571494
+      "timestamp": 1723399634158
     },
     {
       "message": [
-        "[bolfqn] Image Collector: Finished processing images. Total time: 0.34 seconds"
+        "[srv18o] Image Collector: Finished processing images. Total time: 2.294 seconds"
       ],
       "level": "log",
-      "timestamp": 1723399571494
+      "timestamp": 1723399634158
     }
   ],
-  "eventTimestamp": 1723399571154,
+  "eventTimestamp": 1723399631864,
   "event": {
     "request": {
-      "url": "https://image-collector.bielskoclinic.workers.dev/favicon.ico",
+      "url": "https://image-collector.bielskoclinic.workers.dev/?url=https://bielskoclinic.pl",
       "method": "GET",
       "headers": {
-        "accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+        "accept": "*/*",
         "accept-encoding": "gzip, br",
-        "accept-language": "pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7",
-        "cf-connecting-ip": "83.28.227.26",
-        "cf-ipcountry": "PL",
-        "cf-ray": "8b1a2877a9b1b604",
+        "baggage": "sentry-environment=production,sentry-public_key=e6210d6b5d3246c29d5667b356d11c63,sentry-release=ha_github_commits_consumer@409631,sentry-trace_id=0ec8818484ae44fda89299496be5be21",
+        "cf-connecting-ip": "54.198.55.229",
+        "cf-ipcountry": "US",
+        "cf-ray": "8b1a29f2ece30618",
         "cf-visitor": "{\"scheme\":\"https\"}",
         "connection": "Keep-Alive",
-        "cookie": "REDACTED",
-        "dnt": "1",
         "host": "image-collector.bielskoclinic.workers.dev",
-        "priority": "u=1, i",
-        "referer": "https://image-collector.bielskoclinic.workers.dev/?url=https://bielskoclinic.pl",
-        "sec-ch-ua": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"",
-        "sec-ch-ua-mobile": "?0",
-        "sec-ch-ua-platform": "\"Windows\"",
-        "sec-fetch-dest": "image",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "same-origin",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
+        "range": "bytes: 0-22",
+        "traceparent": "00-a5988a60fcc85f4b78425d1a92939a7f-f9f7e6ee2a14f1c3-00",
+        "user-agent": "Mozilla/5.0 (compatible)",
         "x-forwarded-proto": "https",
-        "x-real-ip": "83.28.227.26"
+        "x-real-ip": "54.198.55.229"
       },
       "cf": {
-        "longitude": "19.94420",
-        "httpProtocol": "HTTP/3",
-        "tlsCipher": "AEAD-AES128-GCM-SHA256",
-        "continent": "EU",
-        "asn": 5617,
-        "clientAcceptEncoding": "gzip, deflate, br, zstd",
-        "tlsClientExtensionsSha1": "+ir0gBeMaaUQpjOEFG8o/yLfzNY=",
-        "isEUCountry": "1",
+        "clientTcpRtt": 1,
+        "longitude": "-77.49030",
+        "httpProtocol": "HTTP/1.1",
+        "tlsCipher": "ECDHE-ECDSA-AES128-GCM-SHA256",
+        "continent": "NA",
+        "asn": 14618,
+        "country": "US",
         "verifiedBotCategory": "",
         "tlsClientAuth": {
           "certIssuerDNLegacy": "",
@@ -951,30 +942,31 @@
           "certFingerprintSHA1": ""
         },
         "tlsExportedAuthenticator": {
-          "clientFinished": "f9a213076c21f346533f83485f9d648f0f66c7539c3cb0e816b85373c53f973a",
-          "clientHandshake": "6873a9aec313b4c0c0e9ac60fbc9cc0b7811f35795fdb531047d02e0408035d1",
-          "serverHandshake": "8235e645bb77e63de6a0d51dba2b107408801ca167b52d70b899359671ee72ca",
-          "serverFinished": "dc23d409df84feb1198f2da0cfa7b049338afc60d6026f0b8e4cf8dbe6fa1ff0"
+          "clientFinished": "84edb5a3cd1d71032a21dd2e91c223cb55ffb9265b7a9bdaeeab5ee9c0658666",
+          "clientHandshake": "4ff933e3bf8cb10a00cba8053ea82283d61516f30efdf06c22065c4cc3fbb51a",
+          "serverHandshake": "2fa68cd8c94bb01af2869502338e822d38674636d969a913db221bfb7c5a19e3",
+          "serverFinished": "ae191a54386796dbe19258671e5527153cf66deaa79f860c8bd7ae7e0e12e6fb"
         },
-        "tlsVersion": "TLSv1.3",
-        "city": "Krakow",
-        "timezone": "Europe/Warsaw",
-        "tlsClientHelloLength": "1968",
-        "requestPriority": "",
+        "tlsVersion": "TLSv1.2",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "colo": "IAD",
+        "tlsClientHelloLength": "269",
         "edgeRequestKeepAliveStatus": 1,
-        "tlsClientRandom": "+5jG0VhtMMXvlKGt7q03zYovFKrbNojiSAVaGnxUELE=",
-        "region": "Lesser Poland",
-        "latitude": "50.06430",
-        "postalCode": "31-042",
-        "regionCode": "12",
-        "asOrganization": "Orange Polska",
-        "colo": "WAW",
-        "country": "PL"
+        "postalCode": "20149",
+        "region": "Virginia",
+        "latitude": "39.04690",
+        "requestPriority": "",
+        "regionCode": "VA",
+        "asOrganization": "Amazon.com",
+        "metroCode": "511",
+        "tlsClientExtensionsSha1": "+C3Bh/F9UaeOK0g3ptJN577jGXA=",
+        "tlsClientRandom": "/SsSLapsRzHjr/FXgD0lgjMh0qVGY5kgrBfvEpJgvGk="
       }
     },
     "response": {
       "status": 200
     }
   },
-  "id": 1
+  "id": 2
 }
