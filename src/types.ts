@@ -6,8 +6,14 @@ export interface ProcessedImage {
   base64: string;
 }
 
+export interface ProcessLog {
+  requestId: string;
+  steps: string[];
+}
+
 export interface Env {
   R2_BUCKET: CloudflareR2Bucket;
+  bielskoclinic: KVNamespace;
   WORKER_URL: string;
   ZONE_ID: string;
   ORIGIN: string;
