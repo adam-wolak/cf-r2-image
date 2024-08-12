@@ -1,5 +1,10 @@
 // src/utils/imageUtils.ts
 
+export function extractImagePath(url: string): string | null {
+  const match = url.match(/wp-content\/uploads\/.+/);
+  return match ? match[0] : null;
+}
+
 export function getKeyFromUrl(url: string): string {
   const urlObj = new URL(url);
   const key = urlObj.pathname.startsWith('/') ? urlObj.pathname.slice(1) : urlObj.pathname;

@@ -3,6 +3,7 @@
 export function extractImageUrls(html: string, baseUrl: string): string[] {
   const imgRegex = /<img[^>]+src\s*=\s*['"]([^'"]+)['"][^>]*>/gi;
   const srcsetRegex = /srcset\s*=\s*['"]([^'"]+)['"]/gi;
+  const backgroundImageRegex = /background-image\s*:\s*url\(['"]?([^'"]+)['"]?\)/gi;
   
   const urls = new Set<string>();
   
@@ -19,7 +20,16 @@ export function extractImageUrls(html: string, baseUrl: string): string[] {
     }
   }
   
-  return Array.from(urls);
+  while ((match = backgroundImageRegex.exec(html)) !== null) {
+    urls.add(new URL(match[1], baseUrl).href);
+  }
+  
+  return Array.from(urls)
+    .filter(url => url.includes('/wp-content/uploads/') && !url.endsWith('.svg') && !url.includes('favicon'))
+    .map(url => {
+      // Remove query parameters and hash
+      return url.split('?')[0].split('#')[0];
+    });
 }
 
 
