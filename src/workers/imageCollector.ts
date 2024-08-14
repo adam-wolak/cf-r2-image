@@ -1,5 +1,11 @@
-import { parse } from 'fast-xml-parser';
-import { Env, DurableObjectState } from './types';
+import { XMLParser } from 'fast-xml-parser';
+import { Env, DurableObjectState } from '../types';
+import { extractImageUrls } from '../utils/htmlUtils';
+
+
+const BATCH_SIZE = 3; // Zmniejszamy rozmiar partii
+const DELAY_BETWEEN_REQUESTS = 1000; // 1 sekunda opóźnienia między żądaniami
+const parser = new XMLParser({ ignoreAttributes: false });
 
 export class SitemapProcessor {
   state: DurableObjectState;
@@ -63,14 +69,22 @@ export class SitemapProcessor {
   async getSitemapsFromIndex(indexUrl: string): Promise<string[]> {
     const response = await fetch(indexUrl);
     const xmlData = await response.text();
-    const result = parse(xmlData, { ignoreAttributes: false });
+    const result = parser.parse(xmlData);
+    } catch (error) {
+     console.error('Error parsing XML:', error);
+     // Obsłuż błąd, np. zwróć pustą tablicę lub rzuć wyjątek
+    }    
     return result.sitemapindex.sitemap.map((item: any) => item.loc);
-  }
+}
 
   async processSitemap(sitemapUrl: string, env: Env) {
     const response = await fetch(sitemapUrl);
     const xmlData = await response.text();
-    const result = parse(xmlData, { ignoreAttributes: false });
+    const result = parser.parse(xmlData);
+    } catch (error) {
+      console.error('Error parsing XML:', error);
+    // Obsłuż błąd, np. zwróć pustą tablicę lub rzuć wyjątek
+    }
     const urls = result.urlset.url.map((item: any) => item.loc);
 
     for (const url of urls) {
@@ -126,7 +140,7 @@ async function processAllImages(url: string, env: Env): Promise<any[]> {
   
   for (let i = 0; i < imageUrls.length; i += BATCH_SIZE) {
     const batch = imageUrls.slice(i, i + BATCH_SIZE);
-    const batchResults = await Promise.all(batch.map(imageUrl => processImageWithRetry(imageUrl, env)));
+    const batchResults = await Promise.all(batch.map((imageUrl: string) => processImageWithRetry(imageUrl, env)));    
     
     batchResults.forEach(result => {
       switch(result.status) {
