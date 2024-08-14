@@ -11,9 +11,16 @@ export interface ProcessLog {
   steps: string[];
 }
 
+export interface ImageInfo {
+  url: string;
+}
+
 export interface Env {
   R2_BUCKET: CloudflareR2Bucket;
   bielskoclinic: KVNamespace;
+  IMAGE_BUCKET: R2Bucket;
+  SITEMAP_PROCESSOR: DurableObjectNamespace;
+  CACHE: KVNamespace;
   WORKER_URL: string;
   ZONE_ID: string;
   ORIGIN: string;
@@ -46,5 +53,13 @@ export interface CollectorData {
 export interface ExecutionContext {
   waitUntil(promise: Promise<any>): void;
   passThroughOnException(): void;
+}
+
+export interface DurableObjectState {
+  storage: {
+    get(key: string): Promise<any>;
+    put(key: string, value: any): Promise<void>;
+  };
+  blockConcurrencyWhile(callback: () => Promise<void>): Promise<void>;
 }
 
