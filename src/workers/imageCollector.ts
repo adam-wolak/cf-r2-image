@@ -4,6 +4,7 @@ import { CONFIG } from '../config';
 
 const BATCH_SIZE = 10;
 const DELAY_BETWEEN_REQUESTS = 1000; // 1 second
+const MAX_IMAGES_PER_INVOCATION = 50
 
 interface ProcessingRequest {
   env: Env;
@@ -19,27 +20,27 @@ export class SitemapProcessor {
     this.parser = new XMLParser({ ignoreAttributes: false });
   }
 
-  async fetch(request: Request) {
-    const url = new URL(request.url);
-    const action = url.searchParams.get('action');
+async fetch(request: Request) {
+  const url = new URL(request.url);
+  const action = url.searchParams.get('action');
 
-    switch (action) {
-      case 'start':
-        return this.startProcessing(request);
-      case 'status':
-        return this.getStatus();
-      default:
-        return new Response('Invalid action', { status: 400 });
-    }
+  switch (action) {
+    case 'start':
+      return this.startProcessing(request);
+    case 'status':
+      return this.getStatus();
+    default:
+      return new Response('Invalid action', { status: 400 });
   }
+}
 
-  async startProcessing(request: Request) {
-    const data = await request.json() as ProcessingRequest;
-    this.state.blockConcurrencyWhile(async () => {
-      await this.processEntireSitemap(data.env, data.domain);
-    });
-    return new Response('Processing started', { status: 202 });
-  }
+async startProcessing(request: Request) {
+  const { domain, env } = await request.json() as { domain: string, env: Env };
+  this.state.blockConcurrencyWhile(async () => {
+    await this.processEntireSitemap(env, domain);
+  });
+  return new Response('Processing started', { status: 202 });
+}
 
 
   async getStatus() {
@@ -88,67 +89,54 @@ export class SitemapProcessor {
 
   async processPage(url: string, env: Env) {
     const images = await processAllImages(url, env);
-    console.log(`Processed ${images.length} images for ${url}`);
-  }
+    if (i % 10 === 0) {
+    console.log(`Processed ${i} out of ${Math.min(imageUrls.length, MAX_IMAGES_PER_INVOCATION)} images`);
+  }    
+
 }
 
 async function processAllImages(url: string, env: Env): Promise<any[]> {
+  console.log(`Processing page: ${url}`);
   const response = await fetch(url);
   const html = await response.text();
-  const imageUrls = extractImageUrls(html, url);
-
-  let processedImages: any[] = [];
-  let savedCount = 0;
-  let updatedCount = 0;
-  let unchangedCount = 0;
-  let errorCount = 0;
   
-  for (let i = 0; i < imageUrls.length; i += BATCH_SIZE) {
-    const batch = imageUrls.slice(i, i + BATCH_SIZE);
-    const batchResults = await Promise.all(batch.map((imageUrl: string) => processImageWithRetry(imageUrl, env)));
-    
-    batchResults.forEach((result: any) => {
-      switch(result.status) {
-        case 'saved':
-          savedCount++;
-          break;
-        case 'updated':
-          updatedCount++;
-          break;
-        case 'unchanged':
-          unchangedCount++;
-          break;
-        case 'error':
-          errorCount++;
-          break;
-      }
-    });
-    
-    processedImages.push(...batchResults);
-    
-    if (i + BATCH_SIZE < imageUrls.length) {
-      await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_REQUESTS));
+  const imageUrls = extractImageUrls(html, url);
+  
+  let newImagesSaved = 0;
+  let imagesUpdated = 0;
+  let imagesUnchanged = 0;
+  let failedToProcess = 0;
+  
+  for (let i = 0; i < Math.min(imageUrls.length, MAX_IMAGES_PER_INVOCATION); i++) {
+    const imageUrl = imageUrls[i];
+    try {
+      const result = await processImageWithRetry(imageUrl, env);
+      if (result.status === 'saved') newImagesSaved++;
+      else if (result.status === 'updated') imagesUpdated++;
+      else if (result.status === 'unchanged') imagesUnchanged++;
+    } catch (error) {
+      console.error(`Failed to process image ${imageUrl}: ${error}`);
+      failedToProcess++;
     }
   }
-
-  console.log(`New images saved: ${savedCount}`);
-  console.log(`Images updated: ${updatedCount}`);
-  console.log(`Images unchanged: ${unchangedCount}`);
-  console.log(`Failed to process: ${errorCount}`);
-  console.log(`Total processed images: ${processedImages.length}`);
-  return processedImages;
+  
+  console.log(`New images saved: ${newImagesSaved}`);
+  console.log(`Images updated: ${imagesUpdated}`);
+  console.log(`Images unchanged: ${imagesUnchanged}`);
+  console.log(`Failed to process: ${failedToProcess}`);
+  console.log(`Total processed images: ${newImagesSaved + imagesUpdated + imagesUnchanged}`);
+  
+  return [newImagesSaved, imagesUpdated, imagesUnchanged, failedToProcess];
 }
+
 
 async function processImageWithRetry(imageUrl: string, env: Env, retries = 3): Promise<any> {
   for (let i = 0; i < retries; i++) {
     try {
       return await processImage(imageUrl, env);
     } catch (error) {
-      console.error(`Error processing image ${imageUrl}, attempt ${i + 1}:`, error);
-      if (i === retries - 1) {
-        return { status: 'error', message: `Failed to process image after ${retries} attempts`, url: imageUrl };
-      }
-      await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1))); // Exponential backoff
+      console.error(`Attempt ${i + 1} failed for ${imageUrl}: ${error}`);
+      if (i === retries - 1) throw error;
     }
   }
 }
@@ -163,38 +151,42 @@ async function processImage(imageUrl: string, env: Env): Promise<any> {
   const objectKey = new URL(imageUrl).pathname.slice(1);
   
   try {
-    const existingObject = await env.IMAGE_BUCKET.head(objectKey);
+    const existingObject = await env.IMAGE_BUCKET.get(objectKey, { onlyIf: { etagDoesNotMatch: '*' } });
     
-    if (existingObject) {
+    if (existingObject === null) {
+      // Obraz nie istnieje, zapisz go
+      await env.IMAGE_BUCKET.put(objectKey, arrayBuffer, {
+        httpMetadata: {
+          cacheControl: env.R2_CACHE_CONTROL,
+        },
+      });
+      return { status: 'saved', message: 'Image successfully saved to R2' };
+    } else {
+      // Obraz istnieje, sprawdź rozmiar
       const existingSize = existingObject.size;
       const newSize = arrayBuffer.byteLength;
       
       if (existingSize === newSize) {
-        return { status: 'unchanged', message: 'Image already exists and has the same size', url: imageUrl };
+        return { status: 'unchanged', message: 'Image already exists and has the same size' };
+      } else {
+        // Aktualizuj obraz
+        await env.IMAGE_BUCKET.put(objectKey, arrayBuffer, {
+          httpMetadata: {
+            cacheControl: env.R2_CACHE_CONTROL,
+          },
+        });
+        return { status: 'updated', message: 'Image successfully updated in R2' };
       }
-      
-      console.log(`Size difference detected for ${objectKey}. Existing: ${existingSize}, New: ${newSize}`);
     }
-
-    await env.IMAGE_BUCKET.put(objectKey, arrayBuffer, {
-      httpMetadata: {
-        cacheControl: env.R2_CACHE_CONTROL,
-      },
-    });
-
-    return { 
-      status: existingObject ? 'updated' : 'saved', 
-      message: existingObject ? 'Image successfully updated in R2' : 'Image successfully saved to R2', 
-      url: imageUrl 
-    };
-  } catch (error: any) {
-    console.error(`Error processing image ${imageUrl}: ${error.message}`);
+  } catch (error) {
+    console.error(`Error processing image ${imageUrl}: ${error}`);
     throw error;
   }
 }
 
+
 function extractImageUrls(html: string, baseUrl: string): string[] {
-  const imgRegex = /<img[^>]+src="?([^"\s]+)"?\s*\/>/g;
+  const imgRegex = /<img[^>]+(?:src|data-src|srcset|data-srcset)=["']?([^"'\s>]+)["']?[^>]*>/g;
   const urls: string[] = [];
   let match;
   while ((match = imgRegex.exec(html)) !== null) {
@@ -221,16 +213,20 @@ export default {
       return new Response('Missing domain parameter', { status: 400 });
     }
 
-    const id = env.SITEMAP_PROCESSOR.idFromName('default');
+    const id = env.SITEMAP_PROCESSOR.idFromName(domain);
     const obj = env.SITEMAP_PROCESSOR.get(id);
 
-    if (action === 'start') {
-      const newRequest = new Request(request.url, {
-      method: 'POST',
-      body: JSON.stringify({ env, domain }),
-    });
-  return obj.fetch(newRequest);
+    switch (action) {
+      case 'start':
+        return obj.fetch(new Request(request.url, {
+          method: 'POST',
+          body: JSON.stringify({ domain, env }),
+        }));
+      case 'status':
+        return obj.fetch(request);
+      default:
+        return new Response('Invalid action', { status: 400 });
+    }
   }
-}
 };
 
