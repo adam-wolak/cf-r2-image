@@ -1,0 +1,158 @@
+import { Env } from '../types';
+import { extractImageUrls } from '../utils/htmlUtils';
+
+const BATCH_SIZE = 3; // Zmniejszamy rozmiar partii
+const DELAY_BETWEEN_REQUESTS = 1000; // 1 sekunda opóźnienia między żądaniami
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    return handleRequest(request, env);
+  },
+};
+
+async function handleRequest(request: Request, env: Env): Promise<Response> {
+  const url = new URL(request.url);
+  const targetUrl = url.searchParams.get('url') || env.ORIGIN;
+
+  if (!targetUrl) {
+    return new Response('Missing URL parameter and no default ORIGIN set', { status: 400 });
+  }
+
+  try {
+    console.log(`Starting to process images for ${targetUrl}`);
+    const results = await processAllImages(targetUrl, env);
+    console.log(`Finished processing all images for ${targetUrl}`);
+    return new Response(JSON.stringify(results), {
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch (error: any) {
+    console.error('Error processing request:', error);
+    return new Response(`Error: ${error.message}`, { status: 500 });
+  }
+}
+
+async function processAllImages(url: string, env: Env): Promise<any[]> {
+  const response = await fetch(url);
+  const html = await response.text();
+  const imageUrls = extractImageUrls(html, url);
+  console.log(`Found ${imageUrls.length} image URLs on the page`);
+
+  let processedImages: any[] = [];
+  let savedCount = 0;
+  let updatedCount = 0;
+  let unchangedCount = 0;
+  let errorCount = 0;
+  
+  for (let i = 0; i < imageUrls.length; i += BATCH_SIZE) {
+    const batch = imageUrls.slice(i, i + BATCH_SIZE);
+    const batchResults = await Promise.all(batch.map(imageUrl => processImageWithRetry(imageUrl, env)));
+    
+    batchResults.forEach(result => {
+      switch(result.status) {
+        case 'saved':
+          savedCount++;
+          break;
+        case 'updated':
+          updatedCount++;
+          break;
+        case 'unchanged':
+          unchangedCount++;
+          break;
+        case 'error':
+          errorCount++;
+          break;
+      }
+    });
+    
+    processedImages.push(...batchResults);
+    
+    // Dodajemy opóźnienie między partiami
+    if (i + BATCH_SIZE < imageUrls.length) {
+      await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_REQUESTS));
+    }
+  }
+
+  console.log(`New images saved: ${savedCount}`);
+  console.log(`Images updated: ${updatedCount}`);
+  console.log(`Images unchanged: ${unchangedCount}`);
+  console.log(`Failed to process: ${errorCount}`);
+  console.log(`Total processed images: ${processedImages.length}`);
+  return processedImages;
+}
+
+async function processImageWithRetry(imageUrl: string, env: Env, maxRetries = 3): Promise<any> {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      return await processImage(imageUrl, env);
+    } catch (error: any) {
+      if (attempt === maxRetries) {
+        console.error(`Failed to process ${imageUrl} after ${maxRetries} attempts: ${error.message}`);
+        return { status: 'error', message: error.message, url: imageUrl };
+      }
+      console.log(`Retrying ${imageUrl} (attempt ${attempt + 1}/${maxRetries})`);
+      await new Promise(resolve => setTimeout(resolve, 1000 * attempt)); // Exponential backoff
+    }
+  }
+}
+
+async function processImage(imageUrl: string, env: Env): Promise<any> {
+  try {
+    console.log(`Processing image: ${imageUrl}`);
+    const imageBuffer = await downloadImage(imageUrl);
+    console.log(`Downloaded image: ${imageUrl}, size: ${imageBuffer.byteLength} bytes`);
+    const result = await processAndUploadImage(env.IMAGE_BUCKET, imageUrl, imageBuffer, env);
+    console.log(`Processed and uploaded image: ${imageUrl}, result:`, result);
+    return result;
+  } catch (error: any) {
+    console.error(`Error processing image ${imageUrl}:`, error);
+    return { status: 'error', message: error.message, url: imageUrl };
+  }
+}
+
+async function downloadImage(imageUrl: string): Promise<ArrayBuffer> {
+  const response = await fetch(imageUrl);
+  if (!response.ok) {
+    throw new Error(`Failed to download image: ${response.statusText}`);
+  }
+  return await response.arrayBuffer();
+}
+
+async function processAndUploadImage(bucket: R2Bucket, imageUrl: string, imageBuffer: ArrayBuffer, env: Env): Promise<any> {
+  const urlObj = new URL(imageUrl);
+  const objectKey = urlObj.pathname.startsWith('/') ? urlObj.pathname.slice(1) : urlObj.pathname;
+
+  try {
+    // Sprawdź, czy obraz już istnieje w R2
+    const existingObject = await bucket.head(objectKey);
+    
+    if (existingObject) {
+      // Jeśli obraz istnieje, porównaj rozmiary
+      const existingSize = existingObject.size;
+      const newSize = imageBuffer.byteLength;
+      
+      if (existingSize === newSize) {
+        // Jeśli rozmiary są takie same, nie aktualizuj
+        return { status: 'unchanged', message: 'Image already exists and has the same size', url: imageUrl };
+      }
+      
+      console.log(`Size difference detected for ${objectKey}. Existing: ${existingSize}, New: ${newSize}`);
+    }
+
+    // Zapisz lub zaktualizuj obraz w R2
+    await bucket.put(objectKey, imageBuffer, {
+      httpMetadata: {
+        cacheControl: env.R2_CACHE_CONTROL,
+      },
+    });
+
+    return { 
+      status: existingObject ? 'updated' : 'saved', 
+      message: existingObject ? 'Image successfully updated in R2' : 'Image successfully saved to R2', 
+      url: imageUrl 
+    };
+  } catch (error: any) {
+    console.error(`Error processing image ${imageUrl}: ${error.message}`);
+    return { status: 'error', message: `Failed to process image: ${error.message}`, url: imageUrl };
+  }
+}
+
