@@ -1,17 +1,22 @@
 import { XMLParser } from 'fast-xml-parser';
 import { Env, DurableObjectState } from '../types';
-import { extractImageUrls } from '../utils/htmlUtils';
+import { CONFIG } from '../config';
 
+const BATCH_SIZE = 10;
+const DELAY_BETWEEN_REQUESTS = 1000; // 1 second
 
-const BATCH_SIZE = 3; // Zmniejszamy rozmiar partii
-const DELAY_BETWEEN_REQUESTS = 1000; // 1 sekunda opóźnienia między żądaniami
-const parser = new XMLParser({ ignoreAttributes: false });
+interface ProcessingRequest {
+  env: Env;
+  domain: string;
+}
 
 export class SitemapProcessor {
   state: DurableObjectState;
+  parser: XMLParser;
 
   constructor(state: DurableObjectState) {
     this.state = state;
+    this.parser = new XMLParser({ ignoreAttributes: false });
   }
 
   async fetch(request: Request) {
@@ -29,16 +34,13 @@ export class SitemapProcessor {
   }
 
   async startProcessing(request: Request) {
-    const env = await request.json() as Env;
-    if (!env.ORIGIN || !env.ORIGIN.startsWith('http')) {
-      return new Response('Invalid domain', { status: 400 });
-    }
-
+    const data = await request.json() as ProcessingRequest;
     this.state.blockConcurrencyWhile(async () => {
-      await this.processEntireWebsite(env);
+      await this.processEntireSitemap(data.env, data.domain);
     });
     return new Response('Processing started', { status: 202 });
   }
+
 
   async getStatus() {
     const status = await this.state.storage.get('status') || 'Not started';
@@ -48,17 +50,13 @@ export class SitemapProcessor {
     });
   }
 
-  async processEntireWebsite(env: Env) {
+  async processEntireSitemap(env: Env, domain: string) {
     await this.state.storage.put('status', 'Processing');
-    const sitemapIndexUrl = `${env.ORIGIN}/sitemap_index.xml`;
+    const sitemapIndexUrl = `${domain}${CONFIG.SITEMAP_INDEX_PATH}`;
     const sitemaps = await this.getSitemapsFromIndex(sitemapIndexUrl);
     
-    const relevantSitemaps = [
-      `${env.ORIGIN}/page-sitemap.xml`,
-      `${env.ORIGIN}/cpt_services-sitemap.xml`,
-      `${env.ORIGIN}/cpt_team-sitemap.xml`
-    ];
-
+    const relevantSitemaps = CONFIG.RELEVANT_SITEMAPS.map(path => `${domain}${path}`);
+    
     for (const sitemapUrl of sitemaps.filter(url => relevantSitemaps.includes(url))) {
       await this.processSitemap(sitemapUrl, env);
     }
@@ -69,68 +67,35 @@ export class SitemapProcessor {
   async getSitemapsFromIndex(indexUrl: string): Promise<string[]> {
     const response = await fetch(indexUrl);
     const xmlData = await response.text();
-    const result = parser.parse(xmlData);
-    } catch (error) {
-     console.error('Error parsing XML:', error);
-     // Obsłuż błąd, np. zwróć pustą tablicę lub rzuć wyjątek
-    }    
+    const result = this.parser.parse(xmlData);
     return result.sitemapindex.sitemap.map((item: any) => item.loc);
-}
+  }
 
   async processSitemap(sitemapUrl: string, env: Env) {
     const response = await fetch(sitemapUrl);
     const xmlData = await response.text();
-    const result = parser.parse(xmlData);
-    } catch (error) {
-      console.error('Error parsing XML:', error);
-    // Obsłuż błąd, np. zwróć pustą tablicę lub rzuć wyjątek
-    }
+    const result = this.parser.parse(xmlData);
     const urls = result.urlset.url.map((item: any) => item.loc);
 
     for (const url of urls) {
       console.log(`Processing page: ${url}`);
-      await processAllImages(url, env);
+      await this.processPage(url, env);
       const processedUrls = await this.state.storage.get('processedUrls') || [];
       processedUrls.push(url);
       await this.state.storage.put('processedUrls', processedUrls);
     }
   }
-}
 
-export default {
-  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-    const url = new URL(request.url);
-    const action = url.searchParams.get('action') || 'start';
-    const domain = url.searchParams.get('domain');
-
-    if (!domain) {
-      return new Response('Missing domain parameter', { status: 400 });
-    }
-
-    const id = env.SITEMAP_PROCESSOR.idFromName('default');
-    const obj = env.SITEMAP_PROCESSOR.get(id);
-
-    if (action === 'start') {
-      const processingEnv = {
-        ...env,
-        ORIGIN: domain
-      };
-      const newRequest = new Request(request.url, {
-        method: 'POST',
-        body: JSON.stringify(processingEnv),
-      });
-      return obj.fetch(newRequest);
-    } else {
-      return obj.fetch(request);
-    }
+  async processPage(url: string, env: Env) {
+    const images = await processAllImages(url, env);
+    console.log(`Processed ${images.length} images for ${url}`);
   }
-};
+}
 
 async function processAllImages(url: string, env: Env): Promise<any[]> {
   const response = await fetch(url);
   const html = await response.text();
   const imageUrls = extractImageUrls(html, url);
-  console.log(`Found ${imageUrls.length} image URLs on the page`);
 
   let processedImages: any[] = [];
   let savedCount = 0;
@@ -140,9 +105,9 @@ async function processAllImages(url: string, env: Env): Promise<any[]> {
   
   for (let i = 0; i < imageUrls.length; i += BATCH_SIZE) {
     const batch = imageUrls.slice(i, i + BATCH_SIZE);
-    const batchResults = await Promise.all(batch.map((imageUrl: string) => processImageWithRetry(imageUrl, env)));    
+    const batchResults = await Promise.all(batch.map((imageUrl: string) => processImageWithRetry(imageUrl, env)));
     
-    batchResults.forEach(result => {
+    batchResults.forEach((result: any) => {
       switch(result.status) {
         case 'saved':
           savedCount++;
@@ -161,7 +126,6 @@ async function processAllImages(url: string, env: Env): Promise<any[]> {
     
     processedImages.push(...batchResults);
     
-    // Dodajemy opóźnienie między partiami
     if (i + BATCH_SIZE < imageUrls.length) {
       await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_REQUESTS));
     }
@@ -175,66 +139,44 @@ async function processAllImages(url: string, env: Env): Promise<any[]> {
   return processedImages;
 }
 
-async function processImageWithRetry(imageUrl: string, env: Env, maxRetries = 3): Promise<any> {
-  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+async function processImageWithRetry(imageUrl: string, env: Env, retries = 3): Promise<any> {
+  for (let i = 0; i < retries; i++) {
     try {
       return await processImage(imageUrl, env);
-    } catch (error: any) {
-      if (attempt === maxRetries) {
-        console.error(`Failed to process ${imageUrl} after ${maxRetries} attempts: ${error.message}`);
-        return { status: 'error', message: error.message, url: imageUrl };
+    } catch (error) {
+      console.error(`Error processing image ${imageUrl}, attempt ${i + 1}:`, error);
+      if (i === retries - 1) {
+        return { status: 'error', message: `Failed to process image after ${retries} attempts`, url: imageUrl };
       }
-      console.log(`Retrying ${imageUrl} (attempt ${attempt + 1}/${maxRetries})`);
-      await new Promise(resolve => setTimeout(resolve, 1000 * attempt)); // Exponential backoff
+      await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1))); // Exponential backoff
     }
   }
 }
 
 async function processImage(imageUrl: string, env: Env): Promise<any> {
-  try {
-    console.log(`Processing image: ${imageUrl}`);
-    const imageBuffer = await downloadImage(imageUrl);
-    console.log(`Downloaded image: ${imageUrl}, size: ${imageBuffer.byteLength} bytes`);
-    const result = await processAndUploadImage(env.IMAGE_BUCKET, imageUrl, imageBuffer, env);
-    console.log(`Processed and uploaded image: ${imageUrl}, result:`, result);
-    return result;
-  } catch (error: any) {
-    console.error(`Error processing image ${imageUrl}:`, error);
-    return { status: 'error', message: error.message, url: imageUrl };
-  }
-}
-
-async function downloadImage(imageUrl: string): Promise<ArrayBuffer> {
   const response = await fetch(imageUrl);
   if (!response.ok) {
-    throw new Error(`Failed to download image: ${response.statusText}`);
+    throw new Error(`Failed to fetch image: ${response.statusText}`);
   }
-  return await response.arrayBuffer();
-}
+  const arrayBuffer = await response.arrayBuffer();
 
-async function processAndUploadImage(bucket: R2Bucket, imageUrl: string, imageBuffer: ArrayBuffer, env: Env): Promise<any> {
-  const urlObj = new URL(imageUrl);
-  const objectKey = urlObj.pathname.startsWith('/') ? urlObj.pathname.slice(1) : urlObj.pathname;
-
+  const objectKey = new URL(imageUrl).pathname.slice(1);
+  
   try {
-    // Sprawdź, czy obraz już istnieje w R2
-    const existingObject = await bucket.head(objectKey);
+    const existingObject = await env.IMAGE_BUCKET.head(objectKey);
     
     if (existingObject) {
-      // Jeśli obraz istnieje, porównaj rozmiary
       const existingSize = existingObject.size;
-      const newSize = imageBuffer.byteLength;
+      const newSize = arrayBuffer.byteLength;
       
       if (existingSize === newSize) {
-        // Jeśli rozmiary są takie same, nie aktualizuj
         return { status: 'unchanged', message: 'Image already exists and has the same size', url: imageUrl };
       }
       
       console.log(`Size difference detected for ${objectKey}. Existing: ${existingSize}, New: ${newSize}`);
     }
 
-    // Zapisz lub zaktualizuj obraz w R2
-    await bucket.put(objectKey, imageBuffer, {
+    await env.IMAGE_BUCKET.put(objectKey, arrayBuffer, {
       httpMetadata: {
         cacheControl: env.R2_CACHE_CONTROL,
       },
@@ -247,7 +189,48 @@ async function processAndUploadImage(bucket: R2Bucket, imageUrl: string, imageBu
     };
   } catch (error: any) {
     console.error(`Error processing image ${imageUrl}: ${error.message}`);
-    return { status: 'error', message: `Failed to process image: ${error.message}`, url: imageUrl };
+    throw error;
   }
 }
+
+function extractImageUrls(html: string, baseUrl: string): string[] {
+  const imgRegex = /<img[^>]+src="?([^"\s]+)"?\s*\/>/g;
+  const urls: string[] = [];
+  let match;
+  while ((match = imgRegex.exec(html)) !== null) {
+    let url = match[1];
+    if (url.startsWith('//')) {
+      url = 'https:' + url;
+    } else if (url.startsWith('/')) {
+      url = new URL(url, baseUrl).href;
+    } else if (!url.startsWith('http')) {
+      url = new URL(url, baseUrl).href;
+    }
+    urls.push(url);
+  }
+  return urls;
+}
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+    const action = url.searchParams.get('action') || 'start';
+    const domain = url.searchParams.get('domain');
+
+    if (!domain) {
+      return new Response('Missing domain parameter', { status: 400 });
+    }
+
+    const id = env.SITEMAP_PROCESSOR.idFromName('default');
+    const obj = env.SITEMAP_PROCESSOR.get(id);
+
+    if (action === 'start') {
+      const newRequest = new Request(request.url, {
+      method: 'POST',
+      body: JSON.stringify({ env, domain }),
+    });
+  return obj.fetch(newRequest);
+  }
+}
+};
 
