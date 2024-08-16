@@ -21,6 +21,14 @@ export class SitemapProcessor {
    });
   }
 
+  async getStatus(): Promise<Response> {
+    const status = await this.state.storage.get('status') || 'Not started';
+    const processedUrls = await this.state.storage.get('processedUrls') || [];
+    return new Response(JSON.stringify({ status, processedUrls }), {
+     headers: { 'Content-Type': 'application/json' },
+  });
+}
+
 
   async fetch(request: Request): Promise<Response> {
     const url = new URL(request.url);
@@ -36,21 +44,54 @@ export class SitemapProcessor {
     }
   }
 
-  async startProcessing(request: Request): Promise<Response> {
-    const { domain } = await request.json() as { domain: string };
-    this.state.blockConcurrencyWhile(async () => {
-      await this.processEntireSitemap(domain);
-    });
-    return new Response('Processing started', { status: 202 });
+
+async startProcessing(request: Request): Promise<Response> {
+  const { domain } = await request.json() as { domain: string };
+  
+  // Rozpocznij przetwarzanie w tle
+  this.processEntireSitemapInBackground(domain);
+  
+  return new Response('Processing started', { status: 202 });
+}
+
+async processEntireSitemapInBackground(domain: string): Promise<void> {
+  await this.state.storage.put('status', 'Processing');
+  const sitemapIndexUrl = `${domain}${CONFIG.SITEMAP_INDEX_PATH}`;
+  const sitemaps = await this.getSitemapsFromIndex(sitemapIndexUrl);
+  
+  const relevantSitemaps = CONFIG.RELEVANT_SITEMAPS.map(path => `${domain}${path}`);
+  
+  for (const sitemapUrl of sitemaps.filter(url => relevantSitemaps.includes(url))) {
+    await this.processSitemapInBatches(sitemapUrl);
   }
 
-  async getStatus(): Promise<Response> {
-    const status = await this.state.storage.get('status') || 'Not started';
-    const processedUrls = await this.state.storage.get('processedUrls') || [];
-    return new Response(JSON.stringify({ status, processedUrls }), {
-      headers: { 'Content-Type': 'application/json' },
+  await this.state.storage.put('status', 'Completed');
+}
+
+async processSitemapInBatches(sitemapUrl: string, batchSize: number = 10): Promise<void> {
+  const response = await fetch(sitemapUrl);
+  const xmlData = await response.text();
+  const result = this.parser.parse(xmlData);
+  const urls = result.urlset.url.map((item: any) => item.loc);
+
+  for (let i = 0; i < urls.length; i += batchSize) {
+    const batch = urls.slice(i, i + batchSize);
+    await this.state.blockConcurrencyWhile(async () => {
+      for (const url of batch) {
+        console.log(`Processing page: ${url}`);
+        await this.processPage(url);
+        const processedUrls = await this.state.storage.get('processedUrls') as string[] | null;
+        if (Array.isArray(processedUrls)) {
+          processedUrls.push(url);
+          await this.state.storage.put('processedUrls', processedUrls);
+        } else {
+          await this.state.storage.put('processedUrls', [url]);
+        }
+      }
     });
   }
+}
+
 
   async processEntireSitemap(domain: string): Promise<void> {
     await this.state.storage.put('status', 'Processing');
