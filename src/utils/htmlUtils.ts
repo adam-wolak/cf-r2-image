@@ -1,35 +1,44 @@
 // src/utils/htmlUtils.ts
 
+
 export function extractImageUrls(html: string, baseUrl: string): string[] {
-  const imgRegex = /<img[^>]+src\s*=\s*['"]([^'"]+)['"][^>]*>/gi;
-  const srcsetRegex = /srcset\s*=\s*['"]([^'"]+)['"]/gi;
-  const backgroundImageRegex = /background-image\s*:\s*url\(['"]?([^'"]+)['"]?\)/gi;
+  const imgRegex = /<img[^>]+(?:src|data-src)=["']?([^"'\s>]+)["']?[^>]*>/g;
+  const urls: string[] = [];
+  const baseUrlObj = new URL(baseUrl);
   
-  const urls = new Set<string>();
-  
+  let totalImagesFound = 0;
   let match;
   while ((match = imgRegex.exec(html)) !== null) {
-    urls.add(new URL(match[1], baseUrl).href);
-  }
-  
-  while ((match = srcsetRegex.exec(html)) !== null) {
-    const srcset = match[1].split(',');
-    for (const src of srcset) {
-      const [url] = src.trim().split(' ');
-      urls.add(new URL(url, baseUrl).href);
+    totalImagesFound++;
+    let url = match[1];
+    
+    // Pomijamy pliki SVG
+    if (url.toLowerCase().endsWith('.svg')) {
+      continue;
+    }
+    
+    // Tworzymy pełny URL
+    if (url.startsWith('//')) {
+      url = 'https:' + url;
+    } else if (url.startsWith('/')) {
+      url = new URL(url, baseUrl).href;
+    } else if (!url.startsWith('http')) {
+      url = new URL(url, baseUrl).href;
+    }
+    
+    // Sprawdzamy, czy obraz jest z tej samej domeny
+    const imageUrlObj = new URL(url);
+    if (imageUrlObj.hostname === baseUrlObj.hostname) {
+      urls.push(url);
     }
   }
   
-  while ((match = backgroundImageRegex.exec(html)) !== null) {
-    urls.add(new URL(match[1], baseUrl).href);
-  }
+  console.log(`Total images found: ${totalImagesFound}`);
+  console.log(`Images after filtering: ${urls.length}`);
+  console.log(`Filtered out images: ${totalImagesFound - urls.length}`);
+  console.log(`Extracted ${urls.length} valid image URLs from ${baseUrl}`);
   
-  return Array.from(urls)
-    .filter(url => url.includes('/wp-content/uploads/') && !url.endsWith('.svg') && !url.includes('favicon'))
-    .map(url => {
-      // Remove query parameters and hash
-      return url.split('?')[0].split('#')[0];
-    });
+  return urls;
 }
 
 
